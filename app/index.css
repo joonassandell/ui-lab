@@ -12,7 +12,7 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --ul-shadow-pop: 0 1px 0 0 hsl(0 0% 100% / 0.05) inset,
+      --ul-shadow-pop: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
         0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
         0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
         0 6px 6px 0 hsl(0 0% 0% / 0.1);
@@ -37,35 +37,7 @@
 }
 
 .card {
-  perspective: 1000px;
-
   &:hover .card-inner {
     transform: rotateY(-180deg);
   }
-}
-
-.card-inner {
-  transform-style: preserve-3d;
-}
-
-.card-front,
-.card-back {
-  backface-visibility: hidden;
-  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-}
-
-.card-back {
-  transform: rotateY(180deg);
-}
-
-.card-bg {
-  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-}
-
-.card-bg:before {
-  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
-}
-
-.card-bg:after {
-  background: linear-gradient(321.03deg, #01adef 0%, #0860bf 91.45%);
 }
