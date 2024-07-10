@@ -1,10 +1,35 @@
 import { type Config } from 'tailwindcss';
+import { parseColor } from 'tailwindcss/lib/util/color';
+import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
     './pages/**/*.{jsx,tsx}',
     './components/**/*.{jsx,tsx}',
     './app/**/*.{jsx,tsx}',
+  ],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': value => ({ textShadow: value }),
+        },
+        { values: theme('textShadow') },
+      );
+      matchUtilities(
+        {
+          'text-shadow': value => {
+            const { alpha, color } = parseColor(value);
+
+            return {
+              '--tw-text-shadow': `rgb(${color[0]} ${color[1]} ${color[2]}${alpha ? ' / ' + alpha : ''})`,
+            };
+          },
+        },
+        { type: 'color', values: flattenColorPalette(theme('colors')) },
+      );
+    }),
   ],
   theme: {
     extend: {
@@ -16,6 +41,9 @@ const config: Config = {
       },
       fontSize: {
         '2xs': ['10px', '20px'],
+      },
+      textShadow: {
+        DEFAULT: '0 1px 1px var(--tw-text-shadow)',
       },
     },
   },
