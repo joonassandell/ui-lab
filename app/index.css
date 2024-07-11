@@ -35,9 +35,3 @@
     --tw-text-shadow: rgb(255 255 255 / 0.5);
   }
 }
-
-.card {
-  &:hover .card-inner {
-    transform: rotateY(-180deg);
-  }
-}
