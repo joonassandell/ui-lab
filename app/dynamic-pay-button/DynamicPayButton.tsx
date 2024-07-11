@@ -106,20 +106,16 @@ export const DynamicPayButton = () => {
           animate={open ? 'open' : 'closed'}
           className={cn('w-96 p-3 pt-0', { absolute: !open, 'top-14': !open })}
           initial="closed"
-          style={{
-            originY: 'bottom',
-          }}
+          style={{ originY: 'bottom' }}
           transition={{
             ...TRANS_SPRING,
-            filter: {
-              delay: 0.2,
-            },
+            filter: { delay: 0.2 },
           }}
           variants={{
             closed: {
               filter: 'blur(4px)',
               opacity: 0,
-              rotate: 22,
+              rotate: 20,
               scale: 0.2,
             },
             open: {
@@ -144,20 +140,14 @@ const Cards = () => {
     <m.div className={cn('relative mt-3 h-52')}>
       <AnimatePresence initial={false}>
         <CardVisa front={false} key={index + 1} />
-        <CardVisa
-          drag="x"
-          front
-          index={index}
-          key={index}
-          setIndex={setIndex}
-        />
+        <CardVisa index={index} key={index} setIndex={setIndex} />
       </AnimatePresence>
     </m.div>
   );
 };
 
 interface CardProps extends HTMLMotionProps<'div'> {
-  front: boolean;
+  front?: boolean;
   index?: number;
   setIndex?: Dispatch<SetStateAction<number>>;
 }
@@ -165,34 +155,33 @@ interface CardProps extends HTMLMotionProps<'div'> {
 const Card = ({
   children,
   className,
-  drag,
-  front,
+  front = true,
   index = 0,
   setIndex,
 }: CardProps) => {
   const [exitX, setExitX] = useState(0);
   const x = useMotionValue(0);
-  const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5]);
-  const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
+  const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
+  const rotate = useTransform(x, [-150, 0, 150], [-10, 0, 10], {
     clamp: false,
   });
 
-  const variantsFront = {
+  const frontVariant = {
     animate: { opacity: 1, scale: 1, y: 0 },
-    exit: (custom: number) => ({
+    exit: (x: number) => ({
       opacity: 0,
       scale: 0.5,
       transition: {
         ...TRANS_SPRING,
         opacity: {
-          delay: 0.1,
+          delay: 0.2,
         },
       },
-      x: custom,
+      x,
     }),
   };
 
-  const variantsBack = {
+  const backVariant = {
     animate: { opacity: 1, scale: 0.92, y: -20 },
     initial: { opacity: 0, scale: 0, y: -48 },
   };
@@ -222,13 +211,8 @@ const Card = ({
         },
       )}
       custom={exitX}
-      drag={drag}
-      dragConstraints={{
-        bottom: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-      }}
+      drag={front ? 'x' : false}
+      dragConstraints={{ left: 0, right: 0 }}
       exit="exit"
       initial="initial"
       onDragEnd={handleDragEnd}
@@ -242,8 +226,8 @@ const Card = ({
           ? TRANS_SPRING
           : { opacity: { duration: 0.4 }, scale: { duration: 0.2 } }
       }
-      variants={front ? variantsFront : variantsBack}
-      whileTap={{ cursor: exitX ? 'grabbing' : '' }}
+      variants={front ? frontVariant : backVariant}
+      whileTap={{ cursor: front ? 'grabbing' : '' }}
     >
       <m.div
         className={cn(
