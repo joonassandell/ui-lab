@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html className={cn('overflow-auto')} lang="en">
       <body
         className={cn(
-          'grid min-h-screen place-content-center bg-zinc-100 dark:bg-zinc-950',
+          'grid min-h-screen place-content-center overflow-hidden bg-zinc-100 dark:bg-zinc-950',
         )}
       >
         {children}
