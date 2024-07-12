@@ -19,7 +19,7 @@ import {
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
 
 /**
- * Dynamic Pay button
+ * Dynamic Pay Button
  *
  * Inspiration:
  * @link https://www.uilabs.dev
@@ -159,7 +159,8 @@ const Card = ({
   index = 0,
   setIndex,
 }: CardProps) => {
-  const [exitX, setExitX] = useState(0);
+  const [exitX, setExitX] = useState<string>();
+  const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
   const rotate = useTransform(x, [-150, 0, 150], [-10, 0, 10], {
@@ -170,12 +171,10 @@ const Card = ({
     animate: { opacity: 1, scale: 1, y: 0 },
     exit: (x: number) => ({
       opacity: 0,
-      scale: 0.5,
+      scale: 0.8,
       transition: {
-        ...TRANS_SPRING,
-        opacity: {
-          delay: 0.2,
-        },
+        ...TRANS_SPRING_SLOW,
+        opacity: { delay: 0.5 },
       },
       x,
     }),
@@ -189,11 +188,11 @@ const Card = ({
   const handleDragEnd: DragHandlers['onDragEnd'] = (e, { offset }) => {
     if (setIndex) {
       if (offset.x < -100) {
-        setExitX(-250);
+        setExitX('-100%');
         setIndex(index + 1);
       }
       if (offset.x > 100) {
-        setExitX(250);
+        setExitX('100%');
         setIndex(index + 1);
       }
     }
@@ -203,7 +202,7 @@ const Card = ({
     <m.div
       animate="animate"
       className={cn(
-        'text-shadow-black/40 card absolute h-full w-full text-white text-shadow',
+        'text-shadow-black/60 absolute h-full w-full select-none text-white text-shadow',
         className,
         {
           'cursor-grab': front,
@@ -230,28 +229,18 @@ const Card = ({
       whileTap={{ cursor: front ? 'grabbing' : '' }}
     >
       <m.div
+        animate="animate"
         className={cn(
           'card-inner h-full w-full rounded-xl',
           'shadow-sm shadow-black/30',
           'dark:shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
         )}
-        // drag="x"
-        // dragConstraints={{ left: 0, right: 0 }}
-        // dragElastic={0}
-        // onDragEnd={() => {
-        //   setDragDirectionX('right');
-        //   setDragXonly(false);
-        // }}
-        // onDragStart={(e, i) => {
-        //   i.delta.y < 1.5 && i.delta.y > -1.5 && setDragXonly(true);
-        //   i.delta.x > 0 && setDragDirectionX('left');
-        // }}
+        custom={flip}
+        initial={false}
+        onTap={() => front && setFlip(!flip)}
         style={{ scale, transformStyle: 'preserve-3d' }}
-        // style={{ transformStyle: 'preserve-3d' }}
-        // transition={TRANS_SPRING}
-        // whileDrag={{
-        //   rotateY: dragX ? (dragDirectionX === 'right' ? -180 : 180) : 0,
-        // }}
+        transition={TRANS_SPRING_SLOW}
+        variants={{ animate: flip => ({ rotateY: flip ? -180 : [180, 0] }) }}
       >
         {children}
       </m.div>
