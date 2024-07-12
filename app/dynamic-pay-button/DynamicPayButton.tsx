@@ -128,13 +128,11 @@ export const DynamicPayButton = () => {
 };
 
 const CARDS: {
-  hue?: CardProps['hue'];
   id: number;
   variant: CardProps['variant'];
 }[] = [
-  { hue: 210, id: 1, variant: 'visa' },
-  { hue: 200, id: 2, variant: 'visa' },
-  { id: 3, variant: 'mastercard' },
+  { id: 1, variant: 'visa' },
+  { id: 2, variant: 'mastercard' },
 ];
 
 const Cards = () => {
@@ -145,10 +143,9 @@ const Cards = () => {
 
   return (
     <div className={cn('relative mt-3 h-52')}>
-      {cards.map(({ hue, id, variant }, index) => {
+      {cards.map(({ id, variant }, index) => {
         return (
           <Card
-            hue={hue}
             index={index}
             key={id}
             onDragEnd={() => moveToEnd(index)}
@@ -161,14 +158,12 @@ const Cards = () => {
 };
 
 interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
-  hue?: number;
   index: number;
   variant?: 'visa' | 'mastercard';
 }
 
 const Card = ({
   className,
-  hue = 210,
   index,
   onDragEnd,
   variant = 'visa',
@@ -211,7 +206,6 @@ const Card = ({
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       onDragEnd={handleDragEnd}
       style={{
-        ['--hue' as string]: hue,
         perspective: 1000,
         rotate,
         x,
@@ -248,7 +242,7 @@ const CardVisa = () => {
         className={cn(
           'relative flex h-full flex-col justify-end gap-3 overflow-hidden rounded-xl p-5 font-cc',
           'bg-gradient-to-br from-[hsl(210,100%,50%)] to-[hsl(210,100%,30%)]',
-          'dark:from-[hsl(var(--hue),70%,20%)] dark:to-[hsl(var(--hue),70%,10%)]',
+          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl',
           'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
@@ -258,7 +252,7 @@ const CardVisa = () => {
           className={cn(
             'absolute -right-24 -top-5 bottom-0 w-full rounded-tl-[100%]',
             'bg-gradient-to-tl from-[hsl(210,100%,27%)] to-[hsl(210,100%,53%)]',
-            'dark:from-[hsl(var(--hue),70%,7%)] dark:to-[hsl(var(--hue),70%,24%)]',
+            'dark:from-[hsl(210,70%,7%)] dark:to-[hsl(210,70%,24%)]',
             'before:absolute before:-right-20 before:h-full before:w-full before:rounded-tl-[100%] before:bg-gradient-to-tl',
             'after:absolute after:-right-36 after:h-full after:w-full after:rounded-tl-[100%] after:bg-gradient-to-tl',
           )}
@@ -324,7 +318,7 @@ const CardVisa = () => {
         className={cn(
           'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
           'bg-gradient-to-br from-[#0860bf] to-[#0192df]',
-          'dark:from-[hsl(var(--hue),70%,20%)] dark:to-[hsl(var(--hue),70%,10%)]',
+          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
           'before:shadow-[0_-1px_0_0_hsla(0,0%,0%,0.1)_inset,0_0_0_1px_hsla(0,0%,0%,0.1)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
