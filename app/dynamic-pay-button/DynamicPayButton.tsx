@@ -9,14 +9,9 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import {
-  type Dispatch,
-  type SetStateAction,
-  useCallback,
-  useState,
-} from 'react';
+import { cn, move } from '@/lib/utils';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
+import { useCallback, useState } from 'react';
 
 /**
  * Dynamic Pay Button
@@ -47,12 +42,8 @@ export const DynamicPayButton = () => {
       onAnimationComplete={() => !open && content && setContent(false)}
       refClassname={cn('flex flex-col items-center')}
       variants={{
-        closed: {
-          borderRadius: 60,
-        },
-        open: {
-          borderRadius: 16,
-        },
+        closed: { borderRadius: 60 },
+        open: { borderRadius: 16 },
       }}
     >
       <div className={cn('flex w-full items-center justify-between px-3 py-3')}>
@@ -136,105 +127,102 @@ export const DynamicPayButton = () => {
   );
 };
 
+const CARDS: {
+  hue: CardProps['hue'];
+  id: number;
+  variant: CardProps['variant'];
+}[] = [
+  { hue: 210, id: 1, variant: 'visa' },
+  { hue: 200, id: 2, variant: 'visa' },
+];
+
 const Cards = () => {
-  const [index, setIndex] = useState(0);
+  const [cards, setCards] = useState(CARDS);
+  const moveToEnd = (from: number) => {
+    setCards(move(cards, from, cards.length - 1));
+  };
 
   return (
-    <m.div className={cn('relative mt-3 h-52')}>
-      <AnimatePresence initial={false}>
-        <CardVisa front={false} key={index + 1} />
-        <CardVisa index={index} key={index} setIndex={setIndex} />
-      </AnimatePresence>
-    </m.div>
+    <div className={cn('relative mt-3 h-52')}>
+      {cards.map(({ hue, id, variant }, index) => {
+        return (
+          <Card
+            hue={hue}
+            index={index}
+            key={id}
+            onDragEnd={() => moveToEnd(index)}
+            variant={variant}
+          />
+        );
+      })}
+    </div>
   );
 };
 
-interface CardProps extends HTMLMotionProps<'div'> {
-  front?: boolean;
-  index?: number;
-  setIndex?: Dispatch<SetStateAction<number>>;
+interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
+  hue?: number;
+  index: number;
+  variant?: 'visa';
 }
 
 const Card = ({
-  children,
   className,
-  front = true,
-  index = 0,
-  setIndex,
+  hue = 210,
+  index,
+  onDragEnd,
+  variant = 'visa',
+  ...props
 }: CardProps) => {
-  const [exitX, setExitX] = useState<string>();
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
   const rotate = useTransform(x, [-150, 0, 150], [-10, 0, 10], {
     clamp: false,
   });
+  const front = index === 0;
 
-  const frontVariant = {
-    animate: { opacity: 1, scale: 1, y: 0 },
-    exit: (x: number) => ({
-      opacity: 0,
-      scale: 0.8,
-      transition: {
-        ...TRANS_SPRING_SLOW,
-        opacity: { delay: 0.5 },
-      },
-      x,
-    }),
-  };
-
-  const backVariant = {
-    animate: { opacity: 1, scale: 0.92, y: -20 },
-    initial: { opacity: 0, scale: 0, y: -48 },
-  };
-
-  const handleDragEnd: DragHandlers['onDragEnd'] = (e, { offset }) => {
-    if (setIndex) {
-      if (offset.x < -100) {
-        setExitX('-100%');
-        setIndex(index + 1);
+  const handleDragEnd: DragHandlers['onDragEnd'] = (e, info) => {
+    if (front) {
+      if (info.offset.x < -100) {
+        onDragEnd && onDragEnd(e, info);
       }
-      if (offset.x > 100) {
-        setExitX('100%');
-        setIndex(index + 1);
+      if (info.offset.x > 100 || info.offset.y > 50) {
+        onDragEnd && onDragEnd(e, info);
       }
     }
   };
 
   return (
     <m.div
-      animate="animate"
+      animate={{
+        scale: 1 - index * 0.06,
+        y: index * -16,
+        zIndex: CARDS.length - index,
+      }}
       className={cn(
         'text-shadow-black/60 absolute h-full w-full select-none text-white text-shadow',
         className,
         {
           'cursor-grab': front,
-          'z-[1]': exitX,
         },
       )}
-      custom={exitX}
-      drag={front ? true : false}
+      drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
-      exit="exit"
-      initial="initial"
       onDragEnd={handleDragEnd}
       style={{
+        ['--hue' as string]: hue,
         perspective: 1000,
         rotate,
         x,
       }}
-      transition={
-        front
-          ? TRANS_SPRING
-          : { opacity: { duration: 0.4 }, scale: { duration: 0.2 } }
-      }
-      variants={front ? frontVariant : backVariant}
+      transition={TRANS_SPRING}
       whileTap={{ cursor: front ? 'grabbing' : '' }}
+      {...props}
     >
       <m.div
         animate="animate"
         className={cn(
-          'card-inner h-full w-full rounded-xl',
+          'h-full w-full rounded-xl',
           'shadow-sm shadow-black/30',
           'dark:shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
         )}
@@ -245,20 +233,20 @@ const Card = ({
         transition={TRANS_SPRING_SLOW}
         variants={{ animate: flip => ({ rotateY: flip ? -180 : [180, 0] }) }}
       >
-        {children}
+        {variant === 'visa' && <CardVisa />}
       </m.div>
     </m.div>
   );
 };
 
-const CardVisa = (props: CardProps) => {
+const CardVisa = () => {
   return (
-    <Card {...props}>
+    <>
       <div
         className={cn(
           'relative flex h-full flex-col justify-end gap-3 overflow-hidden rounded-xl p-5 font-cc',
           'bg-gradient-to-br from-[#0860bf] to-[#01adef]',
-          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
+          'dark:from-[hsl(var(--hue),70%,20%)] dark:to-[hsl(var(--hue),70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl',
           'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
@@ -268,7 +256,7 @@ const CardVisa = (props: CardProps) => {
           className={cn(
             'absolute -right-24 -top-5 bottom-0 w-full rounded-tl-[100%]',
             'bg-gradient-to-tl from-[#01adef] to-[#0860bf]',
-            'dark:from-[hsl(210,70%,24%)] dark:to-[hsl(210,70%,9%)] dark:to-95%',
+            'dark:from-[hsl(var(--hue),70%,24%)] dark:to-[hsl(var(--hue),70%,9%)] dark:to-95%',
             'before:absolute before:-right-20 before:h-full before:w-full before:rounded-tl-[100%] before:bg-gradient-to-tl',
             'after:absolute after:-right-36 after:h-full after:w-full after:rounded-tl-[100%] after:bg-gradient-to-tl',
           )}
@@ -333,7 +321,7 @@ const CardVisa = (props: CardProps) => {
         className={cn(
           'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
           'bg-gradient-to-br from-[#0860bf] to-[#0192df]',
-          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
+          'dark:from-[hsl(var(--hue),70%,20%)] dark:to-[hsl(var(--hue),70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
           'before:shadow-[0_-1px_0_0_hsla(0,0%,0%,0.1)_inset,0_0_0_1px_hsla(0,0%,0%,0.1)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
@@ -362,7 +350,7 @@ const CardVisa = (props: CardProps) => {
           </p>
         </div>
       </div>
-    </Card>
+    </>
   );
 };
 
