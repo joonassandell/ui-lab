@@ -104,7 +104,10 @@ export const DynamicPayButton = () => {
       {content && (
         <m.div
           animate={open ? 'open' : 'closed'}
-          className={cn('w-96 p-3 pt-0', { absolute: !open, 'top-14': !open })}
+          className={cn('w-[368px] p-3 pt-0 md:w-96', {
+            absolute: !open,
+            'top-14': !open,
+          })}
           initial="closed"
           style={{ originY: 'bottom' }}
           transition={{
@@ -210,8 +213,8 @@ const Card = ({
         },
       )}
       custom={exitX}
-      drag={front ? 'x' : false}
-      dragConstraints={{ left: 0, right: 0 }}
+      drag={front ? true : false}
+      dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       exit="exit"
       initial="initial"
       onDragEnd={handleDragEnd}
@@ -354,8 +357,8 @@ const CardVisa = (props: CardProps) => {
         </div>
         <div className={cn('self-end text-xs')}>
           <p>
-            This card is property of Sandell Bank. If found, please return to
-            Sandell Bank or to the nearest bank.
+            This card is property of Sandell Bank. You can also swipe me to
+            switch the active payment card.
           </p>
         </div>
       </div>
