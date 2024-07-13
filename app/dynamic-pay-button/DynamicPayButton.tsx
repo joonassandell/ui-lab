@@ -39,7 +39,7 @@ export const DynamicPayButton = () => {
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
       className={cn(
-        'relative flex flex-col items-center bg-white text-sm font-medium text-slate-500 shadow-pop dark:bg-zinc-900 dark:text-slate-50',
+        'relative flex flex-col items-center bg-white text-sm font-medium text-zinc-500 shadow-pop dark:bg-zinc-900 dark:text-zinc-300',
         {
           'overflow-hidden': animating,
         },
@@ -61,21 +61,25 @@ export const DynamicPayButton = () => {
           {open && (
             <m.nav
               animate={{ opacity: 1, x: '0%' }}
-              className={cn('flex gap-2')}
+              className={cn('flex gap-1')}
               exit={{ opacity: 0 }}
               initial={{ opacity: 0, x: '50%' }}
               transition={TRANS_SPRING}
             >
               <button
                 className={cn(
-                  'whitespace-nowrap rounded-lg px-2 py-1 dark:bg-zinc-800',
+                  'cursor-default whitespace-nowrap rounded-lg px-2 py-1',
+                  'bg-zinc-100 text-zinc-800',
+                  'dark:bg-zinc-800 dark:text-zinc-100',
                 )}
               >
                 Credit card
               </button>
               <button
                 className={cn(
-                  'whitespace-nowrap rounded-lg px-2 py-1 text-zinc-400',
+                  'cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
+                  'hover:text-zinc-800',
+                  'dark:text-zinc-400 dark:hover:text-zinc-100',
                 )}
               >
                 Other methods
@@ -85,7 +89,9 @@ export const DynamicPayButton = () => {
         </AnimatePresence>
         <m.button
           className={cn(
-            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap px-3 py-1',
+            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap px-3 py-1 transition-colors',
+            'hover:text-zinc-800',
+            'dark:hover:text-zinc-100',
           )}
           layout
           onClick={handleOpen}
@@ -142,16 +148,19 @@ export const DynamicPayButton = () => {
           >
             <button
               className={cn(
-                'whitespace-nowrap rounded-md px-2 py-1 text-zinc-400',
+                'cursor-default whitespace-nowrap rounded-md px-2 py-1 transition-colors',
+                'hover:text-zinc-800',
+                'dark:text-zinc-400 dark:hover:text-zinc-100',
               )}
             >
               Switch card
             </button>
             <button
               className={cn(
-                'shadow-pop-sm whitespace-nowrap rounded-lg px-3 py-2',
-                'bg-white text-zinc-800',
-                'dark:bg-sky-950 dark:text-sky-300',
+                'shadow-pop-sm cursor-default whitespace-nowrap rounded-lg px-3 py-2 transition-colors',
+                'bg-zinc-50 text-zinc-800 hover:bg-sky-100 hover:text-sky-950',
+                'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-950/80 dark:hover:text-sky-400',
+                'active:translate-y-px',
                 // 'dark:bg-zinc-800 dark:text-zinc-50',
                 // 'dark:bg-lime-900 dark:text-lime-200',
                 // 'dark:bg-white dark:text-zinc-950',
