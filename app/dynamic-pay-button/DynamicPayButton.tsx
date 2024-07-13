@@ -9,7 +9,7 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion';
-import { Close, CreditCard } from '@/components/Icon';
+import { ArrowRightLeft, Close, CreditCard } from '@/components/Icon';
 import { cn, move } from '@/lib/utils';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
 import { useCallback, useState } from 'react';
@@ -102,7 +102,7 @@ export const DynamicPayButton = () => {
           <AnimatePresence initial={false} mode="popLayout">
             <m.span
               animate={{ scale: 1 }}
-              className={cn('flex w-5 items-center justify-center')}
+              className={cn('flex size-5 items-center justify-center')}
               exit={{ scale: 0 }}
               initial={{ scale: 0 }}
               key={icon.type.name}
@@ -144,17 +144,17 @@ export const DynamicPayButton = () => {
           <Cards />
           <footer
             className={cn(
-              'flex w-full items-center justify-between gap-2 pt-4',
+              'flex w-full items-center justify-between gap-2 pt-3',
             )}
           >
             <button
               className={cn(
-                'cursor-default whitespace-nowrap rounded-md px-2 py-1 transition-colors',
-                'hover:text-zinc-800',
-                'dark:text-zinc-400 dark:hover:text-zinc-100',
+                'grid size-8 cursor-default place-content-center gap-2 rounded-lg border border-transparent transition-colors',
+                'border-zinc-200 hover:bg-zinc-100 hover:text-zinc-800',
+                'dark:border-zinc-700/70 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100',
               )}
             >
-              Switch card
+              <ArrowRightLeft className={cn('size-4')} />
             </button>
             <button
               className={cn(
@@ -162,11 +162,6 @@ export const DynamicPayButton = () => {
                 'bg-zinc-50 text-zinc-800 hover:bg-sky-100 hover:text-sky-950',
                 'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-950/80 dark:hover:text-sky-400',
                 'active:translate-y-px',
-                // 'dark:bg-zinc-800 dark:text-zinc-50',
-                // 'dark:bg-lime-900 dark:text-lime-200',
-                // 'dark:bg-white dark:text-zinc-950',
-                // 'dark:bg-[hsl(44,55,66)] dark:text-black/90',
-                // 'dark:bg-[hsl(160,66,50)] dark:text-black/90',
               )}
             >
               Pay now
