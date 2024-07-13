@@ -16,13 +16,16 @@ import { useCallback, useState } from 'react';
 /**
  * Dynamic Pay Button
  *
- * Inspiration:
+ * Inspired by:
  * @link https://www.uilabs.dev
  * @link https://codepen.io/tmorrell82/pen/qBqyyBM
  * @link https://codepen.io/FilipVitas/pen/ddLVZx
+ *
+ * @author Joonas Sandell
  */
 export const DynamicPayButton = () => {
   const [open, setOpen] = useState(false);
+  const [animating, setAnimating] = useState(false);
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
 
@@ -36,17 +39,24 @@ export const DynamicPayButton = () => {
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
       className={cn(
-        'relative flex flex-col items-center overflow-hidden bg-zinc-50 text-sm font-medium text-slate-500 shadow-pop dark:bg-zinc-900 dark:text-slate-50',
+        'relative flex flex-col items-center bg-zinc-50 text-sm font-medium text-slate-500 shadow-pop dark:bg-zinc-900 dark:text-slate-50',
+        {
+          'overflow-hidden': animating,
+        },
       )}
       initial="closed"
       onAnimationComplete={() => !open && content && setContent(false)}
+      onAnimationStart={() => setAnimating(true)}
+      onUpdate={e => {
+        if (e.borderRadius === (20 || 60)) setAnimating(false);
+      }}
       refClassname={cn('flex flex-col items-center')}
       variants={{
         closed: { borderRadius: 60 },
-        open: { borderRadius: 16 },
+        open: { borderRadius: 20 },
       }}
     >
-      <div className={cn('flex w-full items-center justify-between px-3 py-3')}>
+      <header className={cn('flex w-full items-center justify-between p-3')}>
         <AnimatePresence mode="popLayout">
           {open && (
             <m.nav
@@ -58,12 +68,16 @@ export const DynamicPayButton = () => {
             >
               <button
                 className={cn(
-                  'whitespace-nowrap rounded-md px-2 py-1 dark:bg-zinc-800',
+                  'whitespace-nowrap rounded-lg px-2 py-1 dark:bg-zinc-800',
                 )}
               >
                 Credit card
               </button>
-              <button className={cn('whitespace-nowrap rounded-md px-2 py-1')}>
+              <button
+                className={cn(
+                  'whitespace-nowrap rounded-lg px-2 py-1 text-zinc-400',
+                )}
+              >
                 Other methods
               </button>
             </m.nav>
@@ -71,7 +85,7 @@ export const DynamicPayButton = () => {
         </AnimatePresence>
         <m.button
           className={cn(
-            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap px-3 py-1 focus-visible:outline-none',
+            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap px-3 py-1',
           )}
           layout
           onClick={handleOpen}
@@ -91,11 +105,11 @@ export const DynamicPayButton = () => {
             </m.span>
           </AnimatePresence>
         </m.button>
-      </div>
+      </header>
       {content && (
         <m.div
           animate={open ? 'open' : 'closed'}
-          className={cn('w-[368px] p-3 pt-0 md:w-96', {
+          className={cn('w-[368px] p-3 md:w-96', {
             absolute: !open,
             'top-14': !open,
           })}
@@ -121,6 +135,28 @@ export const DynamicPayButton = () => {
           }}
         >
           <Cards />
+          <footer
+            className={cn(
+              'flex w-full items-center justify-between gap-2 pt-4',
+            )}
+          >
+            <button
+              className={cn(
+                'whitespace-nowrap rounded-md px-2 py-1 text-zinc-400',
+              )}
+            >
+              Switch card
+            </button>
+            <button
+              className={cn(
+                'whitespace-nowrap rounded-lg px-3 py-2',
+                'bg-[hsl(44,55,66)] text-black/90',
+                // 'bg-[hsl(160,66,50)] text-black/90',
+              )}
+            >
+              Pay now
+            </button>
+          </footer>
         </m.div>
       )}
     </AnimateDimension>
@@ -142,7 +178,7 @@ const Cards = () => {
   };
 
   return (
-    <div className={cn('relative mt-3 h-52')}>
+    <div className={cn('relative h-52')}>
       {cards.map(({ id, variant }, index) => {
         return (
           <Card
@@ -213,6 +249,7 @@ const Card = ({
       transition={TRANS_SPRING}
       whileTap={{ cursor: front ? 'grabbing' : '' }}
       {...props}
+      tabIndex={-1}
     >
       <m.div
         animate="animate"
@@ -225,6 +262,7 @@ const Card = ({
         initial={false}
         onTap={() => front && setFlip(!flip)}
         style={{ scale, transformStyle: 'preserve-3d' }}
+        tabIndex={front ? 0 : -1}
         transition={TRANS_SPRING_SLOW}
         variants={{ animate: flip => ({ rotateY: flip ? -180 : [180, 0] }) }}
       >
@@ -327,7 +365,7 @@ const CardVisa = () => {
       >
         <div
           className={cn(
-            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-[#000]',
+            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-black/80',
           )}
         >
           <label
@@ -336,8 +374,10 @@ const CardVisa = () => {
             ccv
           </label>
           <input
-            className={cn('w-[3ch] text-right focus-visible:outline-none')}
+            className={cn('w-[3ch] text-right')}
+            maxLength={3}
             placeholder="123"
+            tabIndex={-1}
           />
         </div>
         <div className={cn('self-end text-xs')}>
@@ -452,7 +492,7 @@ const CardMaster = () => {
       >
         <div
           className={cn(
-            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-[#000]',
+            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-black/80',
           )}
         >
           <label
@@ -461,8 +501,10 @@ const CardMaster = () => {
             ccv
           </label>
           <input
-            className={cn('w-[3ch] text-right focus-visible:outline-none')}
+            className={cn('w-[3ch] text-right')}
+            maxLength={3}
             placeholder="123"
+            tabIndex={-1}
           />
         </div>
         <div className={cn('self-end text-xs')}>
@@ -472,6 +514,7 @@ const CardMaster = () => {
             <a
               className={cn('underline')}
               href="https://joonassandell.com/contact"
+              tabIndex={-1}
               target="_blank"
             >
               Hire me
