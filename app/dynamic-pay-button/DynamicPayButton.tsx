@@ -39,7 +39,7 @@ export const DynamicPayButton = () => {
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
       className={cn(
-        'relative flex flex-col items-center bg-zinc-50 text-sm font-medium text-slate-500 shadow-pop dark:bg-zinc-900 dark:text-slate-50',
+        'relative flex flex-col items-center bg-white text-sm font-medium text-slate-500 shadow-pop dark:bg-zinc-900 dark:text-slate-50',
         {
           'overflow-hidden': animating,
         },
@@ -149,9 +149,14 @@ export const DynamicPayButton = () => {
             </button>
             <button
               className={cn(
-                'whitespace-nowrap rounded-lg px-3 py-2',
-                'bg-[hsl(44,55,66)] text-black/90',
-                // 'bg-[hsl(160,66,50)] text-black/90',
+                'shadow-pop-sm whitespace-nowrap rounded-lg px-3 py-2',
+                'bg-white text-zinc-800',
+                'dark:bg-sky-950 dark:text-sky-300',
+                // 'dark:bg-zinc-800 dark:text-zinc-50',
+                // 'dark:bg-lime-900 dark:text-lime-200',
+                // 'dark:bg-white dark:text-zinc-950',
+                // 'dark:bg-[hsl(44,55,66)] dark:text-black/90',
+                // 'dark:bg-[hsl(160,66,50)] dark:text-black/90',
               )}
             >
               Pay now
@@ -198,13 +203,7 @@ interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   variant?: 'visa' | 'mastercard';
 }
 
-const Card = ({
-  className,
-  index,
-  onDragEnd,
-  variant = 'visa',
-  ...props
-}: CardProps) => {
+const Card = ({ index, onDragEnd, variant = 'visa', ...props }: CardProps) => {
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
@@ -231,13 +230,7 @@ const Card = ({
         y: index * -16,
         zIndex: CARDS.length - index,
       }}
-      className={cn(
-        'text-shadow-black/60 absolute h-full w-full select-none text-white text-shadow',
-        className,
-        {
-          'cursor-grab': front,
-        },
-      )}
+      className={cn('absolute h-full w-full', { 'cursor-grab': front })}
       drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       onDragEnd={handleDragEnd}
@@ -246,16 +239,15 @@ const Card = ({
         rotate,
         x,
       }}
+      tabIndex={-1}
       transition={TRANS_SPRING}
       whileTap={{ cursor: front ? 'grabbing' : '' }}
       {...props}
-      tabIndex={-1}
     >
       <m.div
         animate="animate"
         className={cn(
-          'h-full w-full rounded-xl',
-          'shadow-sm shadow-black/30',
+          'text-shadow-black/60 h-full w-full select-none rounded-xl text-white text-shadow',
           'dark:shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
         )}
         custom={flip}
@@ -282,7 +274,7 @@ const CardVisa = () => {
           'bg-gradient-to-br from-[hsl(210,100%,50%)] to-[hsl(210,100%,30%)]',
           'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl',
-          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
       >
@@ -355,10 +347,10 @@ const CardVisa = () => {
       <div
         className={cn(
           'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'bg-gradient-to-br from-[#0860bf] to-[#0192df]',
+          'bg-gradient-to-br from-[hsl(210,100%,50%)] to-[hsl(210,100%,30%)]',
           'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
-          'before:shadow-[0_-1px_0_0_hsla(0,0%,0%,0.1)_inset,0_0_0_1px_hsla(0,0%,0%,0.1)_inset]',
+          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
           'after:absolute after:left-0 after:right-0 after:top-5 after:h-10 after:bg-black',
         )}
@@ -482,10 +474,10 @@ const CardMaster = () => {
       <div
         className={cn(
           'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'bg-gradient-to-br from-[#0860bf] to-[#0192df]',
+          'bg-gradient-to-br from-[hsl(230,30%,50%)] to-[hsl(230,40%,30%)]',
           'dark:from-[hsl(0,0%,20%)] dark:to-[hsl(0,0%,10%)]',
           'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
-          'before:shadow-[0_-1px_0_0_hsla(0,0%,0%,0.1)_inset,0_0_0_1px_hsla(0,0%,0%,0.1)_inset]',
+          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
           'after:absolute after:left-0 after:right-0 after:top-5 after:h-10 after:bg-black',
         )}
@@ -509,7 +501,7 @@ const CardMaster = () => {
         </div>
         <div className={cn('self-end text-xs')}>
           <p>
-            You can also swipe me to switch the active payment card. Love
+            You can also swipe me to switch the active payment card. Fancy
             details like this?{' '}
             <a
               className={cn('underline')}

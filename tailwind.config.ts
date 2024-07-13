@@ -34,7 +34,9 @@ const config: Config = {
   theme: {
     extend: {
       boxShadow: {
-        pop: 'var(--ul-shadow-pop)',
+        pop: 'var(--ul-shadow-pop-md)',
+        'pop-md': 'var(--ul-shadow-pop-md)',
+        'pop-sm': 'var(--ul-shadow-pop-sm)',
       },
       fontFamily: {
         cc: ['CC font'],
