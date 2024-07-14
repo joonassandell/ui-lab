@@ -11,8 +11,14 @@ import {
 } from 'framer-motion';
 import { ArrowRightLeft, Close, CreditCard } from '@/components/Icon';
 import { cn, move } from '@/lib/utils';
+import {
+  type Dispatch,
+  type SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
-import { useCallback, useState } from 'react';
 
 /**
  * Dynamic Pay Button
@@ -22,11 +28,12 @@ import { useCallback, useState } from 'react';
  * @link https://codepen.io/tmorrell82/pen/qBqyyBM
  * @link https://codepen.io/FilipVitas/pen/ddLVZx
  *
- * @author Joonas Sandell
+ * @author Joonas Sandell <me@joonassandell.com>
  */
 export const DynamicPayButton = () => {
   const [open, setOpen] = useState(false);
   const [animating, setAnimating] = useState(false);
+  const [switchCard, setSwitchCard] = useState(false);
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
 
@@ -141,18 +148,20 @@ export const DynamicPayButton = () => {
             },
           }}
         >
-          <Cards />
+          <Cards setSwitchCard={setSwitchCard} switchCard={switchCard} />
           <footer
             className={cn(
               'flex w-full items-center justify-between gap-2 pt-3',
             )}
           >
             <button
+              aria-label="Switch active credit card"
               className={cn(
                 'grid size-8 cursor-default place-content-center gap-2 rounded-lg border border-transparent transition-colors',
                 'border-zinc-200 hover:bg-zinc-100 hover:text-zinc-800',
                 'dark:border-zinc-700/70 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100',
               )}
+              onClick={() => setSwitchCard(true)}
             >
               <ArrowRightLeft className={cn('size-4')} />
             </button>
@@ -181,11 +190,21 @@ const CARDS: {
   { id: 2, variant: 'mastercard' },
 ];
 
-const Cards = () => {
+interface CardsProps {
+  setSwitchCard: Dispatch<SetStateAction<boolean>>;
+  switchCard?: boolean;
+}
+
+const Cards = ({ setSwitchCard, switchCard }: CardsProps) => {
   const [cards, setCards] = useState(CARDS);
-  const moveToEnd = (from: number) => {
-    setCards(move(cards, from, cards.length - 1));
-  };
+  const moveToEnd = () => setCards(move(cards, 0, cards.length));
+
+  useEffect(() => {
+    if (!switchCard) return;
+    moveToEnd();
+    setSwitchCard(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [switchCard, setSwitchCard]);
 
   return (
     <div className={cn('relative h-52')}>
@@ -194,7 +213,7 @@ const Cards = () => {
           <Card
             index={index}
             key={id}
-            onDragEnd={() => moveToEnd(index)}
+            onDragEnd={() => moveToEnd()}
             variant={variant}
           />
         );
