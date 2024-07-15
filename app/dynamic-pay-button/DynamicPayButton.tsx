@@ -151,7 +151,7 @@ export const DynamicPayButton = () => {
           <Cards setSwitchCard={setSwitchCard} switchCard={switchCard} />
           <footer
             className={cn(
-              'flex w-full items-center justify-between gap-2 pt-3',
+              'flex w-full items-center justify-between gap-2 pt-4',
             )}
           >
             <button
@@ -163,18 +163,32 @@ export const DynamicPayButton = () => {
               )}
               onClick={() => setSwitchCard(true)}
             >
-              <ArrowRightLeft className={cn('size-4')} />
+              <ArrowRightLeft className="size-4" />
             </button>
-            <button
+            <div
               className={cn(
-                'shadow-pop-sm cursor-default whitespace-nowrap rounded-lg px-3 py-2 transition-colors',
-                'bg-zinc-50 text-zinc-800 hover:bg-sky-100 hover:text-sky-950',
-                'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-950/80 dark:hover:text-sky-400',
-                'active:translate-y-px',
+                'before:shadow-pop-sm relative flex overflow-hidden rounded-lg before:pointer-events-none before:absolute before:inset-0 before:rounded-lg',
               )}
             >
-              Pay now
-            </button>
+              <input
+                className={cn(
+                  'w-[6ch] rounded-lg rounded-e-none px-3 uppercase transition-colors [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+                  'outline-none dark:bg-sky-950/70 dark:text-sky-300 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus:bg-sky-950/70',
+                )}
+                maxLength={3}
+                placeholder="ccv"
+                type="number"
+              />
+              <button
+                className={cn(
+                  'shadow-pop-sm cursor-default whitespace-nowrap rounded-lg rounded-s-none px-3 py-2 transition-colors',
+                  'bg-zinc-50 text-zinc-800 hover:bg-sky-100 hover:text-sky-950',
+                  'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
+                )}
+              >
+                Pay now
+              </button>
+            </div>
           </footer>
         </m.div>
       )}
@@ -390,10 +404,13 @@ const CardVisa = () => {
             ccv
           </label>
           <input
-            className={cn('w-[3ch] text-right')}
+            className={cn(
+              'w-[3ch] text-right [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+            )}
             maxLength={3}
             placeholder="123"
             tabIndex={-1}
+            type="input"
           />
         </div>
         <div className={cn('self-end text-xs')}>
@@ -517,10 +534,13 @@ const CardMaster = () => {
             ccv
           </label>
           <input
-            className={cn('w-[3ch] text-right')}
+            className={cn(
+              'w-[3ch] text-right [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+            )}
             maxLength={3}
             placeholder="123"
             tabIndex={-1}
+            type="number"
           />
         </div>
         <div className={cn('self-end text-xs')}>
