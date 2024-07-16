@@ -47,7 +47,9 @@ export const DynamicPayButton = () => {
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
       className={cn(
-        'relative flex flex-col items-center bg-white text-sm font-medium text-zinc-500 shadow-pop dark:bg-zinc-900 dark:text-zinc-300',
+        'ul-component relative flex flex-col items-center text-sm font-medium shadow-pop',
+        'bg-white text-zinc-500',
+        'dark:bg-zinc-900 dark:text-zinc-300',
         {
           'overflow-hidden': animating,
         },
@@ -167,26 +169,29 @@ export const DynamicPayButton = () => {
             </button>
             <div
               className={cn(
-                'before:shadow-pop-sm relative flex overflow-hidden rounded-lg before:pointer-events-none before:absolute before:inset-0 before:rounded-lg',
+                'relative flex overflow-hidden rounded-lg before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-lg before:shadow-pop-sm',
               )}
             >
               <input
                 className={cn(
-                  'w-[6ch] rounded-lg rounded-e-none px-3 uppercase transition-colors [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-                  'outline-none dark:bg-sky-950/70 dark:text-sky-300 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus:bg-sky-950/70',
+                  'w-[3.375rem] rounded-lg rounded-e-none border-r pl-3 pt-[2px] font-cc uppercase outline-0 transition-colors',
+                  'border-r-transparent bg-sky-100 text-sky-800 placeholder-sky-800/50 hover:bg-sky-200 focus-visible:bg-sky-100',
+                  'dark:border-r-black/40 dark:bg-sky-950/70 dark:text-sky-300 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus-visible:bg-sky-950/70',
                 )}
                 maxLength={3}
+                pattern="\d*"
                 placeholder="ccv"
-                type="number"
               />
               <button
                 className={cn(
-                  'shadow-pop-sm cursor-default whitespace-nowrap rounded-lg rounded-s-none px-3 py-2 transition-colors',
-                  'bg-zinc-50 text-zinc-800 hover:bg-sky-100 hover:text-sky-950',
-                  'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
+                  'relative cursor-default whitespace-nowrap rounded-lg rounded-s-none px-3 py-2 outline-0 transition-colors',
+                  'z-0 after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
+                  'bg-sky-100 text-sky-800 after:border-l-black/10 hover:bg-sky-200 focus-visible:bg-sky-200',
+                  'dark:bg-sky-950 dark:text-sky-300 dark:after:border-l-white/5 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
+                  'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',
                 )}
               >
-                Pay now
+                Pay Now
               </button>
             </div>
           </footer>
@@ -285,7 +290,7 @@ const Card = ({ index, onDragEnd, variant = 'visa', ...props }: CardProps) => {
       <m.div
         animate="animate"
         className={cn(
-          'text-shadow-black/60 h-full w-full select-none rounded-xl text-white text-shadow',
+          'h-full w-full select-none rounded-xl text-white text-shadow text-shadow-black/60',
           'dark:shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
         )}
         custom={flip}
@@ -404,13 +409,11 @@ const CardVisa = () => {
             ccv
           </label>
           <input
-            className={cn(
-              'w-[3ch] text-right [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-            )}
+            className={cn('w-8 text-right font-cc uppercase')}
             maxLength={3}
+            pattern="\d*"
             placeholder="123"
             tabIndex={-1}
-            type="input"
           />
         </div>
         <div className={cn('self-end text-xs')}>
@@ -534,13 +537,11 @@ const CardMaster = () => {
             ccv
           </label>
           <input
-            className={cn(
-              'w-[3ch] text-right [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-            )}
+            className={cn('w-8 text-right font-cc uppercase')}
             maxLength={3}
+            pattern="\d*"
             placeholder="123"
             tabIndex={-1}
-            type="number"
           />
         </div>
         <div className={cn('self-end text-xs')}>
