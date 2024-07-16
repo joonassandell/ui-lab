@@ -3,7 +3,7 @@ import { parseColor } from 'tailwindcss/lib/util/color';
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 import plugin from 'tailwindcss/plugin';
 
-const config: Config = {
+export default {
   content: [
     './pages/**/*.{jsx,tsx}',
     './components/**/*.{jsx,tsx}',
@@ -49,6 +49,4 @@ const config: Config = {
       },
     },
   },
-};
-
-export default config;
+} satisfies Config;

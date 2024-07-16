@@ -39,3 +39,23 @@
     --tw-text-shadow: rgb(255 255 255 / 0.5);
   }
 }
+
+@layer utilities {
+  .ul-component {
+    :focus:not([class*='outline']) {
+      @apply outline-0;
+    }
+
+    *:focus-visible:not([class*='outline']) {
+      @apply outline outline-1 outline-offset-2 outline-black/30;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ul-component {
+      *:focus-visible:not([class*='outline']) {
+        @apply outline-white/20;
+      }
+    }
+  }
+}
