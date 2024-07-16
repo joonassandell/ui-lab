@@ -14,8 +14,8 @@ import { cn, move } from '@/lib/utils';
 import {
   type Dispatch,
   type SetStateAction,
-  useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
@@ -37,13 +37,14 @@ export const DynamicPayButton = () => {
   const [ccv, setCcv] = useState<string>('');
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleOpen = useCallback(() => {
+  const handleOpen = () => {
     setOpen(!open);
     setContent(true);
     setIcon(open ? <CreditCard /> : <Close />);
     !open && setCcv('');
-  }, [open]);
+  };
 
   return (
     <AnimateDimension
@@ -57,7 +58,10 @@ export const DynamicPayButton = () => {
         },
       )}
       initial="closed"
-      onAnimationComplete={() => !open && content && setContent(false)}
+      onAnimationComplete={() => {
+        !open && content && setContent(false);
+        open && !animating && inputRef.current?.focus();
+      }}
       onAnimationStart={() => setAnimating(true)}
       onUpdate={e => {
         if (e.borderRadius === (20 || 60)) setAnimating(false);
@@ -180,7 +184,6 @@ export const DynamicPayButton = () => {
               )}
             >
               <input
-                autoFocus
                 className={cn(
                   'w-[3.375rem] rounded-lg rounded-e-none border-r pl-3 pt-[2px] font-cc uppercase outline-0 transition-colors',
                   'border-r-transparent bg-sky-100 text-sky-800 placeholder-sky-800/50 hover:bg-sky-200 focus-visible:bg-sky-100',
@@ -190,6 +193,7 @@ export const DynamicPayButton = () => {
                 onChange={e => setCcv(e.target.value)}
                 pattern="\d*"
                 placeholder="ccv"
+                ref={inputRef}
                 value={ccv}
               />
               <button
