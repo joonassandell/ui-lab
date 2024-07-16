@@ -34,6 +34,7 @@ export const DynamicPayButton = () => {
   const [open, setOpen] = useState(false);
   const [animating, setAnimating] = useState(false);
   const [switchCard, setSwitchCard] = useState(false);
+  const [ccv, setCcv] = useState<string>('');
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
 
@@ -41,6 +42,7 @@ export const DynamicPayButton = () => {
     setOpen(!open);
     setContent(true);
     setIcon(open ? <CreditCard /> : <Close />);
+    !open && setCcv('');
   }, [open]);
 
   return (
@@ -150,7 +152,12 @@ export const DynamicPayButton = () => {
             },
           }}
         >
-          <Cards setSwitchCard={setSwitchCard} switchCard={switchCard} />
+          <Cards
+            ccv={ccv}
+            setCcv={setCcv}
+            setSwitchCard={setSwitchCard}
+            switchCard={switchCard}
+          />
           <footer
             className={cn(
               'flex w-full items-center justify-between gap-2 pt-4',
@@ -173,14 +180,17 @@ export const DynamicPayButton = () => {
               )}
             >
               <input
+                autoFocus
                 className={cn(
                   'w-[3.375rem] rounded-lg rounded-e-none border-r pl-3 pt-[2px] font-cc uppercase outline-0 transition-colors',
                   'border-r-transparent bg-sky-100 text-sky-800 placeholder-sky-800/50 hover:bg-sky-200 focus-visible:bg-sky-100',
                   'dark:border-r-black/40 dark:bg-sky-950/70 dark:text-sky-300 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus-visible:bg-sky-950/70',
                 )}
                 maxLength={3}
+                onChange={e => setCcv(e.target.value)}
                 pattern="\d*"
                 placeholder="ccv"
+                value={ccv}
               />
               <button
                 className={cn(
@@ -210,17 +220,22 @@ const CARDS: {
 ];
 
 interface CardsProps {
+  ccv: string;
+  setCcv: Dispatch<SetStateAction<string>>;
   setSwitchCard: Dispatch<SetStateAction<boolean>>;
   switchCard?: boolean;
 }
 
-const Cards = ({ setSwitchCard, switchCard }: CardsProps) => {
+const Cards = ({ ccv, setCcv, setSwitchCard, switchCard }: CardsProps) => {
   const [cards, setCards] = useState(CARDS);
-  const moveToEnd = () => setCards(move(cards, 0, cards.length));
+  const resetCards = () => {
+    setCards(move(cards, 0, cards.length));
+    setCcv('');
+  };
 
   useEffect(() => {
     if (!switchCard) return;
-    moveToEnd();
+    resetCards();
     setSwitchCard(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [switchCard, setSwitchCard]);
@@ -230,9 +245,11 @@ const Cards = ({ setSwitchCard, switchCard }: CardsProps) => {
       {cards.map(({ id, variant }, index) => {
         return (
           <Card
+            ccv={ccv}
             index={index}
             key={id}
-            onDragEnd={() => moveToEnd()}
+            onDragEnd={() => resetCards()}
+            setCcv={setCcv}
             variant={variant}
           />
         );
@@ -241,12 +258,21 @@ const Cards = ({ setSwitchCard, switchCard }: CardsProps) => {
   );
 };
 
-interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
+interface CardProps
+  extends Omit<HTMLMotionProps<'div'>, 'children'>,
+    Pick<CardsProps, 'ccv' | 'setCcv'> {
   index: number;
   variant?: 'visa' | 'mastercard';
 }
 
-const Card = ({ index, onDragEnd, variant = 'visa', ...props }: CardProps) => {
+const Card = ({
+  ccv,
+  index,
+  onDragEnd,
+  setCcv,
+  variant = 'visa',
+  ...props
+}: CardProps) => {
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
@@ -301,14 +327,18 @@ const Card = ({ index, onDragEnd, variant = 'visa', ...props }: CardProps) => {
         transition={TRANS_SPRING_SLOW}
         variants={{ animate: flip => ({ rotateY: flip ? -180 : [180, 0] }) }}
       >
-        {variant === 'visa' && <CardVisa />}
-        {variant === 'mastercard' && <CardMaster />}
+        {variant === 'visa' && (
+          <CardVisa ccv={front ? ccv : ''} setCcv={setCcv} />
+        )}
+        {variant === 'mastercard' && (
+          <CardMaster ccv={front ? ccv : ''} setCcv={setCcv} />
+        )}
       </m.div>
     </m.div>
   );
 };
 
-const CardVisa = () => {
+const CardVisa = ({ ccv, setCcv }: Omit<CardProps, 'index'>) => {
   return (
     <>
       <div
@@ -400,23 +430,27 @@ const CardVisa = () => {
       >
         <div
           className={cn(
-            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-black/80',
+            'relative top-2 mt-16 h-9 w-full rounded bg-white px-3 py-1 text-right text-black/80',
           )}
         >
           <label
-            className={cn('-mt-8 mb-2 block text-2xs uppercase text-white')}
+            className={cn('-mt-7 mb-1 block text-2xs uppercase text-white')}
           >
             ccv
           </label>
           <input
-            className={cn('w-8 text-right font-cc uppercase')}
+            className={cn(
+              'h-9 bg-transparent pt-px text-right font-cc outline-0',
+            )}
             maxLength={3}
+            onChange={e => setCcv(e.target.value)}
             pattern="\d*"
             placeholder="123"
             tabIndex={-1}
+            value={ccv}
           />
         </div>
-        <div className={cn('self-end text-xs')}>
+        <div className={cn('text-xs')}>
           <p>
             This card is property of Sandell Bank. You can also swipe me to
             switch the active payment card.
@@ -427,7 +461,7 @@ const CardVisa = () => {
   );
 };
 
-const CardMaster = () => {
+const CardMaster = ({ ccv, setCcv }: Omit<CardProps, 'index'>) => {
   return (
     <>
       <div
@@ -528,23 +562,27 @@ const CardMaster = () => {
       >
         <div
           className={cn(
-            'relative top-1 mt-16 h-9 w-full rounded bg-white p-3 text-right text-black/80',
+            'relative top-2 mt-16 h-9 w-full rounded bg-white px-3 py-1 text-right text-black/80',
           )}
         >
           <label
-            className={cn('-mt-8 mb-2 block text-2xs uppercase text-white')}
+            className={cn('-mt-7 mb-1 block text-2xs uppercase text-white')}
           >
             ccv
           </label>
           <input
-            className={cn('w-8 text-right font-cc uppercase')}
+            className={cn(
+              'h-9 bg-transparent pt-px text-right font-cc outline-0',
+            )}
             maxLength={3}
+            onChange={e => setCcv(e.target.value)}
             pattern="\d*"
             placeholder="123"
             tabIndex={-1}
+            value={ccv}
           />
         </div>
-        <div className={cn('self-end text-xs')}>
+        <div className={cn('text-xs')}>
           <p>
             You can also swipe me to switch the active payment card. Fancy
             details like this?{' '}
