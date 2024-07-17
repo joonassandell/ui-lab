@@ -42,19 +42,29 @@
 
 @layer utilities {
   .ul-component {
+    @apply select-none;
+
     :focus:not([class*='outline']) {
       @apply outline-0;
     }
 
-    *:focus-visible:not([class*='outline']) {
+    :focus-visible:not([class*='outline']) {
       @apply outline outline-1 outline-offset-2 outline-black/30;
+    }
+
+    ::selection {
+      @apply bg-black/15;
     }
   }
 
   @media (prefers-color-scheme: dark) {
     .ul-component {
-      *:focus-visible:not([class*='outline']) {
+      :focus-visible:not([class*='outline']) {
         @apply outline-white/20;
+      }
+
+      ::selection {
+        @apply bg-black/70;
       }
     }
   }

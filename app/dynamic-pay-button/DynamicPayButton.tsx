@@ -38,6 +38,7 @@ export const DynamicPayButton = () => {
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
   const inputRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -54,6 +55,10 @@ export const DynamicPayButton = () => {
         'bg-white text-zinc-500',
         'dark:bg-zinc-900 dark:text-zinc-300',
         {
+          'has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2':
+            !open,
+          'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
+            !open,
           'overflow-hidden': animating,
         },
       )}
@@ -62,7 +67,10 @@ export const DynamicPayButton = () => {
         !open && content && setContent(false);
         open && !animating && inputRef.current?.focus();
       }}
-      onAnimationStart={() => setAnimating(true)}
+      onAnimationStart={() => {
+        !animating && setAnimating(true);
+        open && buttonRef.current?.blur();
+      }}
       onUpdate={e => {
         if (e.borderRadius === (20 || 60)) setAnimating(false);
       }}
@@ -105,12 +113,17 @@ export const DynamicPayButton = () => {
         </AnimatePresence>
         <m.button
           className={cn(
-            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap px-3 py-1 transition-colors',
+            'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
             'hover:text-zinc-800',
             'dark:hover:text-zinc-100',
+            {
+              'outline-0': !open || (animating && open),
+              'px-1': open,
+            },
           )}
           layout
           onClick={handleOpen}
+          ref={buttonRef}
           transition={TRANS_SPRING}
         >
           {!open && 'Pay Now'}
@@ -170,7 +183,7 @@ export const DynamicPayButton = () => {
             <button
               aria-label="Switch active credit card"
               className={cn(
-                'grid size-8 cursor-default place-content-center gap-2 rounded-lg border border-transparent transition-colors',
+                'grid size-8 cursor-default place-content-center rounded-lg border border-transparent transition-colors',
                 'border-zinc-200 hover:bg-zinc-100 hover:text-zinc-800',
                 'dark:border-zinc-700/70 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100',
               )}
