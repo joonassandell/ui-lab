@@ -73,7 +73,7 @@ export const DynamicPayButton = () => {
       )}
       initial="closed"
       onAnimationComplete={() => {
-        !open && content && setContent(false);
+        !open && !animating && setContent(false);
         open && !animating && inputRef.current?.focus();
       }}
       onAnimationStart={() => {
@@ -81,7 +81,9 @@ export const DynamicPayButton = () => {
         open && buttonRef.current?.blur();
       }}
       onUpdate={e => {
-        if (e.borderRadius === (20 || 60)) setAnimating(false);
+        if (e.borderRadius === 20 || e.borderRadius === 60) {
+          animating && setAnimating(false);
+        }
       }}
       refClassname={cn('flex flex-col items-center')}
       variants={{
