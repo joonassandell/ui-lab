@@ -21,23 +21,28 @@ export const AnimateDimension = ({
     };
   }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [height, setHeight] = useState<number | 'auto'>('auto');
-  const [width, setWidth] = useState<number | 'auto'>('auto');
+  const [{ height, width }, setDimensions] = useState<{
+    height: 'auto' | number;
+    width: 'auto' | number;
+  }>({
+    height: 'auto',
+    width: 'auto',
+  });
 
   useEffect(() => {
     if (containerRef.current) {
       const resizeObserver = new ResizeObserver(entries => {
         const observedHeight = entries[0].contentRect.height;
         const observedWidth = entries[0].contentRect.width;
-        setHeight(observedHeight);
-        setWidth(observedWidth);
+        setDimensions({
+          height: observedHeight,
+          width: observedWidth,
+        });
       });
 
       resizeObserver.observe(containerRef.current);
 
-      return () => {
-        resizeObserver.disconnect();
-      };
+      return () => resizeObserver.disconnect();
     }
   }, []);
 
