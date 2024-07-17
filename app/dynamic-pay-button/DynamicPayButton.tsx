@@ -47,6 +47,15 @@ export const DynamicPayButton = () => {
     !open && setCcv('');
   };
 
+  useEffect(() => {
+    if (!open) return;
+    const html = document.documentElement;
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && handleOpen();
+    html.addEventListener('keydown', esc);
+    return () => html.removeEventListener('keydown', esc);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   return (
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
