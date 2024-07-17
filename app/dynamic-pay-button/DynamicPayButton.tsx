@@ -78,7 +78,7 @@ export const DynamicPayButton = () => {
       }}
       onAnimationStart={() => {
         !animating && setAnimating(true);
-        open && buttonRef.current?.blur();
+        open ? buttonRef.current?.blur() : buttonRef.current?.focus();
       }}
       onUpdate={e => {
         if (e.borderRadius === 20 || e.borderRadius === 60) {
