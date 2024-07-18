@@ -60,7 +60,6 @@ export const DynamicPayButton = () => {
           'overflow-hidden': animating,
         },
       )}
-      initial="closed"
       onAnimationComplete={() => {
         !open && !animating && setContent(false);
         open && !animating && inputRef.current?.focus();

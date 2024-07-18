@@ -1,12 +1,7 @@
 'use client';
 
-import {
-  AnimatePresence,
-  type HTMLMotionProps,
-  m,
-  type Variant,
-} from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { type HTMLMotionProps, m, type Variant } from 'framer-motion';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { TRANS_SPRING } from '@/lib/config';
 
@@ -14,6 +9,7 @@ export const AnimateDimension = ({
   animate,
   children,
   className,
+  initial,
   onAnimationComplete,
   onAnimationStart,
   onUpdate,
@@ -78,24 +74,23 @@ export const AnimateDimension = ({
   };
 
   return (
-    <AnimatePresence initial={false}>
-      <m.div
-        animate={animate}
-        className={cn(className)}
-        style={{ height, width }}
-        transition={TRANS_SPRING}
-        variants={variantsWithDimensions}
-        {...(mountEvents && {
-          onAnimationComplete,
-          onAnimationStart,
-          onUpdate,
-        })}
-        {...props}
-      >
-        <div className={cn(refClassname)} ref={containerRef}>
-          {children}
-        </div>
-      </m.div>
-    </AnimatePresence>
+    <m.div
+      animate={animate}
+      className={cn(className)}
+      initial={initial ?? 'closed'}
+      style={{ height, width }}
+      transition={TRANS_SPRING}
+      variants={variantsWithDimensions}
+      {...(mountEvents && {
+        onAnimationComplete,
+        onAnimationStart,
+        onUpdate,
+      })}
+      {...props}
+    >
+      <div className={cn(refClassname)} ref={containerRef}>
+        {children}
+      </div>
+    </m.div>
   );
 };
