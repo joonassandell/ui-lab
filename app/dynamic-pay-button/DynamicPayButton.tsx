@@ -1,5 +1,3 @@
-'use client';
-
 import { AnimateDimension } from '@/components/AnimateDimension';
 import { AnimatePresence, m } from 'framer-motion';
 import { ArrowRightLeft, Close, CreditCard } from '@/components/Icon';
