@@ -42,6 +42,7 @@ export const DynamicPayButton = () => {
 
   const handleOpen = () => {
     setOpen(!open);
+    setAnimating(true);
     setContent(true);
     setIcon(open ? <CreditCard /> : <Close />);
     !open && setCcv('');
@@ -76,10 +77,9 @@ export const DynamicPayButton = () => {
         !open && !animating && setContent(false);
         open && !animating && inputRef.current?.focus();
       }}
-      onAnimationStart={() => {
-        !animating && setAnimating(true);
-        open ? buttonRef.current?.blur() : buttonRef.current?.focus();
-      }}
+      onAnimationStart={() =>
+        open ? buttonRef.current?.blur() : buttonRef.current?.focus()
+      }
       onUpdate={e => {
         if (e.borderRadius === 20 || e.borderRadius === 60) {
           animating && setAnimating(false);
