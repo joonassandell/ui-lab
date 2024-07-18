@@ -3,7 +3,12 @@ import { AnimatePresence, m } from 'framer-motion';
 import { ArrowRightLeft, Close, CreditCard } from '@/components/Icon';
 import { Cards } from './Cards';
 import { cn } from '@/lib/utils';
-import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
+import { TABS } from './';
+import {
+  TRANS_SPRING,
+  TRANS_SPRING_FAST,
+  TRANS_SPRING_SLOW,
+} from '@/lib/config';
 import { useEffect, useRef, useState } from 'react';
 
 /**
@@ -23,6 +28,7 @@ export const DynamicPayButton = () => {
   const [ccv, setCcv] = useState<string>('');
   const [content, setContent] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
+  const [selectedTab, setSelectedTab] = useState(TABS[0]);
   const inputRef = useRef<HTMLInputElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -30,6 +36,7 @@ export const DynamicPayButton = () => {
     setOpen(!open);
     setAnimating(true);
     setContent(true);
+    setSelectedTab(TABS[0]);
     setIcon(open ? <CreditCard /> : <Close />);
     !open && setCcv('');
   };
@@ -86,24 +93,30 @@ export const DynamicPayButton = () => {
               initial={{ opacity: 0, x: '50%' }}
               transition={TRANS_SPRING}
             >
-              <button
-                className={cn(
-                  'cursor-default whitespace-nowrap rounded-lg px-2 py-1',
-                  'bg-zinc-100 text-zinc-800',
-                  'dark:bg-zinc-800 dark:text-zinc-100',
-                )}
-              >
-                Credit card
-              </button>
-              <button
-                className={cn(
-                  'cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
-                  'hover:text-zinc-800',
-                  'dark:text-zinc-400 dark:hover:text-zinc-100',
-                )}
-              >
-                Other methods
-              </button>
+              {TABS.map(item => (
+                <button
+                  className={cn(
+                    'relative cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
+                    'hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-100',
+                    {
+                      'text-zinc-700 dark:text-zinc-100': item === selectedTab,
+                    },
+                  )}
+                  key={item.label}
+                  onClick={() => setSelectedTab(item)}
+                >
+                  <div className={cn('relative z-10')}>{item.label}</div>
+                  {item === selectedTab ? (
+                    <m.div
+                      className={cn(
+                        'absolute inset-0 z-0 rounded-lg bg-zinc-100 dark:bg-zinc-800',
+                      )}
+                      layoutId="bg"
+                      transition={TRANS_SPRING_FAST}
+                    />
+                  ) : null}
+                </button>
+              ))}
             </m.nav>
           )}
         </AnimatePresence>
