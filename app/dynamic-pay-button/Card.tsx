@@ -50,7 +50,6 @@ export const Card = ({
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       onDragEnd={handleDragEnd}
       onDragStart={() => !overflow && setOverflow(true)}
-      onUpdate={e => !front && e.x === 0 && overflow && setOverflow(false)}
       style={{
         perspective: 1000,
         rotate,
