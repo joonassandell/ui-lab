@@ -132,35 +132,34 @@ export const DynamicPayButton = () => {
               </Tabs.List>
             )}
           </AnimatePresence>
-          <m.button
-            className={cn(
-              'flex cursor-default select-none items-center justify-center gap-3 self-start overflow-hidden whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
-              'hover:text-zinc-800',
-              'dark:hover:text-zinc-100',
-              {
-                'outline-0': !open,
-                'px-1': open,
-              },
-            )}
-            layout
-            onClick={handleOpen}
-            ref={buttonRef}
-            transition={TRANS_SPRING}
-          >
-            {!open && 'Pay Now'}
-            <AnimatePresence initial={false} mode="popLayout">
-              <m.span
+          <AnimatePresence initial={false} mode="popLayout">
+            <m.button
+              className={cn(
+                'flex cursor-default select-none items-center justify-center gap-3 self-start whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
+                'hover:text-zinc-800',
+                'dark:hover:text-zinc-100',
+                {
+                  'outline-0': !open,
+                  'px-1': open,
+                },
+              )}
+              layout
+              onClick={handleOpen}
+              ref={buttonRef}
+              transition={TRANS_SPRING}
+            >
+              {!open && 'Pay Now'}
+              <m.div
                 animate={{ scale: 1 }}
                 className={cn('flex size-5 items-center justify-center')}
-                exit={{ scale: 0 }}
                 initial={{ scale: 0 }}
                 key={icon.type.name}
                 transition={TRANS_SPRING_SLOW}
               >
                 {icon}
-              </m.span>
-            </AnimatePresence>
-          </m.button>
+              </m.div>
+            </m.button>
+          </AnimatePresence>
         </header>
         <AnimatePresence mode="popLayout">
           {open && (
