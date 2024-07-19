@@ -1,21 +1,14 @@
 import { AnimateDimension } from '@/components/AnimateDimension';
 import { AnimatePresence, m } from 'framer-motion';
 import { ArrowRightLeft, Close, CreditCard } from '@/components/Icon';
+import { Button } from './Button';
 import { Cards } from './Cards';
 import { cn } from '@/lib/utils';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { type DynamicBuyButtonContextProps, TABS } from './';
-import {
-  Trigger as Tab,
-  Content as TabContent,
-  Root as Tabs,
-  List as TabsList,
-} from '@radix-ui/react-tabs';
-import {
-  TRANS_SPRING,
-  TRANS_SPRING_FAST,
-  TRANS_SPRING_SLOW,
-} from '@/lib/config';
+import { Content as TabContent, Root as Tabs } from '@radix-ui/react-tabs';
+import { TabsList } from './TabsList';
+import { TRANS_SPRING } from '@/lib/config';
 
 /**
  * Dynamic Pay Button
@@ -28,14 +21,14 @@ import {
  * @author Joonas Sandell <me@joonassandell.com>
  */
 export const DynamicPayButton = () => {
-  const [open, setOpen] = useState(false);
-  const [switchCard, setSwitchCard] = useState(false);
   const [ccv, setCcv] = useState<string>('');
-  const [overflow, setOverflow] = useState(false);
   const [icon, setIcon] = useState(<CreditCard />);
+  const [open, setOpen] = useState(false);
+  const [overflow, setOverflow] = useState(false);
   const [selectedTab, setSelectedTab] = useState(TABS[0].label);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [switchCard, setSwitchCard] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -100,7 +93,10 @@ export const DynamicPayButton = () => {
         <DynamicPayButtonContext.Provider
           value={{
             ccv,
+            handleOpen,
+            open,
             overflow,
+            selectedTab,
             setCcv,
             setOverflow,
             setSwitchCard,
@@ -110,73 +106,8 @@ export const DynamicPayButton = () => {
           <header
             className={cn('flex w-full items-center justify-between p-3')}
           >
-            <AnimatePresence mode="popLayout">
-              {open && (
-                <TabsList asChild>
-                  <m.div
-                    animate={{ opacity: 1, x: '0%' }}
-                    className={cn('flex gap-1')}
-                    exit={{ opacity: 0 }}
-                    initial={{ opacity: 0, x: '50%' }}
-                    transition={TRANS_SPRING}
-                  >
-                    {TABS.map(item => (
-                      <Tab
-                        className={cn(
-                          'relative cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
-                          'hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-100',
-                          {
-                            'text-zinc-700 dark:text-zinc-100':
-                              item.label === selectedTab,
-                          },
-                        )}
-                        key={item.label}
-                        value={item.label}
-                      >
-                        <div className={cn('relative z-10')}>{item.label}</div>
-                        {item.label === selectedTab ? (
-                          <m.div
-                            className={cn(
-                              'absolute inset-0 z-0 rounded-lg bg-zinc-100 dark:bg-zinc-800',
-                            )}
-                            layoutId="bg"
-                            transition={TRANS_SPRING_FAST}
-                          />
-                        ) : null}
-                      </Tab>
-                    ))}
-                  </m.div>
-                </TabsList>
-              )}
-            </AnimatePresence>
-            <AnimatePresence initial={false} mode="popLayout">
-              <m.button
-                className={cn(
-                  'flex cursor-default select-none items-center justify-center gap-3 self-start whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
-                  'hover:text-zinc-800',
-                  'dark:hover:text-zinc-100',
-                  {
-                    'outline-0': !open,
-                    'px-1': open,
-                  },
-                )}
-                layout
-                onClick={handleOpen}
-                ref={buttonRef}
-                transition={TRANS_SPRING}
-              >
-                {!open && 'Pay Now'}
-                <m.div
-                  animate={{ scale: 1 }}
-                  className={cn('flex size-5 items-center justify-center')}
-                  initial={{ scale: 0 }}
-                  key={icon.type.name}
-                  transition={TRANS_SPRING_SLOW}
-                >
-                  {icon}
-                </m.div>
-              </m.button>
-            </AnimatePresence>
+            <TabsList />
+            <Button icon={icon} ref={buttonRef} />
           </header>
           <AnimatePresence mode="popLayout">
             {open && (
