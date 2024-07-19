@@ -1,7 +1,7 @@
 import {
-  type ComponentPropsWithRef,
   type Dispatch,
   type JSX,
+  type PropsWithChildren,
   type SetStateAction,
 } from 'react';
 import { type HTMLMotionProps } from 'framer-motion';
@@ -18,9 +18,11 @@ export interface DynamicBuyButtonContextProps {
   switchCard: boolean;
 }
 
-export interface ButtonProps extends ComponentPropsWithRef<'button'> {
+export interface ButtonProps {
   icon: JSX.Element;
 }
+
+export interface ContentProps extends PropsWithChildren {}
 
 export interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   index: number;
