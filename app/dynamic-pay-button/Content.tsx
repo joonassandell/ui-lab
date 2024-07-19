@@ -18,20 +18,13 @@ export const Content = ({ children }: ContentProps) => {
           exit="closed"
           initial="closed"
           style={{ originY: 'bottom' }}
-          transition={{
-            ...TRANS_SPRING,
-            filter: { delay: 0.2 },
-          }}
+          transition={TRANS_SPRING}
           variants={{
             closed: {
-              filter: 'blur(4px)',
-              opacity: 0,
               rotate: 20,
               scale: 0.2,
             },
             open: {
-              filter: 'blur(0px)',
-              opacity: 1,
               rotate: 0,
               scale: 1,
             },

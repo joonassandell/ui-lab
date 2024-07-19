@@ -2,13 +2,16 @@ import {
   type Dispatch,
   type JSX,
   type PropsWithChildren,
+  type RefObject,
   type SetStateAction,
 } from 'react';
 import { type HTMLMotionProps } from 'framer-motion';
+import { type TabsContentProps } from '@radix-ui/react-tabs';
 
 export interface DynamicBuyButtonContextProps {
   ccv: string;
   handleOpen: () => void;
+  inputRef: RefObject<HTMLInputElement>;
   open: boolean;
   overflow: boolean;
   selectedTab: string;
@@ -32,3 +35,5 @@ export interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
 export interface CardInnerProps {
   front: boolean;
 }
+
+export interface TabContentProps extends TabsContentProps {}

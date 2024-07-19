@@ -32,7 +32,7 @@ export const TabsList = () => {
                 value={item.label}
               >
                 <div className={cn('relative z-10')}>{item.label}</div>
-                {item.label === selectedTab ? (
+                {item.label === selectedTab && (
                   <m.div
                     className={cn(
                       'absolute inset-0 z-0 rounded-lg bg-zinc-100 dark:bg-zinc-800',
@@ -40,7 +40,7 @@ export const TabsList = () => {
                     layoutId="bg"
                     transition={TRANS_SPRING_FAST}
                   />
-                ) : null}
+                )}
               </Tab>
             ))}
           </m.div>
