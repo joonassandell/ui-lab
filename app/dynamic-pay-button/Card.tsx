@@ -1,4 +1,9 @@
-import { type CardInnerProps, type CardProps, CARDS } from './';
+import {
+  type CardInnerProps,
+  type CardProps,
+  CARDS,
+  useDynamicPayButton,
+} from './';
 import { cn } from '@/lib/utils';
 import {
   type DragHandlers,
@@ -10,15 +15,12 @@ import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
 import { useState } from 'react';
 
 export const Card = ({
-  ccv,
   index,
   onDragEnd,
-  overflow,
-  setCcv,
-  setOverflow,
   variant = 'visa',
   ...props
 }: CardProps) => {
+  const { overflow, setOverflow } = useDynamicPayButton();
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
@@ -74,18 +76,15 @@ export const Card = ({
         transition={TRANS_SPRING_SLOW}
         variants={{ animate: flip => ({ rotateY: flip ? -180 : [180, 0] }) }}
       >
-        {variant === 'visa' && (
-          <CardVisa ccv={front ? ccv : ''} setCcv={setCcv} />
-        )}
-        {variant === 'mastercard' && (
-          <CardMaster ccv={front ? ccv : ''} setCcv={setCcv} />
-        )}
+        {variant === 'visa' && <CardVisa front={front} />}
+        {variant === 'mastercard' && <CardMaster front={front} />}
       </m.div>
     </m.div>
   );
 };
 
-const CardVisa = ({ ccv, setCcv }: CardInnerProps) => {
+const CardVisa = ({ front }: CardInnerProps) => {
+  const { ccv, setCcv } = useDynamicPayButton();
   return (
     <>
       <div
@@ -194,7 +193,7 @@ const CardVisa = ({ ccv, setCcv }: CardInnerProps) => {
             pattern="\d*"
             placeholder="123"
             tabIndex={-1}
-            value={ccv}
+            value={front ? ccv : ''}
           />
         </div>
         <div className={cn('text-xs')}>
@@ -208,7 +207,8 @@ const CardVisa = ({ ccv, setCcv }: CardInnerProps) => {
   );
 };
 
-const CardMaster = ({ ccv, setCcv }: CardInnerProps) => {
+const CardMaster = ({ front }: CardInnerProps) => {
+  const { ccv, setCcv } = useDynamicPayButton();
   return (
     <>
       <div
@@ -326,7 +326,7 @@ const CardMaster = ({ ccv, setCcv }: CardInnerProps) => {
             pattern="\d*"
             placeholder="123"
             tabIndex={-1}
-            value={ccv}
+            value={front ? ccv : ''}
           />
         </div>
         <div className={cn('text-xs')}>

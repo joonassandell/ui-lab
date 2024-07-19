@@ -1,17 +1,12 @@
 import { Card } from './Card';
-import { CARDS, type CardsProps } from './';
+import { CARDS, useDynamicPayButton } from './';
 import { cn, move } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
-export const Cards = ({
-  ccv,
-  overflow,
-  setCcv,
-  setOverflow,
-  setSwitchCard,
-  switchCard,
-}: CardsProps) => {
+export const Cards = () => {
   const [cards, setCards] = useState(CARDS);
+  const { setCcv, setSwitchCard, switchCard } = useDynamicPayButton();
+
   const resetCards = () => {
     setCards(move(cards, 0, cards.length));
     setCcv('');
@@ -29,13 +24,9 @@ export const Cards = ({
       {cards.map(({ id, variant }, index) => {
         return (
           <Card
-            ccv={ccv}
             index={index}
             key={id}
             onDragEnd={() => resetCards()}
-            overflow={overflow}
-            setCcv={setCcv}
-            setOverflow={setOverflow}
             variant={variant}
           />
         );
