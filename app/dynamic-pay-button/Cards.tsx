@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react';
 
 export const Cards = ({
   ccv,
+  overflow,
   setCcv,
+  setOverflow,
   setSwitchCard,
   switchCard,
 }: CardsProps) => {
@@ -31,7 +33,9 @@ export const Cards = ({
             index={index}
             key={id}
             onDragEnd={() => resetCards()}
+            overflow={overflow}
             setCcv={setCcv}
+            setOverflow={setOverflow}
             variant={variant}
           />
         );

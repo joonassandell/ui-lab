@@ -15,11 +15,12 @@
     "typecheck": "tsc --pretty --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-tabs": "^1.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "10.16.16",
     "next": "14.2.4",
-    "react-dom": "^18",
-    "react": "^18"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
