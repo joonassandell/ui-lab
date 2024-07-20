@@ -52,11 +52,12 @@ export const DynamicPayButton = () => {
   useEffect(() => {
     if (!open) return;
     const html = document.documentElement;
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && handleOpen();
+    const esc = (e: KeyboardEvent) =>
+      e.key === 'Escape' && !loading && handleOpen();
     html.addEventListener('keydown', esc);
     return () => html.removeEventListener('keydown', esc);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+  }, [open, loading]);
 
   return (
     <AnimateDimension
@@ -75,14 +76,9 @@ export const DynamicPayButton = () => {
         },
       )}
       onAnimationComplete={variant => {
-        variant === 'open' &&
-          inputRef.current?.focus({
-            preventScroll: true,
-          });
+        variant === 'open' && inputRef.current?.focus({ preventScroll: true });
         variant === 'closed' &&
-          buttonRef.current?.focus({
-            preventScroll: true,
-          });
+          buttonRef.current?.focus({ preventScroll: true });
       }}
       onAnimationStart={variant => {
         variant === 'open' && buttonRef.current?.blur();
