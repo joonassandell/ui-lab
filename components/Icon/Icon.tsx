@@ -20,6 +20,24 @@ export const CreditCard = ({ className, ...props }: IconProps) => (
   </svg>
 );
 
+export const Check = ({ className, ...props }: IconProps) => (
+  <svg
+    className={cn(className)}
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);
+
 export const Close = ({ className, ...props }: IconProps) => (
   <svg
     className={cn(className)}

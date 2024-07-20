@@ -36,7 +36,8 @@ export const TabContent = ({ value }: TabContentProps) => {
 };
 
 const TabContentCard = () => {
-  const { ccv, inputRef, setCcv, setSwitchCard } = useDynamicPayButton();
+  const { ccv, inputRef, setCcv, setSwitchCard, success } =
+    useDynamicPayButton();
 
   return (
     <>
@@ -65,6 +66,12 @@ const TabContentCard = () => {
               'w-[3.375rem] rounded-lg rounded-e-none border-r pl-3 pt-[2px] font-cc uppercase outline-0 transition-colors',
               'border-r-transparent bg-sky-100 text-sky-800 placeholder-sky-800/50 hover:bg-sky-200 focus-visible:bg-sky-100',
               'dark:border-r-black/40 dark:bg-sky-950/70 dark:text-sky-300 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus-visible:bg-sky-950/70',
+              {
+                'bg-green-100 text-green-700 placeholder:text-green-700/50':
+                  success,
+                'dark:bg-teal-950 dark:text-teal-100 dark:placeholder:text-green-100/40':
+                  success,
+              },
             )}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
@@ -75,7 +82,7 @@ const TabContentCard = () => {
           />
           <PayButton
             className={cn(
-              'rounded-s-none shadow-none after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
+              'relative rounded-s-none shadow-none after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
               'after:border-l-black/10',
               'dark:after:border-l-white/5',
             )}

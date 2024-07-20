@@ -30,6 +30,7 @@ export const DynamicPayButton = () => {
   const [open, setOpen] = useState(false);
   const [overflow, setOverflow] = useState(false);
   const [selectedTab, setSelectedTab] = useState(TABS[0].label);
+  const [success, setSuccess] = useState(false);
   const [switchCard, setSwitchCard] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -38,6 +39,7 @@ export const DynamicPayButton = () => {
     setOpen(!open);
     setOverflow(false);
     setIcon(open ? <CreditCard /> : <Close />);
+    !open && setSuccess(false);
     !open && setSelectedTab(TABS[0].label);
     !open && setCcv('');
   };
@@ -107,7 +109,9 @@ export const DynamicPayButton = () => {
             setCcv,
             setLoading,
             setOverflow,
+            setSuccess,
             setSwitchCard,
+            success,
             switchCard,
           }}
         >

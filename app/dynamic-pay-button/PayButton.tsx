@@ -1,31 +1,35 @@
 import { AnimateDimension } from '@/components/AnimateDimension';
-import { AnimatePresence, m } from 'framer-motion';
+import { Check } from '@/components/Icon';
 import { cn, sleep } from '@/lib/utils';
+import { m } from 'framer-motion';
 import { type PayButtonProps, useDynamicPayButton } from './';
 import { Spinner } from '@/components/Spinner/Spinner';
-import { TRANS_SPRING_FAST } from '@/lib/config';
-import { useState } from 'react';
+import { TRANS_SPRING, TRANS_SPRING_FAST } from '@/lib/config';
 
 export const PayButton = ({ className }: PayButtonProps) => {
-  const { handleOpen, loading, setLoading } = useDynamicPayButton();
-  const [success, setSuccess] = useState(false);
+  const { handleOpen, loading, setLoading, setSuccess, success } =
+    useDynamicPayButton();
 
   const handleLoading = async () => {
     setLoading(true);
     await sleep(1500);
-    setLoading(false);
     setSuccess(true);
     await sleep(1200);
+    setLoading(false);
     handleOpen();
   };
 
   return (
     <m.button
       className={cn(
-        'relative flex cursor-default items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
+        'cursor-default overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
         'bg-sky-100 text-sky-800 hover:bg-sky-200 focus-visible:bg-sky-200',
         'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
         'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',
+        {
+          'bg-green-100 text-green-700': success,
+          'dark:bg-teal-900 dark:text-teal-100': success,
+        },
         className,
       )}
       onClick={handleLoading}
@@ -33,44 +37,40 @@ export const PayButton = ({ className }: PayButtonProps) => {
       <AnimateDimension
         animate="open"
         refClassname="w-fit"
-        transition={TRANS_SPRING_FAST}
         variants={{
           closed: { borderRadius: 60 },
           open: { borderRadius: 20 },
         }}
       >
-        <div className={cn('flex items-center justify-center gap-2 px-3 py-2')}>
-          {success && 'Payment successful'}
-          {!success && (
+        <m.div
+          className={cn('flex items-center justify-center gap-1 px-3 py-2')}
+          tabIndex={-1}
+          transition={TRANS_SPRING_FAST}
+          whileTap={{ scale: loading || success ? 1 : 0.88 }}
+        >
+          {(!loading || !success) && 'Pay Now'}
+          {loading && !success && (
             <m.div
-              animate={{ scale: loading ? [0.9, 0] : 1 }}
-              aria-hidden={loading}
-              initial={false}
-              tabIndex={-1}
-              transition={TRANS_SPRING_FAST}
-              whileTap={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              className={cn('ml-1')}
+              exit={{ scale: 0 }}
+              initial={{ scale: 0 }}
+              transition={TRANS_SPRING}
             >
-              Pay Now
+              <Spinner
+                className={cn(
+                  'size-4 fill-sky-800 text-blue-300 dark:fill-sky-300 dark:text-black/30',
+                )}
+              />
             </m.div>
           )}
-          <AnimatePresence initial={false} mode="popLayout">
-            {loading && (
-              <m.div
-                animate={{ scale: 1 }}
-                className={cn('absolute')}
-                exit={{ scale: 0 }}
-                initial={{ scale: 0 }}
-                transition={TRANS_SPRING_FAST}
-              >
-                <Spinner
-                  className={cn(
-                    'size-5 fill-sky-800 text-blue-300 dark:fill-sky-300 dark:text-black/25',
-                  )}
-                />
-              </m.div>
-            )}
-          </AnimatePresence>
-        </div>
+          {success && (
+            <>
+              Payment successful
+              <Check className={cn('size-5')} />
+            </>
+          )}
+        </m.div>
       </AnimateDimension>
     </m.button>
   );

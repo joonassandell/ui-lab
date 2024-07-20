@@ -19,7 +19,9 @@ export interface DynamicBuyButtonContextProps {
   setCcv: Dispatch<SetStateAction<string>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setOverflow: Dispatch<SetStateAction<boolean>>;
+  setSuccess: Dispatch<SetStateAction<boolean>>;
   setSwitchCard: Dispatch<SetStateAction<boolean>>;
+  success: boolean;
   switchCard: boolean;
 }
 
