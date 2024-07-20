@@ -3,6 +3,7 @@ import { Cards } from './Cards';
 import { cn } from '@/lib/utils';
 import { Content } from '@radix-ui/react-tabs';
 import { m } from 'framer-motion';
+import { PayButton } from './PayButton';
 import { type TabContentProps, TABS, useDynamicPayButton } from './';
 import { TRANS_SPRING_FAST } from '@/lib/config';
 
@@ -72,17 +73,13 @@ const TabContentCard = () => {
             ref={inputRef}
             value={ccv}
           />
-          <button
+          <PayButton
             className={cn(
-              'relative cursor-default whitespace-nowrap rounded-lg rounded-s-none px-3 py-2 outline-0 transition-colors',
-              'z-0 after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
-              'bg-sky-100 text-sky-800 after:border-l-black/10 hover:bg-sky-200 focus-visible:bg-sky-200',
-              'dark:bg-sky-950 dark:text-sky-300 dark:after:border-l-white/5 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
-              'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',
+              'rounded-s-none shadow-none after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
+              'after:border-l-black/10',
+              'dark:after:border-l-white/5',
             )}
-          >
-            Pay Now
-          </button>
+          />
         </div>
       </footer>
     </>
@@ -90,5 +87,12 @@ const TabContentCard = () => {
 };
 
 const TabContentOtherMethods = () => {
-  return <>Other methods</>;
+  return (
+    <>
+      Other methods
+      <footer className={cn('flex w-full justify-end gap-2 pt-4')}>
+        <PayButton />
+      </footer>
+    </>
+  );
 };

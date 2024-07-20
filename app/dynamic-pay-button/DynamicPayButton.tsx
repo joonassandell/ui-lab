@@ -26,6 +26,7 @@ import { TabsList } from './TabsList';
 export const DynamicPayButton = () => {
   const [ccv, setCcv] = useState<string>('');
   const [icon, setIcon] = useState(<CreditCard />);
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [overflow, setOverflow] = useState(false);
   const [selectedTab, setSelectedTab] = useState(TABS[0].label);
@@ -68,6 +69,7 @@ export const DynamicPayButton = () => {
           'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
             !open,
           'overflow-visible': overflow,
+          'pointer-events-none': loading,
         },
       )}
       onAnimationComplete={variant => {
@@ -98,10 +100,12 @@ export const DynamicPayButton = () => {
             ccv,
             handleOpen,
             inputRef,
+            loading,
             open,
             overflow,
             selectedTab,
             setCcv,
+            setLoading,
             setOverflow,
             setSwitchCard,
             switchCard,

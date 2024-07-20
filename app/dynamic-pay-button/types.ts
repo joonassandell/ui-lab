@@ -12,10 +12,12 @@ export interface DynamicBuyButtonContextProps {
   ccv: string;
   handleOpen: () => void;
   inputRef: RefObject<HTMLInputElement>;
+  loading: boolean;
   open: boolean;
   overflow: boolean;
   selectedTab: string;
   setCcv: Dispatch<SetStateAction<string>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
   setOverflow: Dispatch<SetStateAction<boolean>>;
   setSwitchCard: Dispatch<SetStateAction<boolean>>;
   switchCard: boolean;
@@ -37,3 +39,7 @@ export interface CardInnerProps {
 }
 
 export interface TabContentProps extends TabsContentProps {}
+
+export interface PayButtonProps {
+  className?: string | undefined;
+}
