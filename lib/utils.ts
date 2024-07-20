@@ -46,3 +46,5 @@ export const move = (array: any[], moveIndex: number, toIndex: number) => {
 
   return array;
 };
+
+export const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
