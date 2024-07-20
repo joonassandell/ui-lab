@@ -32,6 +32,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
         },
         className,
       )}
+      disabled={success || loading}
       onClick={handleLoading}
     >
       <AnimateDimension
@@ -48,7 +49,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
           transition={TRANS_SPRING_FAST}
           whileTap={{ scale: loading || success ? 1 : 0.88 }}
         >
-          {(!loading || !success) && 'Pay Now'}
+          {((!loading && !success) || (loading && !success)) && 'Pay Now'}
           {loading && !success && (
             <m.div
               animate={{ scale: 1 }}

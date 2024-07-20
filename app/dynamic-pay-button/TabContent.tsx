@@ -36,7 +36,7 @@ export const TabContent = ({ value }: TabContentProps) => {
 };
 
 const TabContentCard = () => {
-  const { ccv, inputRef, setCcv, setSwitchCard, success } =
+  const { ccv, inputRef, loading, setCcv, setSwitchCard, success } =
     useDynamicPayButton();
 
   return (
@@ -73,6 +73,7 @@ const TabContentCard = () => {
                   success,
               },
             )}
+            disabled={success || loading}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
             pattern="\d*"
