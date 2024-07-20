@@ -32,7 +32,6 @@ export const PayButton = ({ className }: PayButtonProps) => {
         },
         className,
       )}
-      disabled={success || loading}
       onClick={handleLoading}
     >
       <AnimateDimension

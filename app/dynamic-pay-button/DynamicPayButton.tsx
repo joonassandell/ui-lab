@@ -72,9 +72,9 @@ export const DynamicPayButton = () => {
           'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
             !open,
           'overflow-visible': overflow,
-          'pointer-events-none': loading,
         },
       )}
+      inert={loading ? '' : undefined}
       onAnimationComplete={variant => {
         variant === 'open' && inputRef.current?.focus({ preventScroll: true });
         variant === 'closed' &&

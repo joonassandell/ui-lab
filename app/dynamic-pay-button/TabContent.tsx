@@ -73,7 +73,6 @@ const TabContentCard = () => {
                   success,
               },
             )}
-            disabled={success || loading}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
             pattern="\d*"
