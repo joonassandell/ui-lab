@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export const Cards = () => {
   const [cards, setCards] = useState(CARDS);
-  const { setCcv, setSwitchCard, switchCard } = useDynamicPayButton();
+  const { loading, setCcv, setSwitchCard, switchCard } = useDynamicPayButton();
 
   const resetCards = () => {
     setCards(move(cards, 0, cards.length));
@@ -20,7 +20,7 @@ export const Cards = () => {
   }, [switchCard, setSwitchCard]);
 
   return (
-    <div className={cn('relative h-52')}>
+    <div className={cn('relative h-52')} inert={loading ? '' : undefined}>
       {cards.map(({ id, variant }, index) => {
         return (
           <Card

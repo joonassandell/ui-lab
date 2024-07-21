@@ -63,7 +63,7 @@ export const DynamicPayButton = () => {
     <AnimateDimension
       animate={open ? 'open' : 'closed'}
       className={cn(
-        'ul-component relative flex flex-col items-center overflow-hidden text-sm font-medium shadow-pop',
+        'ul-component relative overflow-hidden text-sm font-medium shadow-pop',
         'bg-white text-zinc-500',
         'dark:bg-zinc-900 dark:text-zinc-300',
         {
@@ -74,15 +74,14 @@ export const DynamicPayButton = () => {
           'overflow-visible': overflow,
         },
       )}
-      inert={loading ? '' : undefined}
       onAnimationComplete={variant => {
         variant === 'open' && inputRef.current?.focus({ preventScroll: true });
         variant === 'closed' &&
           buttonRef.current?.focus({ preventScroll: true });
       }}
-      onAnimationStart={variant => {
-        variant === 'open' && buttonRef.current?.blur();
-      }}
+      onAnimationStart={variant =>
+        variant === 'open' && buttonRef.current?.blur()
+      }
       variants={{
         closed: { borderRadius: 60 },
         open: { borderRadius: 20 },
@@ -113,6 +112,7 @@ export const DynamicPayButton = () => {
         >
           <header
             className={cn('flex w-full items-center justify-between p-3')}
+            inert={loading ? '' : undefined}
           >
             <TabsList />
             <Button icon={icon} ref={buttonRef} />

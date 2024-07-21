@@ -9,8 +9,8 @@ import { TRANS_SPRING_FAST } from '@/lib/config';
 
 export const TabContent = ({ value }: TabContentProps) => {
   return (
-    <Content tabIndex={-1} value={value}>
-      <m.div
+    <Content asChild tabIndex={-1} value={value}>
+      <m.form
         animate="open"
         initial="closed"
         transition={{
@@ -30,13 +30,13 @@ export const TabContent = ({ value }: TabContentProps) => {
       >
         {value === TABS[0].label && <TabContentCard />}
         {value === TABS[1].label && <TabContentOtherMethods />}
-      </m.div>
+      </m.form>
     </Content>
   );
 };
 
 const TabContentCard = () => {
-  const { ccv, inputRef, setCcv, setSwitchCard, success } =
+  const { ccv, inputRef, loading, setCcv, setSwitchCard, success } =
     useDynamicPayButton();
 
   return (
@@ -52,6 +52,7 @@ const TabContentCard = () => {
             'border-zinc-200 hover:bg-zinc-100 hover:text-zinc-800',
             'dark:border-zinc-700/70 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100',
           )}
+          disabled={loading}
           onClick={() => setSwitchCard(true)}
         >
           <ArrowRightLeft className="size-4" />
@@ -73,6 +74,7 @@ const TabContentCard = () => {
                   success,
               },
             )}
+            disabled={loading}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
             pattern="\d*"
@@ -82,7 +84,7 @@ const TabContentCard = () => {
           />
           <PayButton
             className={cn(
-              'relative rounded-s-none shadow-none after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
+              'relative rounded-s-none shadow-transparent after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
               'after:border-l-black/10',
               'dark:after:border-l-white/5',
             )}
