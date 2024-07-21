@@ -6,23 +6,23 @@ import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { TRANS_SPRING } from '@/lib/config';
 
 export const AnimateDimension = ({
-  animate,
+  animate = 'closed',
   children,
   className,
-  initial,
+  containerClassName,
+  initial = 'closed',
   onAnimationComplete,
   onAnimationStart,
   onUpdate,
-  refClassname,
   triggerEventsOnMount = false,
   variants,
   ...props
 }: HTMLMotionProps<'div'> &
   PropsWithChildren & {
     animate?: 'open' | 'closed';
-    refClassname?: string;
+    containerClassName?: string;
     triggerEventsOnMount?: boolean;
-    variants: {
+    variants?: {
       closed: Variant;
       open: Variant;
     };
@@ -53,23 +53,23 @@ export const AnimateDimension = ({
     return () => resizeObserver.disconnect();
   }, []);
 
-  const [mountEvents, setMountEvents] = useState(triggerEventsOnMount);
+  const mountEvents = useRef(triggerEventsOnMount);
   useEffect(() => {
-    if (animate === 'open' && !mountEvents) {
-      setMountEvents(true);
+    if (animate === 'open' && !mountEvents.current) {
+      mountEvents.current = true;
     }
-  }, [animate, mountEvents]);
+  }, [animate]);
 
   const variantsWithDimensions = {
     closed: {
       height,
       width,
-      ...variants.closed,
+      ...variants?.closed,
     },
     open: {
       height,
       width,
-      ...variants.open,
+      ...variants?.open,
     },
   };
 
@@ -77,18 +77,18 @@ export const AnimateDimension = ({
     <m.div
       animate={animate}
       className={cn(className)}
-      initial={initial ?? 'closed'}
+      initial={initial}
       style={{ height, width }}
       transition={TRANS_SPRING}
       variants={variantsWithDimensions}
-      {...(mountEvents && {
+      {...(mountEvents.current && {
         onAnimationComplete,
         onAnimationStart,
         onUpdate,
       })}
       {...props}
     >
-      <div className={cn(refClassname)} ref={containerRef}>
+      <div className={cn('h-fit w-fit', containerClassName)} ref={containerRef}>
         {children}
       </div>
     </m.div>

@@ -34,14 +34,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
       )}
       onClick={handleLoading}
     >
-      <AnimateDimension
-        animate="open"
-        refClassname="w-fit"
-        variants={{
-          closed: { borderRadius: 60 },
-          open: { borderRadius: 20 },
-        }}
-      >
+      <AnimateDimension>
         <m.div
           className={cn('flex items-center justify-center gap-1 px-3 py-2')}
           tabIndex={-1}
