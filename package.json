@@ -7,7 +7,7 @@
   "scripts": {
     "build": "next build",
     "check": "bun run lint && bun run typecheck",
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "lint:fix": "next lint --fix",
     "lint": "next lint",
     "start": "next start",
