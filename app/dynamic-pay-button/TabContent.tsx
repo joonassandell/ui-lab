@@ -9,7 +9,7 @@ import { TRANS_SPRING_FAST } from '@/lib/config';
 
 export const TabContent = ({ value }: TabContentProps) => {
   return (
-    <Content value={value}>
+    <Content tabIndex={-1} value={value}>
       <m.div
         animate="open"
         initial="closed"
@@ -36,7 +36,7 @@ export const TabContent = ({ value }: TabContentProps) => {
 };
 
 const TabContentCard = () => {
-  const { ccv, inputRef, loading, setCcv, setSwitchCard, success } =
+  const { ccv, inputRef, setCcv, setSwitchCard, success } =
     useDynamicPayButton();
 
   return (
