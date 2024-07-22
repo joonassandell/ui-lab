@@ -47,6 +47,9 @@ export default {
       textShadow: {
         DEFAULT: '0 1px 1px var(--tw-text-shadow)',
       },
+      transitionDuration: {
+        DEFAULT: '200ms',
+      },
     },
   },
 } satisfies Config;

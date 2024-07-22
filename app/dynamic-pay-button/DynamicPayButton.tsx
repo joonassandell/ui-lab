@@ -65,7 +65,7 @@ export const DynamicPayButton = () => {
       className={cn(
         'ul-component relative overflow-hidden text-sm font-medium shadow-pop',
         'bg-white text-zinc-500',
-        'dark:bg-zinc-900 dark:text-zinc-300',
+        'dark:bg-zinc-900 dark:text-zinc-400',
         {
           'has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2':
             !open,

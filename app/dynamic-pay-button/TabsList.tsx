@@ -22,7 +22,7 @@ export const TabsList = () => {
               <Tab
                 className={cn(
                   'relative cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
-                  'hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100',
+                  'hover:text-zinc-800 dark:hover:text-zinc-100',
                   {
                     'text-zinc-800 dark:text-zinc-100':
                       item.label === selectedTab,

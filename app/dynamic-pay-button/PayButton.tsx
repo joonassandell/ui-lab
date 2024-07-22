@@ -5,7 +5,7 @@ import { m } from 'framer-motion';
 import { type MouseEvent } from 'react';
 import { type PayButtonProps, useDynamicPayButton } from './';
 import { Spinner } from '@/components/Spinner/Spinner';
-import { TRANS_SPRING, TRANS_SPRING_FAST } from '@/lib/config';
+import { TRANS_SPRING } from '@/lib/config';
 
 export const PayButton = ({ className }: PayButtonProps) => {
   const { handleOpen, loading, setLoading, setSuccess, success } =
@@ -25,7 +25,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
     <m.button
       className={cn(
         'cursor-default overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
-        'bg-sky-100 text-sky-800 hover:bg-sky-200 focus-visible:bg-sky-200',
+        'bg-sky-100 text-sky-700 hover:bg-sky-200 focus-visible:bg-sky-200',
         'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
         'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',
         {
@@ -37,13 +37,16 @@ export const PayButton = ({ className }: PayButtonProps) => {
         className,
       )}
       onClick={handleLoading}
+      type="submit"
     >
       <AnimateDimension>
-        <m.div
-          className={cn('flex items-center justify-center gap-1 px-3 py-2')}
-          tabIndex={-1}
-          transition={TRANS_SPRING_FAST}
-          whileTap={{ scale: loading || success ? 1 : 0.88 }}
+        <div
+          className={cn(
+            'flex items-center justify-center gap-1 px-3 py-2 active:scale-[0.95]',
+            {
+              'active:scale-100': loading,
+            },
+          )}
         >
           {((!loading && !success) || (loading && !success)) && (
             <div aria-hidden={loading}>Pay Now</div>
@@ -70,7 +73,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
               <Check className={cn('size-5')} />
             </>
           )}
-        </m.div>
+        </div>
       </AnimateDimension>
     </m.button>
   );

@@ -15,7 +15,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'hover:text-zinc-800',
           'dark:hover:text-zinc-100',
           {
-            'outline-0': !open,
+            'outline-0 dark:text-zinc-300': !open,
             'px-1': open,
           },
         )}
