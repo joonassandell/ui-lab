@@ -1,5 +1,6 @@
 import {
   type Dispatch,
+  type InputHTMLAttributes,
   type JSX,
   type PropsWithChildren,
   type RefObject,
@@ -44,4 +45,15 @@ export interface TabContentProps extends TabsContentProps {}
 
 export interface PayButtonProps {
   className?: string | undefined;
+}
+
+export interface PaymentMethodProps
+  extends Pick<InputHTMLAttributes<HTMLInputElement>, 'checked'> {
+  variant:
+    | 'googlePay'
+    | 'applePay'
+    | 'paypal'
+    | 'cashApp'
+    | 'klarna'
+    | 'amazonPay';
 }
