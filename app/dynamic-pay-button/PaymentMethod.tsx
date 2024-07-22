@@ -22,8 +22,8 @@ export const PaymentMethod = ({ checked, variant }: PaymentMethodProps) => {
       <label
         className={cn(
           'flex h-12 items-center justify-between gap-3 rounded-lg border px-4 transition-colors active:scale-[0.98]',
-          'border-transparent bg-zinc-100 hover:border-zinc-200 hover:text-sky-700 peer-checked:border-blue-200 peer-checked:bg-sky-100 peer-checked:text-sky-700',
-          'dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700/50 dark:hover:text-sky-400 dark:peer-checked:border-sky-900 dark:peer-checked:bg-sky-950/70 dark:peer-checked:text-sky-400',
+          'border-zinc-200 bg-zinc-200/60 hover:border-zinc-200 hover:text-sky-700 peer-checked:border-blue-200 peer-checked:bg-sky-100 peer-checked:text-sky-700',
+          'dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700/40 dark:hover:text-sky-400 dark:peer-checked:border-sky-900 dark:peer-checked:bg-sky-950/70 dark:peer-checked:text-sky-400',
         )}
         htmlFor={variant}
       >

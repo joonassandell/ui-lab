@@ -13,9 +13,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'flex cursor-default select-none items-center justify-center gap-3 self-start whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
           'hover:text-zinc-800',
-          'dark:hover:text-zinc-100',
+          'dark:hover:text-white',
           {
-            'outline-0 dark:text-zinc-300': !open,
+            'outline-0 before:absolute before:inset-0 dark:text-zinc-300/90':
+              !open,
             'px-1': open,
           },
         )}

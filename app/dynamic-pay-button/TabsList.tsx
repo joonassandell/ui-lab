@@ -22,10 +22,9 @@ export const TabsList = () => {
               <Tab
                 className={cn(
                   'relative cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
-                  'hover:text-zinc-800 dark:hover:text-zinc-100',
+                  'hover:text-zinc-800 dark:hover:text-white',
                   {
-                    'text-zinc-800 dark:text-zinc-100':
-                      item.label === selectedTab,
+                    'text-zinc-800 dark:text-white': item.label === selectedTab,
                   },
                 )}
                 key={item.label}
@@ -36,7 +35,7 @@ export const TabsList = () => {
                   <m.div
                     className={cn(
                       'absolute inset-0 z-0 rounded-lg border',
-                      'border-zinc-200 bg-zinc-100',
+                      'border-transparent bg-zinc-200/60',
                       'dark:border-zinc-700/40 dark:bg-zinc-800',
                     )}
                     layoutId="bg"
