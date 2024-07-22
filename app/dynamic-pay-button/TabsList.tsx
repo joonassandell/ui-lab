@@ -35,7 +35,9 @@ export const TabsList = () => {
                 {item.label === selectedTab && (
                   <m.div
                     className={cn(
-                      'absolute inset-0 z-0 rounded-lg bg-zinc-100 dark:bg-zinc-800',
+                      'absolute inset-0 z-0 rounded-lg border',
+                      'border-zinc-200 bg-zinc-100',
+                      'dark:border-zinc-700/40 dark:bg-zinc-800',
                     )}
                     layoutId="bg"
                     transition={TRANS_SPRING_FAST}
