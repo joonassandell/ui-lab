@@ -1,4 +1,4 @@
-import './index.css';
+import '@/stylesheets/global.css';
 import { cn } from '@/lib/utils';
 import { type PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
