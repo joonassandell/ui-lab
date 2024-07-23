@@ -10,6 +10,13 @@
       0 8px 8px 0 hsl(0 0% 0% / 0.033);
     --ul-shadow-pop-sm: 0 0 0 1px hsl(0 0% 0% / 0.1) inset,
       0 2px 2px hsl(0 0% 0% / 0.033);
+    --wrap-space-left: 1.5rem;
+    --wrap-space-right: 1.5rem;
+
+    @media screen(md) {
+      --wrap-space-left: 2.5rem;
+      --wrap-space-right: 2.5rem;
+    }
   }
 
   :root.dark {
@@ -20,6 +27,8 @@
     --ul-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 2px 2px hsl(0 0% 0% / 0.4);
   }
+
+  
 
   @font-face {
     font-family: 'CC font';
@@ -69,5 +78,13 @@
         @apply bg-black/70;
       }
     }
+  }
+
+  .wrap {
+    @apply pl-[var(--wrap-space-left)] pr-[var(--wrap-space-right)];
+  }
+
+  .wrap-vw {
+    @apply w-[calc(100vw-(var(--wrap-space-left)+var(--wrap-space-right)))];
   }
 }

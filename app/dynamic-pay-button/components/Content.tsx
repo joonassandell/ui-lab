@@ -11,7 +11,7 @@ export const Content = ({ children }: ContentProps) => {
       {open && (
         <m.div
           animate="open"
-          className={cn('w-[368px] p-3 md:w-96', {
+          className={cn('wrap-vw max-w-96 p-3', {
             absolute: !open,
             'top-14': !open,
           })}
