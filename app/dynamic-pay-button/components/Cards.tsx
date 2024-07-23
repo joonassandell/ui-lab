@@ -1,5 +1,5 @@
 import { Card } from './Card';
-import { CARDS, useDynamicPayButton } from './';
+import { CARDS, useDynamicPayButton } from '../';
 import { cn, move } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 

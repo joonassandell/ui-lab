@@ -3,7 +3,7 @@ import {
   type CardProps,
   CARDS,
   useDynamicPayButton,
-} from './';
+} from '..';
 import { cn } from '@/lib/utils';
 import {
   type DragHandlers,

@@ -1,9 +1,10 @@
 'use client';
 
+import { type AnimateDimensionProps } from './';
 import { cn } from '@/lib/utils';
-import { type HTMLMotionProps, m, type Variant } from 'framer-motion';
-import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { m } from 'framer-motion';
 import { TRANS_SPRING } from '@/lib/config';
+import { useEffect, useRef, useState } from 'react';
 
 export const AnimateDimension = ({
   animate = 'closed',
@@ -17,16 +18,7 @@ export const AnimateDimension = ({
   triggerEventsOnMount = false,
   variants,
   ...props
-}: HTMLMotionProps<'div'> &
-  PropsWithChildren & {
-    animate?: 'open' | 'closed';
-    containerClassName?: string;
-    triggerEventsOnMount?: boolean;
-    variants?: {
-      closed: Variant;
-      open: Variant;
-    };
-  }) => {
+}: AnimateDimensionProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [{ height, width }, setDimensions] = useState<{
     height: 'auto' | number;

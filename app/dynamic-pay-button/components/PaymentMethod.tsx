@@ -7,7 +7,7 @@ import {
   Paypal,
 } from '@/components/Logo';
 import { cn } from '@/lib/utils';
-import { type PaymentMethodProps } from './';
+import { type PaymentMethodProps } from '../';
 
 export const PaymentMethod = ({ checked, variant }: PaymentMethodProps) => {
   return (

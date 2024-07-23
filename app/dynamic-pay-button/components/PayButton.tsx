@@ -3,7 +3,7 @@ import { Check } from '@/components/Icon';
 import { cn, sleep } from '@/lib/utils';
 import { m } from 'framer-motion';
 import { type MouseEvent } from 'react';
-import { type PayButtonProps, useDynamicPayButton } from './';
+import { type PayButtonProps, useDynamicPayButton } from '../';
 import { Spinner } from '@/components/Spinner/Spinner';
 import { TRANS_SPRING } from '@/lib/config';
 

@@ -1,17 +1,19 @@
+'use client';
+
 import { AnimateDimension } from '@/components/AnimateDimension';
-import { Button } from './Button';
+import { Button } from './components/Button';
 import { Close, CreditCard } from '@/components/Icon';
 import { cn } from '@/lib/utils';
-import { Content } from './Content';
+import { Content } from './components/Content';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import {
   type DynamicBuyButtonContextProps,
   type TabContentProps,
   TABS,
 } from './';
-import { TabContent } from './TabContent';
+import { TabContent } from './components/TabContent';
 import { Root as Tabs } from '@radix-ui/react-tabs';
-import { TabsList } from './TabsList';
+import { TabsList } from './components/TabsList';
 
 /**
  * Dynamic Pay Button

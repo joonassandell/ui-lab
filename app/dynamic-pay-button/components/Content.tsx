@@ -1,6 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { type ContentProps, useDynamicPayButton } from './';
+import { type ContentProps, useDynamicPayButton } from '../';
 import { TRANS_SPRING } from '@/lib/config';
 
 export const Content = ({ children }: ContentProps) => {

@@ -1,5 +1,5 @@
 import { AnimatePresence, m } from 'framer-motion';
-import { type ButtonProps, useDynamicPayButton } from './';
+import { type ButtonProps, useDynamicPayButton } from '../';
 import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';

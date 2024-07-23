@@ -5,7 +5,7 @@ import { Content } from '@radix-ui/react-tabs';
 import { m } from 'framer-motion';
 import { PayButton } from './PayButton';
 import { PaymentMethod } from './PaymentMethod';
-import { type TabContentProps, TABS, useDynamicPayButton } from './';
+import { type TabContentProps, TABS, useDynamicPayButton } from '../';
 import { TRANS_SPRING_FAST } from '@/lib/config';
 
 export const TabContent = ({ value }: TabContentProps) => {

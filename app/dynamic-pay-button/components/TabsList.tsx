@@ -1,7 +1,7 @@
 import { AnimatePresence, m } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { List, Trigger as Tab } from '@radix-ui/react-tabs';
-import { TABS, useDynamicPayButton } from './';
+import { TABS, useDynamicPayButton } from '../';
 import { TRANS_SPRING, TRANS_SPRING_FAST } from '@/lib/config';
 
 export const TabsList = () => {

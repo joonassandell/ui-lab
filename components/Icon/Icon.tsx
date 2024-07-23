@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { type IconProps } from './Icon.types';
+import { type IconProps } from './';
 
 export const CreditCard = ({ className, ...props }: IconProps) => (
   <svg
