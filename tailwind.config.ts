@@ -9,6 +9,7 @@ export default {
     './components/**/*.{jsx,tsx}',
     './app/**/*.{jsx,tsx}',
   ],
+  darkMode: 'selector',
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(

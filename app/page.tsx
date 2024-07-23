@@ -1,9 +1,12 @@
-import Link from 'next/link';
+import { Header } from '@/components/Header';
 
 export default function Home() {
   return (
-    <main>
-      <Link href="/dynamic-pay-button">Dynamic pay button</Link>
-    </main>
+    <>
+      <Header />
+      <main>
+        <iframe height={640} src="/dynamic-pay-button" width={640} />
+      </main>
+    </>
   );
 }

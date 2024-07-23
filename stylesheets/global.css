@@ -12,15 +12,13 @@
       0 2px 2px hsl(0 0% 0% / 0.033);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
-        0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
-        0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
-        0 6px 6px 0 hsl(0 0% 0% / 0.1);
-      --ul-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
-        0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 2px 2px hsl(0 0% 0% / 0.4);
-    }
+  :root.dark {
+    --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+      0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
+      0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
+      0 6px 6px 0 hsl(0 0% 0% / 0.1);
+    --ul-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+      0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 2px 2px hsl(0 0% 0% / 0.4);
   }
 
   @font-face {
@@ -61,7 +59,7 @@
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  .dark {
     .ul-component {
       :focus-visible:not([class*='outline']) {
         @apply outline-white/20;

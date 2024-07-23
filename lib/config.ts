@@ -1,3 +1,10 @@
+/* =======================================
+ * Animations
+ * =======================================
+ *
+ * @link https://www.framer.com/motion/easing-functions
+ */
+
 export const TRANS_SPRING = {
   damping: 20,
   stiffness: 180,
@@ -15,3 +22,10 @@ export const TRANS_SPRING_SLOW = {
   stiffness: 100,
   type: 'spring',
 };
+
+/* =======================================
+ * Environment variables
+ * ======================================= */
+
+export const DEVELOPMENT = process.env.NODE_ENV === 'development';
+export const PRODUCTION = process.env.NODE_ENV === 'production';
