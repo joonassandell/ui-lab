@@ -1,16 +1,24 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { type HeaderProps } from './Header.types';
 import { Moon, Sun } from '@/components/Icon';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-export const Header = () => {
+const Header = ({ queryParamOnly }: HeaderProps) => {
   const { setTheme, theme } = useTheme();
+  const queryParam = useSearchParams().get('header') === 'true';
 
   const handleThemeChange = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
+
+  if (queryParamOnly && !queryParam) {
+    return null;
+  }
 
   return (
     <header
@@ -26,11 +34,27 @@ export const Header = () => {
       </Link>
       <button onClick={handleThemeChange}>
         {theme === 'light' ? (
-          <Moon className={cn('size-5')} />
+          <>
+            <span className={cn('sr-only')}>Dark mode</span>
+            <Moon className={cn('size-5')} />
+          </>
         ) : (
-          <Sun className={cn('size-5')} />
+          <>
+            <span className={cn('sr-only')}>Light mode</span>
+            <Sun className={cn('size-5')} />
+          </>
         )}
       </button>
     </header>
   );
 };
+
+const HeaderSuspense = ({ ...props }: HeaderProps) => {
+  return (
+    <Suspense>
+      <Header {...props} />
+    </Suspense>
+  );
+};
+
+export { HeaderSuspense as Header };
