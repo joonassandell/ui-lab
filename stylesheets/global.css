@@ -44,6 +44,10 @@
   .ul-component {
     @apply select-none;
 
+    button {
+      @apply cursor-default;
+    }
+
     :focus:not([class*='outline']) {
       @apply outline-0;
     }

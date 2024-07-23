@@ -49,7 +49,7 @@ const TabContentCard = () => {
         <button
           aria-label="Switch active credit card"
           className={cn(
-            'grid size-8 cursor-default place-content-center rounded-lg border border-transparent transition-colors',
+            'grid size-8 place-content-center rounded-lg border border-transparent transition-colors',
             'border-zinc-200 hover:bg-zinc-200/60 hover:text-zinc-800',
             'dark:border-zinc-700/40 dark:hover:bg-zinc-800 dark:hover:text-white',
           )}

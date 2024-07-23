@@ -24,7 +24,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
   return (
     <m.button
       className={cn(
-        'cursor-default overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
+        'overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
         'bg-sky-100 text-sky-700 hover:bg-sky-200 focus-visible:bg-sky-200',
         'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
         'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',

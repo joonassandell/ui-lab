@@ -21,7 +21,7 @@ export const TabsList = () => {
             {TABS.map(item => (
               <Tab
                 className={cn(
-                  'relative cursor-default whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
+                  'relative whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
                   'hover:text-zinc-800 dark:hover:text-white',
                   {
                     'text-zinc-800 dark:text-white': item.label === selectedTab,
