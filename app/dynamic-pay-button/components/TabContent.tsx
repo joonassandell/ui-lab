@@ -44,37 +44,39 @@ const TabContentCard = () => {
     <>
       <Cards />
       <footer
-        className={cn('flex w-full items-center justify-between gap-2 pt-4')}
+        className={cn(
+          'ul-flex ul-w-full ul-items-center ul-justify-between ul-gap-2 ul-pt-4',
+        )}
       >
         <button
           aria-label="Switch active credit card"
           className={cn(
-            'grid size-8 place-content-center rounded-lg border border-transparent transition-colors',
-            'border-zinc-200 hover:bg-zinc-200/60 hover:text-zinc-800',
-            'dark:border-zinc-700/40 dark:hover:bg-zinc-800 dark:hover:text-white',
+            'ul-grid ul-size-8 ul-place-content-center ul-rounded-lg ul-border ul-border-transparent ul-transition-colors',
+            'ul-border-zinc-200 hover:ul-bg-zinc-200/60 hover:ul-text-zinc-800',
+            'dark:ul-border-zinc-700/40 dark:hover:ul-bg-zinc-800 dark:hover:ul-text-white',
           )}
           disabled={loading}
           onClick={() => setSwitchCard(true)}
           type="button"
         >
-          <ArrowRightLeft className={cn('size-4')} />
+          <ArrowRightLeft className={cn('ul-size-4')} />
         </button>
         <div
           className={cn(
-            'relative flex overflow-hidden rounded-lg before:pointer-events-none before:absolute before:inset-0 before:z-10 before:rounded-lg before:shadow-pop-sm',
+            'ul-relative ul-flex ul-overflow-hidden ul-rounded-lg before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-10 before:ul-rounded-lg before:ul-shadow-pop-sm',
           )}
         >
           <input
             className={cn(
-              'w-[3.375rem] rounded-lg rounded-e-none border-r pl-3 pt-[2px] font-cc uppercase outline-0 transition-colors',
-              'border-r-transparent bg-sky-100 text-sky-700 placeholder-sky-700/60 hover:bg-sky-200 focus-visible:bg-sky-100',
-              'dark:border-r-black/40 dark:bg-sky-950/70 dark:text-sky-400 dark:placeholder-sky-300/40 dark:hover:bg-sky-950/80 dark:focus-visible:bg-sky-950/70',
+              'ul-w-[3.375rem] ul-rounded-lg ul-rounded-e-none ul-border-r ul-pl-3 ul-pt-[2px] ul-font-cc ul-uppercase ul-outline-0 ul-transition-colors',
+              'ul-border-r-transparent ul-bg-sky-100 ul-text-sky-700 ul-placeholder-sky-700/60 hover:ul-bg-sky-200 focus-visible:ul-bg-sky-100',
+              'dark:ul-border-r-black/40 dark:ul-bg-sky-950/70 dark:ul-text-sky-400 dark:ul-placeholder-sky-300/40 dark:hover:ul-bg-sky-950/80 dark:focus-visible:ul-bg-sky-950/70',
               {
-                'bg-green-100 text-green-700 placeholder:text-green-700/50':
+                'dark:ul-bg-teal-950 dark:ul-text-teal-100 dark:placeholder:ul-text-green-100/40':
                   success,
-                'dark:bg-teal-950 dark:text-teal-100 dark:placeholder:text-green-100/40':
+                'ul-bg-green-100 ul-text-green-700 placeholder:ul-text-green-700/50':
                   success,
-                'pointer-events-none': loading,
+                'ul-pointer-events-none': loading,
               },
             )}
             disabled={loading}
@@ -87,9 +89,9 @@ const TabContentCard = () => {
           />
           <PayButton
             className={cn(
-              'relative rounded-s-none shadow-transparent after:absolute after:bottom-px after:left-0 after:top-px after:border-l',
-              'after:border-l-black/10',
-              'dark:after:border-l-white/5',
+              'ul-relative ul-rounded-s-none ul-shadow-transparent after:ul-absolute after:ul-bottom-px after:ul-left-0 after:ul-top-px after:ul-border-l',
+              'after:ul-border-l-black/10',
+              'dark:after:ul-border-l-white/5',
             )}
           />
         </div>
@@ -101,7 +103,7 @@ const TabContentCard = () => {
 const TabContentOtherMethods = () => {
   return (
     <>
-      <div className={cn('grid grid-cols-2 gap-3')}>
+      <div className={cn('ul-grid ul-grid-cols-2 ul-gap-3')}>
         <PaymentMethod checked variant="applePay" />
         <PaymentMethod variant="googlePay" />
         <PaymentMethod variant="paypal" />
@@ -109,7 +111,9 @@ const TabContentOtherMethods = () => {
         <PaymentMethod variant="klarna" />
         <PaymentMethod variant="amazonPay" />
       </div>
-      <footer className={cn('flex w-full justify-end gap-2 pt-4')}>
+      <footer
+        className={cn('ul-flex ul-w-full ul-justify-end ul-gap-2 ul-pt-4')}
+      >
         <PayButton />
       </footer>
     </>

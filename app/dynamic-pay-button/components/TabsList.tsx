@@ -13,7 +13,7 @@ export const TabsList = () => {
         <List asChild>
           <m.div
             animate={{ opacity: 1, x: '0%' }}
-            className={cn('flex gap-1')}
+            className={cn('ul-flex ul-gap-1')}
             exit={{ opacity: 0 }}
             initial={{ opacity: 0, x: '50%' }}
             transition={TRANS_SPRING}
@@ -21,22 +21,23 @@ export const TabsList = () => {
             {TABS.map(item => (
               <Tab
                 className={cn(
-                  'relative whitespace-nowrap rounded-lg px-2 py-1 transition-colors',
-                  'hover:text-zinc-800 dark:hover:text-white',
+                  'ul-relative ul-whitespace-nowrap ul-rounded-lg ul-px-2 ul-py-1 ul-transition-colors',
+                  'hover:ul-text-zinc-800 dark:hover:ul-text-white',
                   {
-                    'text-zinc-800 dark:text-white': item.label === selectedTab,
+                    'ul-text-zinc-800 dark:ul-text-white':
+                      item.label === selectedTab,
                   },
                 )}
                 key={item.label}
                 value={item.label}
               >
-                <div className={cn('relative z-10')}>{item.label}</div>
+                <div className={cn('ul-relative ul-z-10')}>{item.label}</div>
                 {item.label === selectedTab && (
                   <m.div
                     className={cn(
-                      'absolute inset-0 z-0 rounded-lg border',
-                      'border-transparent bg-zinc-200/60',
-                      'dark:border-zinc-700/40 dark:bg-zinc-800',
+                      'ul-absolute ul-inset-0 ul-z-0 ul-rounded-lg ul-border',
+                      'ul-border-transparent ul-bg-zinc-200/60',
+                      'dark:ul-border-zinc-700/40 dark:ul-bg-zinc-800',
                     )}
                     layoutId="bg"
                     transition={TRANS_SPRING_FAST}

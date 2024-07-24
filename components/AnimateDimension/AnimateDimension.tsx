@@ -80,7 +80,10 @@ export const AnimateDimension = ({
       })}
       {...props}
     >
-      <div className={cn('h-fit w-fit', containerClassName)} ref={containerRef}>
+      <div
+        className={cn('ul-h-fit ul-w-fit', containerClassName)}
+        ref={containerRef}
+      >
         {children}
       </div>
     </m.div>

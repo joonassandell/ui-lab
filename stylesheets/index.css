@@ -19,7 +19,7 @@
     }
   }
 
-  .dark {
+  .ul-dark {
     --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
       0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
@@ -66,42 +66,42 @@
 
 @layer utilities {
   .ul-scope {
-    @apply select-none;
+    @apply ul-select-none;
 
     button {
-      @apply cursor-default;
+      @apply ul-cursor-default;
     }
 
     :focus:not([class*='outline']) {
-      @apply outline-0;
+      @apply ul-outline-0;
     }
 
     :focus-visible:not([class*='outline']) {
-      @apply outline outline-1 outline-offset-2 outline-black/30;
+      @apply ul-outline ul-outline-1 ul-outline-offset-2 ul-outline-black/30;
     }
 
     ::selection {
-      @apply bg-black/15;
+      @apply ul-bg-black/15;
     }
   }
 
   .dark {
     .ul-scope {
       :focus-visible:not([class*='outline']) {
-        @apply outline-white/20;
+        @apply ul-outline-white/20;
       }
 
       ::selection {
-        @apply bg-black/70;
+        @apply ul-bg-black/70;
       }
     }
   }
 
   .ul-wrap {
-    @apply pl-[var(--ul-wrap-space-left)] pr-[var(--ul-wrap-space-right)];
+    @apply ul-pl-[var(--ul-wrap-space-left)] ul-pr-[var(--ul-wrap-space-right)];
   }
 
   .ul-wrap-vw {
-    @apply w-[calc(100vw-(var(--ul-wrap-space-left)+var(--ul-wrap-space-right)))];
+    @apply ul-w-[calc(100vw-(var(--ul-wrap-space-left)+var(--ul-wrap-space-right)))];
   }
 }

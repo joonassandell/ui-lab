@@ -15,25 +15,30 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 flex items-center justify-between gap-8 bg-zinc-100 px-6 py-4 dark:bg-zinc-950',
+        'ul-fixed ul-inset-x-0 ul-flex ul-items-center ul-justify-between ul-gap-8 ul-bg-zinc-100 ul-px-6 ul-py-4 dark:ul-bg-zinc-950',
       )}
     >
-      <Link className={cn('flex items-end gap-2 whitespace-nowrap')} href="/">
+      <Link
+        className={cn('ul-flex ul-items-end ul-gap-2 ul-whitespace-nowrap')}
+        href="/"
+      >
         UI Lab
-        <span className={cn('text-sm text-zinc-500 dark:text-zinc-400')}>
+        <span
+          className={cn('ul-text-sm ul-text-zinc-500 dark:ul-text-zinc-400')}
+        >
           by Joonas Sandell
         </span>
       </Link>
       <button onClick={handleThemeChange}>
         {theme === 'light' ? (
           <>
-            <span className={cn('sr-only')}>Dark mode</span>
-            <Moon className={cn('size-5')} />
+            <span className={cn('ul-sr-only')}>Dark mode</span>
+            <Moon className={cn('ul-size-5')} />
           </>
         ) : (
           <>
-            <span className={cn('sr-only')}>Light mode</span>
-            <Sun className={cn('size-5')} />
+            <span className={cn('ul-sr-only')}>Light mode</span>
+            <Sun className={cn('ul-size-5')} />
           </>
         )}
       </button>

@@ -13,11 +13,10 @@ const twMerge = extendTailwindMerge<'text-shadow' | 'text-shadow-color'>({
       ),
     },
   },
+  prefix: 'ul-',
 });
 
-export const cn = (...inputs: ClassValue[]) => {
-  return twMerge(clsx(inputs));
-};
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 /**
  * @link https://github.com/granteagon/move/blob/master/src/index.js

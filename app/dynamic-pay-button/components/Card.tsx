@@ -47,7 +47,9 @@ export const Card = ({
         y: index * -16,
         zIndex: CARDS.length - index,
       }}
-      className={cn('absolute h-full w-full', { 'cursor-grab': front })}
+      className={cn('ul-absolute ul-h-full ul-w-full', {
+        'ul-cursor-grab': front,
+      })}
       drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       onDragEnd={handleDragEnd}
@@ -65,8 +67,8 @@ export const Card = ({
       <m.div
         animate="animate"
         className={cn(
-          'h-full w-full select-none rounded-xl text-white text-shadow text-shadow-black/60',
-          'dark:shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
+          'ul-h-full ul-w-full ul-select-none ul-rounded-xl ul-text-white ul-text-shadow ul-text-shadow-black/60',
+          'dark:ul-shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
         )}
         custom={flip}
         initial={false}
@@ -89,25 +91,25 @@ const CardVisa = ({ front }: CardInnerProps) => {
     <>
       <div
         className={cn(
-          'relative flex h-full flex-col justify-end gap-3 overflow-hidden rounded-xl p-5 font-cc',
-          'bg-gradient-to-br from-[hsl(210,100%,50%)] to-[hsl(210,100%,30%)]',
-          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
-          'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl',
-          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
+          'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
+          'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-[1] before:ul-rounded-xl',
+          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
       >
         <div
           className={cn(
-            'absolute -right-24 -top-5 bottom-0 w-full rounded-tl-[100%]',
-            'bg-gradient-to-tl from-[hsl(210,100%,27%)] to-[hsl(210,100%,53%)]',
-            'dark:from-[hsl(210,70%,7%)] dark:to-[hsl(210,70%,24%)]',
-            'before:absolute before:-right-20 before:h-full before:w-full before:rounded-tl-[100%] before:bg-gradient-to-tl',
-            'after:absolute after:-right-36 after:h-full after:w-full after:rounded-tl-[100%] after:bg-gradient-to-tl',
+            'ul-absolute -ul-right-24 -ul-top-5 ul-bottom-0 ul-w-full ul-rounded-tl-[100%]',
+            'ul-bg-gradient-to-tl ul-from-[hsl(210,100%,27%)] ul-to-[hsl(210,100%,53%)]',
+            'dark:ul-from-[hsl(210,70%,7%)] dark:ul-to-[hsl(210,70%,24%)]',
+            'before:ul-absolute before:-ul-right-20 before:ul-h-full before:ul-w-full before:ul-rounded-tl-[100%] before:ul-bg-gradient-to-tl',
+            'after:ul-absolute after:-ul-right-36 after:ul-h-full after:ul-w-full after:ul-rounded-tl-[100%] after:ul-bg-gradient-to-tl',
           )}
         />
         <svg
-          className={cn('absolute right-5 top-6')}
+          className={cn('ul-absolute ul-right-5 ul-top-6')}
           height="24"
           viewBox="0 0 72 24"
           width="72"
@@ -121,7 +123,9 @@ const CardVisa = ({ front }: CardInnerProps) => {
           />
         </svg>
         <svg
-          className={cn('absolute right-5 top-1 mt-14 origin-right scale-50')}
+          className={cn(
+            'ul-absolute ul-right-5 ul-top-1 ul-mt-14 ul-origin-right ul-scale-50',
+          )}
           height="56"
           width="46"
           xmlns="http://www.w3.org/2000/svg"
@@ -137,56 +141,82 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </svg>
         <div
           className={cn(
-            'relative mb-3 grid h-10 w-12 place-content-center rounded',
-            'bg-gradient-to-bl from-[#ffecc7] to-[#d0b978]',
+            'ul-relative ul-mb-3 ul-grid ul-h-10 ul-w-12 ul-place-content-center ul-rounded',
+            'ul-bg-gradient-to-bl ul-from-[#ffecc7] ul-to-[#d0b978]',
           )}
         >
-          <div className={cn('absolute top-[0.8rem] h-px w-full bg-[#333]')} />
-          <div className={cn('absolute top-[1.21rem] h-px w-full bg-[#333]')} />
-          <div className={cn('absolute top-[1.6rem] h-px w-full bg-[#333]')} />
-          <div className={cn('absolute left-1/2 h-full w-px bg-[#333]')} />
           <div
             className={cn(
-              'z-[1] h-6 w-5 rounded border border-[#333]',
-              'bg-gradient-to-bl from-[#efdbab] to-[#e1cb94]',
+              'ul-absolute ul-top-[0.8rem] ul-h-px ul-w-full ul-bg-[#333]',
+            )}
+          />
+          <div
+            className={cn(
+              'ul-absolute ul-top-[1.21rem] ul-h-px ul-w-full ul-bg-[#333]',
+            )}
+          />
+          <div
+            className={cn(
+              'ul-absolute ul-top-[1.6rem] ul-h-px ul-w-full ul-bg-[#333]',
+            )}
+          />
+          <div
+            className={cn(
+              'ul-absolute ul-left-1/2 ul-h-full ul-w-px ul-bg-[#333]',
+            )}
+          />
+          <div
+            className={cn(
+              'ul-z-[1] ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
+              'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
             )}
           />
         </div>
-        <div className={cn('z-[1] flex justify-between gap-5 text-xl')}>
+        <div
+          className={cn(
+            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-xl',
+          )}
+        >
           <div>1234</div>
           <div>5678</div>
           <div>9000</div>
           <div>1234</div>
         </div>
-        <div className={cn('z-[1] flex justify-between text-sm uppercase')}>
+        <div
+          className={cn(
+            'ul-z-[1] ul-flex ul-justify-between ul-text-sm ul-uppercase',
+          )}
+        >
           <div>Mr Joonas Sandell</div>
           <div>12/28</div>
         </div>
       </div>
       <div
         className={cn(
-          'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'bg-gradient-to-br from-[hsl(210,100%,50%)] to-[hsl(210,100%,30%)]',
-          'dark:from-[hsl(210,70%,20%)] dark:to-[hsl(210,70%,10%)]',
-          'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
-          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:absolute after:left-0 after:right-0 after:top-5 after:h-10 after:bg-black',
+          'ul-absolute ul-top-0 ul-z-[2] ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+          'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
+          'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
+          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'after:ul-absolute after:ul-left-0 after:ul-right-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
         )}
       >
         <div
           className={cn(
-            'relative top-2 mt-16 h-9 w-full rounded bg-white px-3 py-1 text-right text-black/80',
+            'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
           )}
         >
           <label
-            className={cn('-mt-7 mb-1 block text-2xs uppercase text-white')}
+            className={cn(
+              '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+            )}
           >
             ccv
           </label>
           <input
             className={cn(
-              'h-9 bg-transparent pt-px text-right font-cc outline-0',
+              'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
             )}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
@@ -196,7 +226,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
             value={front ? ccv : ''}
           />
         </div>
-        <div className={cn('text-xs')}>
+        <div className={cn('ul-text-xs')}>
           <p>
             This card is property of Sandell Bank. You can also swipe me to
             switch the active payment card.
@@ -213,29 +243,33 @@ const CardMaster = ({ front }: CardInnerProps) => {
     <>
       <div
         className={cn(
-          'relative flex h-full flex-col justify-end gap-3 overflow-hidden rounded-xl p-5 font-cc',
-          'bg-gradient-to-br from-[hsl(230,30%,50%)] to-[hsl(230,40%,30%)]',
-          'dark:from-[hsl(230,50%,25%)] dark:to-[hsl(230,25%,20%)]',
-          'before:pointer-events-none before:absolute before:inset-0 before:z-[1] before:rounded-xl',
-          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
+          'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
+          'dark:ul-from-[hsl(230,50%,25%)] dark:ul-to-[hsl(230,25%,20%)]',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-[1] before:ul-rounded-xl',
+          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
       >
         <div
           className={cn(
-            'absolute -right-24 -top-5 bottom-0 w-full rounded-tl-[100%]',
-            'bg-gradient-to-tl from-[hsl(230,30%,25%)] to-[hsl(230,40%,55%)]',
-            'dark:from-[hsl(230,25%,10%)] dark:to-[hsl(230,50%,33%)]',
-            'before:absolute before:-right-20 before:h-full before:w-full before:rounded-tl-[100%] before:bg-gradient-to-tl',
-            'after:absolute after:-right-36 after:h-full after:w-full after:rounded-tl-[100%] after:bg-gradient-to-tl',
+            'ul-absolute -ul-right-24 -ul-top-5 ul-bottom-0 ul-w-full ul-rounded-tl-[100%]',
+            'ul-bg-gradient-to-tl ul-from-[hsl(230,30%,25%)] ul-to-[hsl(230,40%,55%)]',
+            'dark:ul-from-[hsl(230,25%,10%)] dark:ul-to-[hsl(230,50%,33%)]',
+            'before:ul-absolute before:-ul-right-20 before:ul-h-full before:ul-w-full before:ul-rounded-tl-[100%] before:ul-bg-gradient-to-tl',
+            'after:ul-absolute after:-ul-right-36 after:ul-h-full after:ul-w-full after:ul-rounded-tl-[100%] after:ul-bg-gradient-to-tl',
           )}
         />
-        <div className={cn('absolute left-5 top-5 flex')}>
-          <div className={cn('size-5 rounded-full bg-red-600')} />
-          <div className={cn('-ml-2 size-5 rounded-full bg-yellow-400/60')} />
+        <div className={cn('ul-absolute ul-left-5 ul-top-5 ul-flex')}>
+          <div className={cn('ul-size-5 ul-rounded-full ul-bg-red-600')} />
+          <div
+            className={cn(
+              '-ul-ml-2 ul-size-5 ul-rounded-full ul-bg-yellow-400/60',
+            )}
+          />
         </div>
         <svg
-          className={cn('absolute right-5 top-6')}
+          className={cn('ul-absolute ul-right-5 ul-top-6')}
           height="32"
           viewBox="0 0 17.5 16.2"
           width="32"
@@ -245,32 +279,42 @@ const CardMaster = ({ front }: CardInnerProps) => {
             fill="currentColor"
           />
         </svg>
-        <div className={cn('mb-1 flex items-center gap-2')}>
+        <div className={cn('ul-mb-1 ul-flex ul-items-center ul-gap-2')}>
           <div
             className={cn(
-              'relative grid h-10 w-12 place-content-center rounded',
-              'bg-gradient-to-bl from-[#ffecc7] to-[#d0b978]',
+              'ul-relative ul-grid ul-h-10 ul-w-12 ul-place-content-center ul-rounded',
+              'ul-bg-gradient-to-bl ul-from-[#ffecc7] ul-to-[#d0b978]',
             )}
           >
             <div
-              className={cn('absolute top-[0.8rem] h-px w-full bg-[#333]')}
+              className={cn(
+                'ul-absolute ul-top-[0.8rem] ul-h-px ul-w-full ul-bg-[#333]',
+              )}
             />
-            <div
-              className={cn('absolute top-[1.21rem] h-px w-full bg-[#333]')}
-            />
-            <div
-              className={cn('absolute top-[1.6rem] h-px w-full bg-[#333]')}
-            />
-            <div className={cn('absolute left-1/2 h-full w-px bg-[#333]')} />
             <div
               className={cn(
-                'z-[1] h-6 w-5 rounded border border-[#333]',
-                'bg-gradient-to-bl from-[#efdbab] to-[#e1cb94]',
+                'ul-absolute ul-top-[1.21rem] ul-h-px ul-w-full ul-bg-[#333]',
+              )}
+            />
+            <div
+              className={cn(
+                'ul-absolute ul-top-[1.6rem] ul-h-px ul-w-full ul-bg-[#333]',
+              )}
+            />
+            <div
+              className={cn(
+                'ul-absolute ul-left-1/2 ul-h-full ul-w-px ul-bg-[#333]',
+              )}
+            />
+            <div
+              className={cn(
+                'ul-z-[1] ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
+                'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
               )}
             />
           </div>
           <svg
-            className={cn('origin-center scale-50')}
+            className={cn('ul-origin-center ul-scale-50')}
             height="56"
             width="46"
             xmlns="http://www.w3.org/2000/svg"
@@ -285,41 +329,51 @@ const CardMaster = ({ front }: CardInnerProps) => {
             />
           </svg>
         </div>
-        <div className={cn('z-[1] flex justify-between gap-5 text-xl')}>
+        <div
+          className={cn(
+            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-xl',
+          )}
+        >
           <div>1234</div>
           <div>5678</div>
           <div>9101</div>
           <div>1123</div>
         </div>
-        <div className={cn('z-[1] flex justify-between text-sm uppercase')}>
+        <div
+          className={cn(
+            'ul-z-[1] ul-flex ul-justify-between ul-text-sm ul-uppercase',
+          )}
+        >
           <div>Mr Joonas Sandell</div>
           <div>10/27</div>
         </div>
       </div>
       <div
         className={cn(
-          'absolute top-0 z-[2] flex h-full w-full flex-col justify-between rounded-xl p-5 pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'bg-gradient-to-br from-[hsl(230,30%,50%)] to-[hsl(230,40%,30%)]',
-          'dark:from-[hsl(0,0%,20%)] dark:to-[hsl(0,0%,10%)]',
-          'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl',
-          'before:shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:absolute after:left-0 after:right-0 after:top-5 after:h-10 after:bg-black',
+          'ul-absolute ul-top-0 ul-z-[2] ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+          'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
+          'dark:ul-from-[hsl(0,0%,20%)] dark:ul-to-[hsl(0,0%,10%)]',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
+          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'after:ul-absolute after:ul-left-0 after:ul-right-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
         )}
       >
         <div
           className={cn(
-            'relative top-2 mt-16 h-9 w-full rounded bg-white px-3 py-1 text-right text-black/80',
+            'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
           )}
         >
           <label
-            className={cn('-mt-7 mb-1 block text-2xs uppercase text-white')}
+            className={cn(
+              '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+            )}
           >
             ccv
           </label>
           <input
             className={cn(
-              'h-9 bg-transparent pt-px text-right font-cc outline-0',
+              'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
             )}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
@@ -329,12 +383,12 @@ const CardMaster = ({ front }: CardInnerProps) => {
             value={front ? ccv : ''}
           />
         </div>
-        <div className={cn('text-xs')}>
+        <div className={cn('ul-text-xs')}>
           <p>
             You can also swipe me to switch the active payment card. Fancy
             details like this?{' '}
             <a
-              className={cn('underline')}
+              className={cn('ul-underline')}
               href="https://joonassandell.com/contact"
               tabIndex={-1}
               target="_blank"

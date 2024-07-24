@@ -11,13 +11,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <m.button
         className={cn(
-          'flex select-none items-center justify-center gap-3 self-start whitespace-nowrap rounded-lg px-3 py-1 transition-colors',
-          'hover:text-zinc-800',
-          'dark:hover:text-white',
+          'ul-flex ul-select-none ul-items-center ul-justify-center ul-gap-3 ul-self-start ul-whitespace-nowrap ul-rounded-lg ul-px-3 ul-py-1 ul-transition-colors',
+          'hover:ul-text-zinc-800',
+          'dark:hover:ul-text-white',
           {
-            'outline-0 before:absolute before:inset-0 dark:text-zinc-300/90':
+            'ul-outline-0 before:ul-absolute before:ul-inset-0 dark:ul-text-zinc-300/90':
               !open,
-            'px-1': open,
+            'ul-px-1': open,
           },
         )}
         layout
@@ -29,7 +29,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <AnimatePresence initial={false} mode="popLayout">
           <m.div
             animate={{ scale: 1 }}
-            className={cn('flex size-5 items-center justify-center')}
+            className={cn(
+              'ul-flex ul-size-5 ul-items-center ul-justify-center',
+            )}
             initial={{ scale: 0 }}
             key={icon.type.name}
             transition={TRANS_SPRING_SLOW}

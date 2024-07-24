@@ -5,7 +5,11 @@ import { DynamicPayButton } from './DynamicPayButton';
 
 export default function Page() {
   return (
-    <main className={cn('grid min-h-svh place-content-center overflow-hidden')}>
+    <main
+      className={cn(
+        'ul-grid ul-min-h-svh ul-place-content-center ul-overflow-hidden',
+      )}
+    >
       <DynamicPayButton />
     </main>
   );

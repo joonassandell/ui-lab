@@ -32,6 +32,7 @@ export default {
       );
     }),
   ],
+  prefix: 'ul-',
   theme: {
     extend: {
       boxShadow: {

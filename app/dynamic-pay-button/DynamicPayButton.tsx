@@ -67,15 +67,15 @@ export const DynamicPayButton = () => {
       <AnimateDimension
         animate={open ? 'open' : 'closed'}
         className={cn(
-          'ul-scope relative overflow-hidden text-sm font-medium shadow-pop',
-          'bg-white text-zinc-500',
-          'dark:bg-zinc-900 dark:text-zinc-400',
+          'ul-relative ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop ul-scope',
+          'ul-bg-white ul-text-zinc-500',
+          'dark:ul-bg-zinc-900 dark:ul-text-zinc-400',
           {
-            'has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2':
+            'has-[:focus-visible]:ul-outline has-[:focus-visible]:ul-outline-1 has-[:focus-visible]:ul-outline-offset-2':
               !open,
-            'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
+            'has-[:focus-visible]:ul-outline-black/30 dark:has-[:focus-visible]:ul-outline-white/20':
               !open,
-            'overflow-visible': overflow,
+            'ul-overflow-visible': overflow,
           },
         )}
         onAnimationComplete={variant => {
@@ -93,7 +93,7 @@ export const DynamicPayButton = () => {
         }}
       >
         <Tabs
-          className={cn('flex flex-col items-center')}
+          className={cn('ul-flex ul-flex-col ul-items-center')}
           onValueChange={handleTabChange}
           value={selectedTab}
         >
@@ -116,7 +116,9 @@ export const DynamicPayButton = () => {
             }}
           >
             <header
-              className={cn('flex w-full items-center justify-between p-3')}
+              className={cn(
+                'ul-flex ul-w-full ul-items-center ul-justify-between ul-p-3',
+              )}
               inert={loading ? '' : undefined}
             >
               <TabsList />

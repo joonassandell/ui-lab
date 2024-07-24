@@ -4,20 +4,24 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className={cn('grid gap-6 px-6 pb-6 pt-16 lg:grid-cols-2')}>
+    <main
+      className={cn(
+        'ul-grid ul-gap-6 ul-px-6 ul-pb-6 ul-pt-16 lg:ul-grid-cols-2',
+      )}
+    >
       <div
         className={cn(
-          'flex h-[calc(100svh-theme(spacing[24]))] min-h-96 flex-col rounded-lg border',
-          'border-zinc-300 dark:border-zinc-700/40',
+          'ul-flex ul-min-h-96 ul-flex-col ul-rounded-lg ul-border ul-h-[calc(100svh-theme(spacing[24]))]',
+          'ul-border-zinc-300 dark:ul-border-zinc-700/40',
         )}
       >
-        <div className={cn('grid flex-1 place-content-center')}>
+        <div className={cn('ul-grid ul-flex-1 ul-place-content-center')}>
           <DynamicPayButton />
         </div>
         <div
           className={cn(
-            'flex justify-center border-t p-4 text-sm',
-            'border-t-zinc-300 dark:border-t-zinc-700/40',
+            'ul-flex ul-justify-center ul-border-t ul-p-4 ul-text-sm',
+            'ul-border-t-zinc-300 dark:ul-border-t-zinc-700/40',
           )}
         >
           <Link href="/dynamic-pay-button">Dynamic Pay Button</Link>

@@ -24,14 +24,14 @@ export const PayButton = ({ className }: PayButtonProps) => {
   return (
     <m.button
       className={cn(
-        'overflow-hidden whitespace-nowrap rounded-lg shadow-pop-sm outline-0 transition-colors',
-        'bg-sky-100 text-sky-700 hover:bg-sky-200 focus-visible:bg-sky-200',
-        'dark:bg-sky-950 dark:text-sky-300 dark:hover:bg-sky-900/60 dark:hover:text-sky-200',
-        'dark:focus-visible:bg-sky-900/60 dark:focus-visible:text-sky-200',
+        'ul-overflow-hidden ul-whitespace-nowrap ul-rounded-lg ul-shadow-pop-sm ul-outline-0 ul-transition-colors',
+        'ul-bg-sky-100 ul-text-sky-700 hover:ul-bg-sky-200 focus-visible:ul-bg-sky-200',
+        'dark:ul-bg-sky-950 dark:ul-text-sky-300 dark:hover:ul-bg-sky-900/60 dark:hover:ul-text-sky-200',
+        'dark:ul-focus-visible:ul-bg-sky-900/60 dark:ul-focus-visible:ul-text-sky-200',
         {
-          'dark:bg-teal-900 dark:text-teal-100 dark:focus-visible:bg-teal-900 dark:focus-visible:text-teal-100':
+          'dark:ul-bg-teal-900 dark:ul-text-teal-100 dark:ul-focus-visible:ul-bg-teal-900 dark:ul-focus-visible:ul-text-teal-100':
             success,
-          'pointer-events-none bg-green-100 text-green-700 focus-visible:bg-green-100 focus-visible:text-green-700':
+          'ul-pointer-events-none ul-bg-green-100 ul-text-green-700 ul-focus-visible:ul-bg-green-100 ul-focus-visible:ul-text-green-700':
             success,
         },
         className,
@@ -42,9 +42,9 @@ export const PayButton = ({ className }: PayButtonProps) => {
       <AnimateDimension>
         <div
           className={cn(
-            'flex items-center justify-center gap-1 px-3 py-2 active:scale-[0.95]',
+            'ul-flex ul-items-center ul-justify-center ul-gap-1 ul-px-3 ul-py-2 ul-active:ul-scale-[0.95]',
             {
-              'active:scale-100': loading,
+              'ul-active:ul-scale-100': loading,
             },
           )}
         >
@@ -54,14 +54,14 @@ export const PayButton = ({ className }: PayButtonProps) => {
           {loading && !success && (
             <m.div
               animate={{ scale: 1 }}
-              className={cn('ml-1')}
+              className={cn('ul-ml-1')}
               exit={{ scale: 0 }}
               initial={{ scale: 0 }}
               transition={TRANS_SPRING}
             >
               <Spinner
                 className={cn(
-                  'size-4 fill-sky-800 text-blue-300 dark:fill-sky-300 dark:text-black/30',
+                  'ul-size-4 ul-fill-sky-800 ul-text-blue-300 dark:ul-fill-sky-300 dark:ul-text-black/30',
                 )}
                 screenReaderText="Processing payment…"
               />
@@ -70,7 +70,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
           {success && (
             <>
               Payment successful
-              <Check className={cn('size-5')} />
+              <Check className={cn('ul-size-5')} />
             </>
           )}
         </div>

@@ -20,7 +20,7 @@ export const Cards = () => {
   }, [switchCard, setSwitchCard]);
 
   return (
-    <div className={cn('relative h-52')} inert={loading ? '' : undefined}>
+    <div className={cn('ul-relative ul-h-52')} inert={loading ? '' : undefined}>
       {cards.map(({ id, variant }, index) => {
         return (
           <Card
