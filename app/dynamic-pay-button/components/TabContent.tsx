@@ -74,6 +74,7 @@ const TabContentCard = () => {
                   success,
                 'dark:bg-teal-950 dark:text-teal-100 dark:placeholder:text-green-100/40':
                   success,
+                'pointer-events-none': loading,
               },
             )}
             disabled={loading}
