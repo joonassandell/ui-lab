@@ -1,24 +1,16 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { type HeaderProps } from './Header.types';
 import { Moon, Sun } from '@/components/Icon';
-import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-const Header = ({ queryParamOnly }: HeaderProps) => {
+export const Header = () => {
   const { setTheme, theme } = useTheme();
-  const queryParam = useSearchParams().get('header') === 'true';
 
   const handleThemeChange = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-
-  if (queryParamOnly && !queryParam) {
-    return null;
-  }
 
   return (
     <header
@@ -48,13 +40,3 @@ const Header = ({ queryParamOnly }: HeaderProps) => {
     </header>
   );
 };
-
-const HeaderSuspense = ({ ...props }: HeaderProps) => {
-  return (
-    <Suspense>
-      <Header {...props} />
-    </Suspense>
-  );
-};
-
-export { HeaderSuspense as Header };

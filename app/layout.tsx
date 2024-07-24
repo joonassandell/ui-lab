@@ -1,5 +1,6 @@
 import '@/stylesheets/global.css';
 import { cn } from '@/lib/utils';
+import { Header } from '@/components/Header';
 import { type PropsWithChildren } from 'react';
 import { ThemeProvider } from 'next-themes';
 import type { Metadata } from 'next';
@@ -27,6 +28,7 @@ export default function Layout({ children }: PropsWithChildren) {
           disableTransitionOnChange
           enableSystem={false}
         >
+          <Header />
           {children}
         </ThemeProvider>
       </body>
