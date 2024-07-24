@@ -8,8 +8,9 @@
 /.next/
 /out/
 
-# Build
+# Builds
 /build
+/dist
 
 # Debug
 npm-debug.log*

@@ -10,16 +10,16 @@
       0 8px 8px 0 hsl(0 0% 0% / 0.033);
     --ul-shadow-pop-sm: 0 0 0 1px hsl(0 0% 0% / 0.1) inset,
       0 2px 2px hsl(0 0% 0% / 0.033);
-    --wrap-space-left: 1.5rem;
-    --wrap-space-right: 1.5rem;
+    --ul-wrap-space-left: 1.5rem;
+    --ul-wrap-space-right: 1.5rem;
 
     @media screen(md) {
-      --wrap-space-left: 2.5rem;
-      --wrap-space-right: 2.5rem;
+      --ul-wrap-space-left: 2.5rem;
+      --ul-wrap-space-right: 2.5rem;
     }
   }
 
-  :root.dark {
+  .dark {
     --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
       0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
@@ -27,8 +27,6 @@
     --ul-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 2px 2px hsl(0 0% 0% / 0.4);
   }
-
-  
 
   @font-face {
     font-family: 'CC font';
@@ -45,10 +43,29 @@
   ::after {
     --tw-text-shadow: rgb(255 255 255 / 0.5);
   }
+
+  /**
+   * tailwindcss-scoped-preflight plugin removes the following styles for some
+   * reason, so add them back and scope the ::before/::after.
+   *
+   * @link https://github.com/Roman86/tailwindcss-scoped-preflight
+   * @link https://unpkg.com/tailwindcss@3.4.3/src/css/preflight.css
+   */
+  .ul-scope {
+    *,
+    *::before,
+    *::after {
+      --tw-content: '';
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: theme('borderColor.DEFAULT', currentColor);
+    }
+  }
 }
 
 @layer utilities {
-  .ul-component {
+  .ul-scope {
     @apply select-none;
 
     button {
@@ -69,7 +86,7 @@
   }
 
   .dark {
-    .ul-component {
+    .ul-scope {
       :focus-visible:not([class*='outline']) {
         @apply outline-white/20;
       }
@@ -80,11 +97,11 @@
     }
   }
 
-  .wrap {
-    @apply pl-[var(--wrap-space-left)] pr-[var(--wrap-space-right)];
+  .ul-wrap {
+    @apply pl-[var(--ul-wrap-space-left)] pr-[var(--ul-wrap-space-right)];
   }
 
-  .wrap-vw {
-    @apply w-[calc(100vw-(var(--wrap-space-left)+var(--wrap-space-right)))];
+  .ul-wrap-vw {
+    @apply w-[calc(100vw-(var(--ul-wrap-space-left)+var(--ul-wrap-space-right)))];
   }
 }

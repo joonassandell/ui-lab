@@ -6,6 +6,7 @@ import { Close, CreditCard } from '@/components/Icon';
 import { cn } from '@/lib/utils';
 import { Content } from './components/Content';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { domMax, LazyMotion } from 'framer-motion';
 import {
   type DynamicBuyButtonContextProps,
   type TabContentProps,
@@ -62,70 +63,73 @@ export const DynamicPayButton = () => {
   }, [open, loading]);
 
   return (
-    <AnimateDimension
-      animate={open ? 'open' : 'closed'}
-      className={cn(
-        'ul-component relative overflow-hidden text-sm font-medium shadow-pop',
-        'bg-white text-zinc-500',
-        'dark:bg-zinc-900 dark:text-zinc-400',
-        {
-          'has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2':
-            !open,
-          'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
-            !open,
-          'overflow-visible': overflow,
-        },
-      )}
-      onAnimationComplete={variant => {
-        variant === 'open' && inputRef.current?.focus({ preventScroll: true });
-        variant === 'closed' &&
-          buttonRef.current?.focus({ preventScroll: true });
-      }}
-      onAnimationStart={variant =>
-        variant === 'open' && buttonRef.current?.blur()
-      }
-      variants={{
-        closed: { borderRadius: 60 },
-        open: { borderRadius: 20 },
-      }}
-    >
-      <Tabs
-        className={cn('flex flex-col items-center')}
-        onValueChange={handleTabChange}
-        value={selectedTab}
+    <LazyMotion features={domMax} strict>
+      <AnimateDimension
+        animate={open ? 'open' : 'closed'}
+        className={cn(
+          'ul-scope relative overflow-hidden text-sm font-medium shadow-pop',
+          'bg-white text-zinc-500',
+          'dark:bg-zinc-900 dark:text-zinc-400',
+          {
+            'has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-offset-2':
+              !open,
+            'has-[:focus-visible]:outline-black/30 dark:has-[:focus-visible]:outline-white/20':
+              !open,
+            'overflow-visible': overflow,
+          },
+        )}
+        onAnimationComplete={variant => {
+          variant === 'open' &&
+            inputRef.current?.focus({ preventScroll: true });
+          variant === 'closed' &&
+            buttonRef.current?.focus({ preventScroll: true });
+        }}
+        onAnimationStart={variant =>
+          variant === 'open' && buttonRef.current?.blur()
+        }
+        variants={{
+          closed: { borderRadius: 60 },
+          open: { borderRadius: 20 },
+        }}
       >
-        <DynamicPayButtonContext.Provider
-          value={{
-            ccv,
-            handleOpen,
-            inputRef,
-            loading,
-            open,
-            overflow,
-            selectedTab,
-            setCcv,
-            setLoading,
-            setOverflow,
-            setSuccess,
-            setSwitchCard,
-            success,
-            switchCard,
-          }}
+        <Tabs
+          className={cn('flex flex-col items-center')}
+          onValueChange={handleTabChange}
+          value={selectedTab}
         >
-          <header
-            className={cn('flex w-full items-center justify-between p-3')}
-            inert={loading ? '' : undefined}
+          <DynamicPayButtonContext.Provider
+            value={{
+              ccv,
+              handleOpen,
+              inputRef,
+              loading,
+              open,
+              overflow,
+              selectedTab,
+              setCcv,
+              setLoading,
+              setOverflow,
+              setSuccess,
+              setSwitchCard,
+              success,
+              switchCard,
+            }}
           >
-            <TabsList />
-            <Button icon={icon} ref={buttonRef} />
-          </header>
-          <Content>
-            <TabContent value={TABS[0].label} />
-            <TabContent value={TABS[1].label} />
-          </Content>
-        </DynamicPayButtonContext.Provider>
-      </Tabs>
-    </AnimateDimension>
+            <header
+              className={cn('flex w-full items-center justify-between p-3')}
+              inert={loading ? '' : undefined}
+            >
+              <TabsList />
+              <Button icon={icon} ref={buttonRef} />
+            </header>
+            <Content>
+              <TabContent value={TABS[0].label} />
+              <TabContent value={TABS[1].label} />
+            </Content>
+          </DynamicPayButtonContext.Provider>
+        </Tabs>
+      </AnimateDimension>
+    </LazyMotion>
   );
 };
 
