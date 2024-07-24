@@ -2,10 +2,11 @@
   "$schema": "https://json.schemastore.org/eslintrc",
   "extends": [
     "next/core-web-vitals",
+    "prettier",
     "plugin:import/recommended",
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:typescript-sort-keys/recommended"
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:tailwindcss/recommended"
   ],
   "plugins": [
     "sort-imports-es6-autofix",
@@ -36,7 +37,14 @@
       { "caseSensitive": false }
     ],
     "react/jsx-sort-props": "error",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "tailwindcss/classnames-order": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn"],
+      "config": "tailwind.config.ts"
+    }
   },
   "overrides": [
     {

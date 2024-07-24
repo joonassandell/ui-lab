@@ -29,9 +29,9 @@ export const PayButton = ({ className }: PayButtonProps) => {
         'dark:ul-bg-sky-950 dark:ul-text-sky-300 dark:hover:ul-bg-sky-900/60 dark:hover:ul-text-sky-200',
         'dark:ul-focus-visible:ul-bg-sky-900/60 dark:ul-focus-visible:ul-text-sky-200',
         {
-          'dark:ul-bg-teal-900 dark:ul-text-teal-100 dark:ul-focus-visible:ul-bg-teal-900 dark:ul-focus-visible:ul-text-teal-100':
+          'dark:ul-focus-visible:ul-bg-teal-900 dark:ul-focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100':
             success,
-          'ul-pointer-events-none ul-bg-green-100 ul-text-green-700 ul-focus-visible:ul-bg-green-100 ul-focus-visible:ul-text-green-700':
+          'ul-focus-visible:ul-bg-green-100 ul-focus-visible:ul-text-green-700 ul-pointer-events-none ul-bg-green-100 ul-text-green-700':
             success,
         },
         className,
@@ -42,7 +42,7 @@ export const PayButton = ({ className }: PayButtonProps) => {
       <AnimateDimension>
         <div
           className={cn(
-            'ul-flex ul-items-center ul-justify-center ul-gap-1 ul-px-3 ul-py-2 ul-active:ul-scale-[0.95]',
+            'ul-active:ul-scale-[0.95] ul-flex ul-items-center ul-justify-center ul-gap-1 ul-px-3 ul-py-2',
             {
               'ul-active:ul-scale-100': loading,
             },

@@ -11,7 +11,7 @@ export default function Home() {
     >
       <div
         className={cn(
-          'ul-flex ul-min-h-96 ul-flex-col ul-rounded-lg ul-border ul-h-[calc(100svh-theme(spacing[24]))]',
+          'ul-flex ul-h-[calc(100svh-theme(spacing[24]))] ul-min-h-96 ul-flex-col ul-rounded-lg ul-border',
           'ul-border-zinc-300 dark:ul-border-zinc-700/40',
         )}
       >

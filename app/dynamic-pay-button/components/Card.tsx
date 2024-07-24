@@ -199,7 +199,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
           'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
           'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:ul-absolute after:ul-left-0 after:ul-right-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
+          'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
         )}
       >
         <div
@@ -356,7 +356,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
           'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
           'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:ul-absolute after:ul-left-0 after:ul-right-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
+          'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
         )}
       >
         <div
