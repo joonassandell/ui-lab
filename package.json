@@ -13,7 +13,7 @@
     "./*": "./dist/*"
   },
   "scripts": {
-    "build:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/global.css -o ./dist/index.css --minify",
+    "build:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --minify",
     "build:ts": "tsup --tsconfig tsconfig.lib.json",
     "build:lib": "bun run build:ts && bun run build:styles",
     "build": "next build",

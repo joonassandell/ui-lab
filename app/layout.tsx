@@ -1,4 +1,4 @@
-import '@/stylesheets/global.css';
+import '@/stylesheets/index.css';
 import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 import { type PropsWithChildren } from 'react';

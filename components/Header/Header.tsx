@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 flex items-center justify-between gap-8 px-6 py-4',
+        'fixed inset-x-0 flex items-center justify-between gap-8 bg-zinc-100 px-6 py-4 dark:bg-zinc-950',
       )}
     >
       <Link className={cn('flex items-end gap-2 whitespace-nowrap')} href="/">
