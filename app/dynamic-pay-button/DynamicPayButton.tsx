@@ -74,38 +74,35 @@ export const DynamicPayButton = ({
 
   return (
     <LazyMotion features={domMax} strict>
-      <AnimateDimension
-        animate={open ? 'open' : 'closed'}
-        className={cn(
-          'ul-scope ul-relative ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop',
-          'ul-bg-white ul-text-zinc-500',
-          'dark:ul-bg-zinc-900 dark:ul-text-zinc-400',
-          {
-            'has-[:focus-visible]:ul-outline has-[:focus-visible]:ul-outline-1 has-[:focus-visible]:ul-outline-offset-2':
-              !open,
-            'has-[:focus-visible]:ul-outline-black/30 dark:has-[:focus-visible]:ul-outline-white/20':
-              !open,
-            'ul-overflow-visible': overflow,
-          },
-        )}
-        onAnimationComplete={variant => {
-          variant === 'open' &&
-            inputRef.current?.focus({ preventScroll: true });
-          variant === 'closed' &&
-            buttonRef.current?.focus({ preventScroll: true });
-        }}
-        onAnimationStart={variant =>
-          variant === 'open' && buttonRef.current?.blur()
-        }
-        variants={{
-          closed: { borderRadius: 60 },
-          open: { borderRadius: 20 },
-        }}
-      >
-        <Tabs
-          className={cn('ul-flex ul-flex-col ul-items-center')}
-          onValueChange={handleTabChange}
-          value={selectedTab}
+      <Tabs onValueChange={handleTabChange} value={selectedTab}>
+        <AnimateDimension
+          animate={open ? 'open' : 'closed'}
+          className={cn(
+            'ul-scope ul-relative ul-flex ul-justify-center ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop',
+            'ul-bg-white ul-text-zinc-500',
+            'dark:ul-bg-zinc-900 dark:ul-text-zinc-400',
+            {
+              'has-[:focus-visible]:ul-outline has-[:focus-visible]:ul-outline-1 has-[:focus-visible]:ul-outline-offset-2':
+                !open,
+              'has-[:focus-visible]:ul-outline-black/30 dark:has-[:focus-visible]:ul-outline-white/20':
+                !open,
+              'ul-overflow-visible': overflow,
+            },
+          )}
+          containerClassName={cn('ul-flex ul-flex-col ul-items-center')}
+          onAnimationComplete={variant => {
+            variant === 'open' &&
+              inputRef.current?.focus({ preventScroll: true });
+            variant === 'closed' &&
+              buttonRef.current?.focus({ preventScroll: true });
+          }}
+          onAnimationStart={variant =>
+            variant === 'open' && buttonRef.current?.blur()
+          }
+          variants={{
+            closed: { borderRadius: 60 },
+            open: { borderRadius: 20 },
+          }}
         >
           <DynamicPayButtonContext.Provider
             value={{
@@ -141,8 +138,8 @@ export const DynamicPayButton = ({
               <TabContent value={TABS[1].label} />
             </Content>
           </DynamicPayButtonContext.Provider>
-        </Tabs>
-      </AnimateDimension>
+        </AnimateDimension>
+      </Tabs>
     </LazyMotion>
   );
 };
