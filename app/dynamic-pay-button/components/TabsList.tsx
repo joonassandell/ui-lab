@@ -14,9 +14,9 @@ export const TabsList = () => {
           <m.div
             animate={{ opacity: 1, x: '0%' }}
             className={cn('ul-flex ul-gap-1')}
-            exit={{ opacity: 0 }}
+            exit={{ opacity: 0, transition: TRANS_SPRING_FAST }}
             initial={{ opacity: 0, x: '50%' }}
-            transition={TRANS_SPRING}
+            transition={{ ...TRANS_SPRING, delay: 0.07 }}
           >
             {TABS.map(item => (
               <Tab

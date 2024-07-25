@@ -7,7 +7,7 @@
 
 export const TRANS_SPRING = {
   damping: 20,
-  stiffness: 180,
+  stiffness: 200,
   type: 'spring',
 };
 
