@@ -1,12 +1,12 @@
 'use client';
 
 import { AnimateDimension } from '@/components/AnimateDimension';
+import { type AnimationDefinition, domMax, LazyMotion } from 'framer-motion';
 import { Button } from './components/Button';
 import { Close, CreditCard } from '@/components/Icon';
 import { cn } from '@/lib/utils';
 import { Content } from './components/Content';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { domMax, LazyMotion } from 'framer-motion';
 import {
   type DynamicBuyButtonContextProps,
   type DynamicBuyButtonProps,
@@ -39,6 +39,7 @@ export const DynamicPayButton = ({
   const [selectedTab, setSelectedTab] = useState(TABS[0].label);
   const [success, setSuccess] = useState(false);
   const [switchCard, setSwitchCard] = useState(false);
+  const [tabInitialAnim, setTabInitialAnim] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -52,9 +53,23 @@ export const DynamicPayButton = ({
         <Close className={cn('ul-size-5')} />
       ),
     );
-    !open && setSuccess(false);
-    !open && setSelectedTab(TABS[0].label);
-    !open && setCcv('');
+  };
+
+  const onAnimationComplete = (variant: AnimationDefinition) => {
+    if (variant === 'open') {
+      inputRef.current?.focus({ preventScroll: true });
+      setTabInitialAnim(true);
+    }
+    if (variant === 'closed') {
+      buttonRef.current?.focus({ preventScroll: true });
+      setSuccess(false);
+      setSelectedTab(TABS[0].label);
+      setCcv('');
+    }
+  };
+
+  const onAnimationStart = (variant: AnimationDefinition) => {
+    variant === 'open' && buttonRef.current?.blur();
   };
 
   const handleTabChange = (value: TabContentProps['value']) => {
@@ -90,15 +105,8 @@ export const DynamicPayButton = ({
             },
           )}
           containerClassName={cn('ul-flex ul-flex-col ul-items-center')}
-          onAnimationComplete={variant => {
-            variant === 'open' &&
-              inputRef.current?.focus({ preventScroll: true });
-            variant === 'closed' &&
-              buttonRef.current?.focus({ preventScroll: true });
-          }}
-          onAnimationStart={variant =>
-            variant === 'open' && buttonRef.current?.blur()
-          }
+          onAnimationComplete={onAnimationComplete}
+          onAnimationStart={onAnimationStart}
           variants={{
             closed: { borderRadius: 60 },
             open: { borderRadius: 20 },
@@ -122,6 +130,7 @@ export const DynamicPayButton = ({
               setSwitchCard,
               success,
               switchCard,
+              tabInitialAnim,
             }}
           >
             <header

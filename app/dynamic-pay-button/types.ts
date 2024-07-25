@@ -30,6 +30,7 @@ export interface DynamicBuyButtonContextProps extends DynamicBuyButtonProps {
   setSwitchCard: Dispatch<SetStateAction<boolean>>;
   success: boolean;
   switchCard: boolean;
+  tabInitialAnim: boolean;
 }
 
 export interface ButtonProps {

@@ -9,11 +9,13 @@ import { type TabContentProps, TABS, useDynamicPayButton } from '../';
 import { TRANS_SPRING } from '@/lib/config';
 
 export const TabContent = ({ value }: TabContentProps) => {
+  const { tabInitialAnim } = useDynamicPayButton();
+
   return (
     <Content asChild tabIndex={-1} value={value}>
       <m.form
         animate="open"
-        initial="closed"
+        initial={tabInitialAnim ? 'closed' : false}
         transition={{
           ...TRANS_SPRING,
           filter: { delay: 0.1 },
