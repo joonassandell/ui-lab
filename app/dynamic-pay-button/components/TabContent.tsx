@@ -45,7 +45,7 @@ const TabContentCard = () => {
       <Cards />
       <footer
         className={cn(
-          'ul-flex ul-w-full ul-items-center ul-justify-between ul-gap-2 ul-pt-4',
+          'ul-relative ul-z-0 ul-flex ul-w-full ul-items-center ul-justify-between ul-gap-2 ul-pt-4',
         )}
       >
         <button

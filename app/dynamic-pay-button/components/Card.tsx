@@ -97,7 +97,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
           'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
           'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
           'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-[1] before:ul-rounded-xl',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-10 before:ul-rounded-xl',
           'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
@@ -171,14 +171,14 @@ const CardVisa = ({ front }: CardInnerProps) => {
           />
           <div
             className={cn(
-              'ul-z-[1] ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
+              'ul-z-10 ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
               'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
             )}
           />
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
+            'ul-z-10 ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
           )}
         >
           <div>1234</div>
@@ -188,7 +188,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
+            'ul-z-10 ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -197,7 +197,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
       </div>
       <div
         className={cn(
-          'ul-absolute ul-top-0 ul-z-[2] ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+          'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
           'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
           'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
           'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
@@ -248,7 +248,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
           'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
           'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
           'dark:ul-from-[hsl(230,50%,25%)] dark:ul-to-[hsl(230,25%,20%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-[1] before:ul-rounded-xl',
+          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-10 before:ul-rounded-xl',
           'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
           'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
@@ -310,7 +310,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
             />
             <div
               className={cn(
-                'ul-z-[1] ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
+                'ul-z-10 ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
                 'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
               )}
             />
@@ -334,7 +334,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
+            'ul-z-10 ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
           )}
         >
           <div>1234</div>
@@ -344,7 +344,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
+            'ul-z-10 ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -353,7 +353,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
       </div>
       <div
         className={cn(
-          'ul-absolute ul-top-0 ul-z-[2] ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+          'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
           'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
           'dark:ul-from-[hsl(0,0%,20%)] dark:ul-to-[hsl(0,0%,10%)]',
           'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
