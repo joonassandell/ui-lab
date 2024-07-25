@@ -26,7 +26,7 @@
     "preview": "bun run build && bun run start",
     "typecheck": "tsc --pretty --noEmit",
     "watch:lib:ts": "bun run build:lib:ts --watch",
-    "watch:lib:styles": "bun run build:lib:styles --watch"
+    "watch:lib:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --watch"
   },
   "dependencies": {
     "@radix-ui/react-tabs": "^1.1.0",
