@@ -29,9 +29,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <AnimatePresence initial={false} mode="popLayout">
           <m.div
             animate={{ scale: 1 }}
-            className={cn(
-              'ul-flex ul-size-5 ul-items-center ul-justify-center',
-            )}
+            className={cn('ul-flex ul-items-center ul-justify-center')}
             initial={{ scale: 0 }}
             key={icon.type.name}
             transition={TRANS_SPRING_SLOW}

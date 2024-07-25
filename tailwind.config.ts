@@ -44,7 +44,7 @@ export default {
         cc: ['CC font'],
       },
       fontSize: {
-        '2xs': ['10px', '20px'],
+        '2xs': ['0.625rem', '1.25rem'],
       },
       textShadow: {
         DEFAULT: '0 1px 1px var(--tw-text-shadow)',

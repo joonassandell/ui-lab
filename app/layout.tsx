@@ -3,11 +3,18 @@ import { cn } from '@/lib/utils';
 import { Header } from '@/components/Header';
 import { type PropsWithChildren } from 'react';
 import { ThemeProvider } from 'next-themes';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {
   description: 'User interface laboratory of Joonas Sandell',
   title: 'UI Lab',
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
+  width: 'device-width',
 };
 
 export default function Layout({ children }: PropsWithChildren) {

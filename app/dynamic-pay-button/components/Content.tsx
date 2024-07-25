@@ -11,7 +11,7 @@ export const Content = ({ children }: ContentProps) => {
       {open && (
         <m.div
           animate="open"
-          className={cn('ul-wrap-vw ul-max-w-96 ul-p-3', {
+          className={cn('ul-w-[308px] ul-p-3 sm:ul-w-96', {
             'ul-absolute ul-top-14': !open,
           })}
           exit="closed"

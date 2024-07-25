@@ -10,13 +10,6 @@
       0 8px 8px 0 hsl(0 0% 0% / 0.033);
     --ul-shadow-pop-sm: 0 0 0 1px hsl(0 0% 0% / 0.1) inset,
       0 2px 2px hsl(0 0% 0% / 0.033);
-    --ul-wrap-space-left: 1.5rem;
-    --ul-wrap-space-right: 1.5rem;
-
-    @media screen(md) {
-      --ul-wrap-space-left: 2.5rem;
-      --ul-wrap-space-right: 2.5rem;
-    }
   }
 
   .ul-dark {
@@ -70,6 +63,10 @@
       @apply ul-cursor-default;
     }
 
+    input {
+      @apply ul-appearance-none ul-opacity-100;
+    }
+
     :focus:not([class*='outline']) {
       @apply ul-outline-0;
     }
@@ -93,13 +90,5 @@
         @apply ul-bg-black/70;
       }
     }
-  }
-
-  .ul-wrap {
-    @apply ul-pl-[var(--ul-wrap-space-left)] ul-pr-[var(--ul-wrap-space-right)];
-  }
-
-  .ul-wrap-vw {
-    @apply ul-w-[calc(100vw-(var(--ul-wrap-space-left)+var(--ul-wrap-space-right)))];
   }
 }

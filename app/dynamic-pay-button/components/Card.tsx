@@ -112,7 +112,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
           )}
         />
         <svg
-          className={cn('ul-absolute ul-right-5 ul-top-6')}
+          className={cn('ul-absolute ul-right-5 ul-top-6 ul-h-auto ul-w-16')}
           height="24"
           viewBox="0 0 72 24"
           width="72"
@@ -127,9 +127,10 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </svg>
         <svg
           className={cn(
-            'ul-absolute ul-right-5 ul-top-1 ul-mt-14 ul-origin-right ul-scale-50',
+            'ul-absolute ul-right-5 ul-top-0.5 ul-mt-16 ul-h-auto ul-w-6 sm:ul-top-2',
           )}
           height="56"
+          viewBox="0 0 46 56"
           width="46"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -177,7 +178,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base md:ul-text-xl',
+            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
           )}
         >
           <div>1234</div>
@@ -187,7 +188,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-text-sm ul-uppercase',
+            'ul-z-[1] ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -215,11 +216,11 @@ const CardVisa = ({ front }: CardInnerProps) => {
               '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
             )}
           >
-            ccv
+            Ccv
           </label>
           <input
             className={cn(
-              'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
+              'ul-h-9 ul-bg-transparent ul-pt-0.5 ul-text-right ul-font-cc ul-outline-0',
             )}
             maxLength={3}
             onChange={e => setCcv(e.target.value)}
@@ -229,12 +230,10 @@ const CardVisa = ({ front }: CardInnerProps) => {
             value={front ? ccv : ''}
           />
         </div>
-        <div className={cn('ul-text-xs')}>
-          <p>
-            This card is property of Sandell Bank. You can also swipe me to
-            switch the active payment card.
-          </p>
-        </div>
+        <p className={cn('ul-text-xs')}>
+          This card is the property of Sandell Bank. Swipe me to switch the
+          payment card.
+        </p>
       </div>
     </>
   );
@@ -272,7 +271,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
           />
         </div>
         <svg
-          className={cn('ul-absolute ul-right-5 ul-top-6')}
+          className={cn('ul-absolute ul-right-5 ul-top-6 ul-h-auto ul-w-7')}
           height="32"
           viewBox="0 0 17.5 16.2"
           width="32"
@@ -282,7 +281,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
             fill="currentColor"
           />
         </svg>
-        <div className={cn('ul-mb-1 ul-flex ul-items-center ul-gap-2')}>
+        <div className={cn('ul-mb-1 ul-flex ul-items-center ul-gap-4')}>
           <div
             className={cn(
               'ul-relative ul-grid ul-h-10 ul-w-12 ul-place-content-center ul-rounded',
@@ -317,8 +316,9 @@ const CardMaster = ({ front }: CardInnerProps) => {
             />
           </div>
           <svg
-            className={cn('ul-origin-center ul-scale-50')}
+            className={cn('ul-h-auto ul-w-6')}
             height="56"
+            viewBox="0 0 46 56"
             width="46"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -334,7 +334,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-xl',
+            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
           )}
         >
           <div>1234</div>
@@ -344,7 +344,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-text-sm ul-uppercase',
+            'ul-z-[1] ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -386,21 +386,18 @@ const CardMaster = ({ front }: CardInnerProps) => {
             value={front ? ccv : ''}
           />
         </div>
-        <div className={cn('ul-text-xs')}>
-          <p>
-            You can also swipe me to switch the active payment card. Fancy
-            details like this?{' '}
-            <a
-              className={cn('ul-underline')}
-              href="https://joonassandell.com/contact"
-              tabIndex={-1}
-              target="_blank"
-            >
-              Hire me
-            </a>
-            !
-          </p>
-        </div>
+
+        <p className={cn('ul-text-xs')}>
+          Swipe me to switch the active payment card. Fancy details like this?{' '}
+          <a
+            className={cn('ul-underline')}
+            href="https://joonassandell.com/contact"
+            tabIndex={-1}
+          >
+            Hire me
+          </a>
+          !
+        </p>
       </div>
     </>
   );

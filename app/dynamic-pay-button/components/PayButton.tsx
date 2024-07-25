@@ -27,11 +27,11 @@ export const PayButton = ({ className }: PayButtonProps) => {
         'ul-overflow-hidden ul-whitespace-nowrap ul-rounded-lg ul-shadow-pop-sm ul-outline-0 ul-transition-colors',
         'ul-bg-sky-100 ul-text-sky-700 hover:ul-bg-sky-200 focus-visible:ul-bg-sky-200',
         'dark:ul-bg-sky-950 dark:ul-text-sky-300 dark:hover:ul-bg-sky-900/60 dark:hover:ul-text-sky-200',
-        'dark:ul-focus-visible:ul-bg-sky-900/60 dark:ul-focus-visible:ul-text-sky-200',
+        'dark:focus-visible:ul-bg-sky-900/60 dark:focus-visible:ul-text-sky-200',
         {
-          'dark:ul-focus-visible:ul-bg-teal-900 dark:ul-focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100':
+          'dark:focus-visible:ul-bg-teal-900 dark:focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100':
             success,
-          'ul-focus-visible:ul-bg-green-100 ul-focus-visible:ul-text-green-700 ul-pointer-events-none ul-bg-green-100 ul-text-green-700':
+          'focus-visible:ul-bg-green-100 focus-visible:ul-text-green-700 ul-pointer-events-none ul-bg-green-100 ul-text-green-700':
             success,
         },
         className,
