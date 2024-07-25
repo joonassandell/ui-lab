@@ -2,19 +2,9 @@ import { AnimatePresence, m } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { type ContentProps, useDynamicPayButton } from '../';
 import { TRANS_SPRING } from '@/lib/config';
-import { useEffect, useState } from 'react';
 
 export const Content = ({ children }: ContentProps) => {
   const { open } = useDynamicPayButton();
-  const [present, setPresent] = useState(open);
-
-  useEffect(() => {
-    if (open) setPresent(true);
-  }, [open]);
-
-  if (!present) {
-    return null;
-  }
 
   return (
     <div
@@ -22,25 +12,31 @@ export const Content = ({ children }: ContentProps) => {
         'ul-absolute': !open,
       })}
     >
-      <AnimatePresence
-        mode="popLayout"
-        onExitComplete={() => setPresent(false)}
-      >
+      <AnimatePresence mode="popLayout">
         {open && (
           <m.div
             animate="open"
-            exit="closed"
+            exit="exit"
             initial="closed"
             style={{ originY: 'bottom' }}
-            transition={TRANS_SPRING}
+            transition={{
+              ...TRANS_SPRING,
+              opacity: { delay: 0.1 },
+            }}
             variants={{
               closed: {
-                filter: 'blur(4px)',
                 opacity: 0,
+                rotate: 3,
+                y: '1rem',
+              },
+              exit: {
+                opacity: 0,
+                scaleX: 0.66,
               },
               open: {
-                filter: 'blur(0px)',
                 opacity: 1,
+                rotate: 0,
+                y: 0,
               },
             }}
           >
