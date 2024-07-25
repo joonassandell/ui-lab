@@ -5,6 +5,7 @@ import {
   useDynamicPayButton,
 } from '../';
 import { cn } from '@/lib/utils';
+import { DelayedRender } from '@/components/DelayedRender';
 import {
   type DragHandlers,
   m,
@@ -53,6 +54,7 @@ export const Card = ({
       })}
       drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
+      initial={false}
       onDragEnd={handleDragEndOffset}
       onDragStart={() => !overflow && setOverflow(true)}
       onTouchEnd={e => onCardTouchEnd && onCardTouchEnd(e)}
@@ -90,6 +92,7 @@ export const Card = ({
 
 const CardVisa = ({ front }: CardInnerProps) => {
   const { ccv, setCcv } = useDynamicPayButton();
+
   return (
     <>
       <div
@@ -195,52 +198,55 @@ const CardVisa = ({ front }: CardInnerProps) => {
           <div>12/28</div>
         </div>
       </div>
-      <div
-        className={cn(
-          'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
-          'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
-          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
-        )}
-      >
+      <DelayedRender delay={1500}>
         <div
           className={cn(
-            'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
+            'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+            'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
+            'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
+            'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
+            'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+            'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+            'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
           )}
         >
-          <label
+          <div
             className={cn(
-              '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+              'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
             )}
           >
-            Ccv
-          </label>
-          <input
-            className={cn(
-              'ul-h-9 ul-bg-transparent ul-pt-0.5 ul-text-right ul-font-cc ul-outline-0',
-            )}
-            maxLength={3}
-            onChange={e => setCcv(e.target.value)}
-            pattern="\d*"
-            placeholder="123"
-            tabIndex={-1}
-            value={front ? ccv : ''}
-          />
+            <label
+              className={cn(
+                '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+              )}
+            >
+              Ccv
+            </label>
+            <input
+              className={cn(
+                'ul-h-9 ul-bg-transparent ul-pt-0.5 ul-text-right ul-font-cc ul-outline-0',
+              )}
+              maxLength={3}
+              onChange={e => setCcv(e.target.value)}
+              pattern="\d*"
+              placeholder="123"
+              tabIndex={-1}
+              value={front ? ccv : ''}
+            />
+          </div>
+          <p className={cn('ul-text-xs')}>
+            This card is the property of Sandell Bank. Swipe me to switch the
+            payment card.
+          </p>
         </div>
-        <p className={cn('ul-text-xs')}>
-          This card is the property of Sandell Bank. Swipe me to switch the
-          payment card.
-        </p>
-      </div>
+      </DelayedRender>
     </>
   );
 };
 
 const CardMaster = ({ front }: CardInnerProps) => {
   const { ccv, setCcv } = useDynamicPayButton();
+
   return (
     <>
       <div
@@ -351,54 +357,56 @@ const CardMaster = ({ front }: CardInnerProps) => {
           <div>10/27</div>
         </div>
       </div>
-      <div
-        className={cn(
-          'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
-          'dark:ul-from-[hsl(0,0%,20%)] dark:ul-to-[hsl(0,0%,10%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
-          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-          'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
-        )}
-      >
+      <DelayedRender delay={1500}>
         <div
           className={cn(
-            'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
+            'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+            'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
+            'dark:ul-from-[hsl(0,0%,20%)] dark:ul-to-[hsl(0,0%,10%)]',
+            'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
+            'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+            'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+            'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
           )}
         >
-          <label
+          <div
             className={cn(
-              '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+              'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
             )}
           >
-            ccv
-          </label>
-          <input
-            className={cn(
-              'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
-            )}
-            maxLength={3}
-            onChange={e => setCcv(e.target.value)}
-            pattern="\d*"
-            placeholder="123"
-            tabIndex={-1}
-            value={front ? ccv : ''}
-          />
-        </div>
+            <label
+              className={cn(
+                '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+              )}
+            >
+              ccv
+            </label>
+            <input
+              className={cn(
+                'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
+              )}
+              maxLength={3}
+              onChange={e => setCcv(e.target.value)}
+              pattern="\d*"
+              placeholder="123"
+              tabIndex={-1}
+              value={front ? ccv : ''}
+            />
+          </div>
 
-        <p className={cn('ul-text-xs')}>
-          Swipe me to switch the active payment card. Fancy details like this?{' '}
-          <a
-            className={cn('ul-underline')}
-            href="https://joonassandell.com/contact"
-            tabIndex={-1}
-          >
-            Hire me
-          </a>
-          !
-        </p>
-      </div>
+          <p className={cn('ul-text-xs')}>
+            Swipe me to switch the active payment card. Fancy details like this?{' '}
+            <a
+              className={cn('ul-underline')}
+              href="https://joonassandell.com/contact"
+              tabIndex={-1}
+            >
+              Hire me
+            </a>
+            !
+          </p>
+        </div>
+      </DelayedRender>
     </>
   );
 };
