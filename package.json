@@ -17,6 +17,7 @@
     "build:lib:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --minify",
     "build:lib": "run-s build:lib:*",
     "build": "next build",
+    "build:ignore": "IGNORE_ERRORS=true next build",
     "check": "bun run lint && bun run typecheck",
     "dev": "next dev --port 3001",
     "dev:lib": "run-p watch:lib:*",
@@ -24,6 +25,7 @@
     "lint": "next lint",
     "start": "next start --port 3001",
     "preview": "bun run build && bun run start",
+    "preview:ignore": "bun run build:ignore && bun run start",
     "typecheck": "tsc --pretty --noEmit",
     "watch:lib:ts": "bun run build:lib:ts --watch",
     "watch:lib:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --watch"
