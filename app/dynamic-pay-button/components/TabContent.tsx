@@ -6,7 +6,7 @@ import { m } from 'framer-motion';
 import { PayButton } from './PayButton';
 import { PaymentMethod } from './PaymentMethod';
 import { type TabContentProps, TABS, useDynamicPayButton } from '../';
-import { TRANS_SPRING_FAST } from '@/lib/config';
+import { TRANS_SPRING } from '@/lib/config';
 
 export const TabContent = ({ value }: TabContentProps) => {
   return (
@@ -15,8 +15,8 @@ export const TabContent = ({ value }: TabContentProps) => {
         animate="open"
         initial="closed"
         transition={{
-          ...TRANS_SPRING_FAST,
-          filter: { delay: 0.05 },
+          ...TRANS_SPRING,
+          filter: { delay: 0.1 },
         }}
         variants={{
           closed: {
