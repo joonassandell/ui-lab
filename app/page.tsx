@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main
       className={cn(
-        'ul-grid ul-gap-6 ul-px-6 ul-pb-6 ul-pt-16 lg:ul-grid-cols-2',
+        'ul-grid ul-gap-6 ul-overflow-hidden ul-px-6 ul-pb-6 ul-pt-16 lg:ul-grid-cols-2',
       )}
     >
       <div

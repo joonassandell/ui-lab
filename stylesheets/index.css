@@ -46,21 +46,19 @@
 
   /**
    * tailwindcss-scoped-preflight plugin removes the following styles for some
-   * reason, so add them back and scope the ::before/::after.
+   * reason, so add them back and also scope the ::before/:after styles.
    *
    * @link https://github.com/Roman86/tailwindcss-scoped-preflight
    * @link https://unpkg.com/tailwindcss@3.4.3/src/css/preflight.css
    */
-  .ul-scope {
-    *,
-    *::before,
-    *::after {
-      --tw-content: '';
-      box-sizing: border-box;
-      border-width: 0;
-      border-style: solid;
-      border-color: theme('borderColor.DEFAULT', currentColor);
-    }
+  .ul-scope *,
+  .ul-scope *::before,
+  .ul-scope *::after {
+    --tw-content: '';
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: theme('borderColor.DEFAULT', currentColor);
   }
 }
 
