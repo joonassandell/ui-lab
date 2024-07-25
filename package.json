@@ -13,17 +13,20 @@
     "./*": "./dist/*"
   },
   "scripts": {
-    "build:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --minify",
-    "build:ts": "tsup --tsconfig tsconfig.lib.json",
-    "build:lib": "bun run build:ts && bun run build:styles",
+    "build:lib:ts": "tsup --tsconfig tsconfig.lib.json",
+    "build:lib:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --minify",
+    "build:lib": "run-s build:lib:*",
     "build": "next build",
     "check": "bun run lint && bun run typecheck",
     "dev": "next dev --port 3001",
+    "dev:lib": "run-p watch:lib:*",
     "lint:fix": "next lint --fix",
     "lint": "next lint",
     "start": "next start --port 3001",
     "preview": "bun run build && bun run start",
-    "typecheck": "tsc --pretty --noEmit"
+    "typecheck": "tsc --pretty --noEmit",
+    "watch:lib:ts": "bun run build:lib:ts --watch",
+    "watch:lib:styles": "bun run build:lib:styles --watch"
   },
   "dependencies": {
     "@radix-ui/react-tabs": "^1.1.0",
@@ -47,11 +50,13 @@
     "eslint-config-next": "14.2.4",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "eslint-plugin-typescript-sort-keys": "^3.2.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8",
     "prettier": "^3",
     "tsup": "^8.2.2",
