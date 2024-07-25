@@ -5,11 +5,17 @@ import {
   type PropsWithChildren,
   type RefObject,
   type SetStateAction,
+  type TouchEventHandler,
 } from 'react';
-import { type HTMLMotionProps } from 'framer-motion';
+import { type DragHandlers, type HTMLMotionProps } from 'framer-motion';
 import { type TabsContentProps } from '@radix-ui/react-tabs';
 
-export interface DynamicBuyButtonContextProps {
+export interface DynamicBuyButtonProps {
+  onCardTouchEnd?: TouchEventHandler<HTMLDivElement>;
+  onCardTouchStart?: TouchEventHandler<HTMLDivElement>;
+}
+
+export interface DynamicBuyButtonContextProps extends DynamicBuyButtonProps {
   ccv: string;
   handleOpen: () => void;
   inputRef: RefObject<HTMLInputElement>;
@@ -34,6 +40,7 @@ export interface ContentProps extends PropsWithChildren {}
 
 export interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   index: number;
+  onDragEndOffset: DragHandlers['onDragEnd'];
   variant?: 'visa' | 'mastercard';
 }
 

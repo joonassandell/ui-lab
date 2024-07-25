@@ -26,7 +26,7 @@ export const Cards = () => {
           <Card
             index={index}
             key={id}
-            onDragEnd={() => resetCards()}
+            onDragEndOffset={() => resetCards()}
             variant={variant}
           />
         );

@@ -16,11 +16,12 @@ import { useState } from 'react';
 
 export const Card = ({
   index,
-  onDragEnd,
+  onDragEndOffset,
   variant = 'visa',
   ...props
 }: CardProps) => {
-  const { overflow, setOverflow } = useDynamicPayButton();
+  const { onCardTouchEnd, onCardTouchStart, overflow, setOverflow } =
+    useDynamicPayButton();
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
@@ -29,13 +30,13 @@ export const Card = ({
   });
   const front = index === 0;
 
-  const handleDragEnd: DragHandlers['onDragEnd'] = (e, info) => {
+  const handleDragEndOffset: DragHandlers['onDragEnd'] = (e, info) => {
     if (front) {
       if (info.offset.x < -100) {
-        onDragEnd && onDragEnd(e, info);
+        onDragEndOffset && onDragEndOffset(e, info);
       }
       if (info.offset.x > 100 || info.offset.y > 50) {
-        onDragEnd && onDragEnd(e, info);
+        onDragEndOffset && onDragEndOffset(e, info);
       }
     }
   };
@@ -52,8 +53,10 @@ export const Card = ({
       })}
       drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
-      onDragEnd={handleDragEnd}
+      onDragEnd={handleDragEndOffset}
       onDragStart={() => !overflow && setOverflow(true)}
+      onTouchEnd={e => onCardTouchEnd && onCardTouchEnd(e)}
+      onTouchStart={e => onCardTouchStart && onCardTouchStart(e)}
       style={{
         perspective: 1000,
         rotate,
@@ -174,7 +177,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-xl',
+            'ul-z-[1] ul-flex ul-justify-between ul-gap-5 ul-text-base md:ul-text-xl',
           )}
         >
           <div>1234</div>
