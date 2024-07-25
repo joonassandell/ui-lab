@@ -30,9 +30,9 @@ export const PayButton = ({ className }: PayButtonProps) => {
         'dark:focus-visible:ul-bg-sky-900/60 dark:focus-visible:ul-text-sky-200',
         {
           'dark:focus-visible:ul-bg-teal-900 dark:focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100':
-            success,
+            success || (success && !loading),
           'focus-visible:ul-bg-green-100 focus-visible:ul-text-green-700 ul-pointer-events-none ul-bg-green-100 ul-text-green-700':
-            success,
+            success || (success && !loading),
         },
         className,
       )}
