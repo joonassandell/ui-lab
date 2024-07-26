@@ -77,7 +77,11 @@ export const Card = ({
         )}
         custom={flip}
         initial={false}
-        onTap={() => front && setFlip(!flip)}
+        onTap={e => {
+          const target = e.target as HTMLElement;
+          if (target.nodeName === 'INPUT') return;
+          front && setFlip(!flip);
+        }}
         style={{ scale, transformStyle: 'preserve-3d' }}
         tabIndex={front ? 0 : -1}
         transition={TRANS_SPRING_SLOW}
@@ -198,7 +202,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
           <div>12/28</div>
         </div>
       </div>
-      <DelayedRender delay={1500}>
+      <DelayedRender delay={800}>
         <div
           className={cn(
             'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
@@ -357,7 +361,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
           <div>10/27</div>
         </div>
       </div>
-      <DelayedRender delay={1500}>
+      <DelayedRender delay={800}>
         <div
           className={cn(
             'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
