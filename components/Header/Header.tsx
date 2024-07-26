@@ -2,15 +2,22 @@
 
 import { cn } from '@/lib/utils';
 import { Moon, Sun } from '@/components/Icon';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
 export const Header = () => {
+  const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
 
-  const handleThemeChange = () => {
+  const handleThemeChange = () =>
     setTheme(theme === 'light' ? 'dark' : 'light');
-  };
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <header
