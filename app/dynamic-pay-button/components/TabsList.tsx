@@ -23,6 +23,7 @@ export const TabsList = () => {
                 className={cn(
                   'ul-relative ul-whitespace-nowrap ul-rounded-lg ul-px-2 ul-py-1 ul-transition-colors',
                   'hover:ul-text-zinc-800 dark:hover:ul-text-white',
+                  'active:ul-scale-[0.95]',
                   {
                     'ul-text-zinc-800 dark:ul-text-white':
                       item.label === selectedTab,

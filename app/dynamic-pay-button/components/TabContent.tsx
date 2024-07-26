@@ -54,6 +54,7 @@ const TabContentCard = () => {
           aria-label="Switch active credit card"
           className={cn(
             'ul-grid ul-size-8 ul-place-content-center ul-rounded-lg ul-border ul-transition-colors',
+            'active:ul-scale-[0.9]',
             'ul-border-zinc-200 hover:ul-bg-zinc-200/60 hover:ul-text-zinc-800',
             'dark:ul-border-zinc-700/40 dark:hover:ul-bg-zinc-800 dark:hover:ul-text-white',
           )}

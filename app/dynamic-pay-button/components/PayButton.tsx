@@ -28,10 +28,11 @@ export const PayButton = ({ className }: PayButtonProps) => {
         'ul-bg-sky-100 ul-text-sky-700 hover:ul-bg-sky-200 focus-visible:ul-bg-sky-200',
         'dark:ul-bg-sky-950 dark:ul-text-sky-300 dark:hover:ul-bg-sky-900/60 dark:hover:ul-text-sky-200',
         'dark:focus-visible:ul-bg-sky-900/60 dark:focus-visible:ul-text-sky-200',
+        'ul-group',
         {
-          'dark:focus-visible:ul-bg-teal-900 dark:focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100':
+          'dark:focus-visible:ul-bg-teal-900 dark:focus-visible:ul-text-teal-100 dark:ul-bg-teal-900 dark:ul-text-teal-100 dark:hover:ul-bg-teal-900 dark:hover:ul-text-teal-100':
             success || (success && !loading),
-          'focus-visible:ul-bg-green-100 focus-visible:ul-text-green-700 ul-pointer-events-none ul-bg-green-100 ul-text-green-700':
+          'focus-visible:ul-bg-green-100 focus-visible:ul-text-green-700 hover:ul-bg-green-100 hover:ul-text-green-700 ul-bg-green-100 ul-text-green-700':
             success || (success && !loading),
         },
         className,
@@ -42,9 +43,9 @@ export const PayButton = ({ className }: PayButtonProps) => {
       <AnimateDimension>
         <div
           className={cn(
-            'ul-active:ul-scale-[0.95] ul-flex ul-items-center ul-justify-center ul-gap-1 ul-px-3 ul-py-2',
+            'ul-flex ul-items-center ul-justify-center ul-gap-1 ul-px-3 ul-py-2',
             {
-              'ul-active:ul-scale-100': loading,
+              'group-active:ul-scale-[0.95]': !loading,
             },
           )}
         >
