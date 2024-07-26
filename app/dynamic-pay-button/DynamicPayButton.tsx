@@ -53,6 +53,9 @@ export const DynamicPayButton = ({
         <Close className={cn('ul-size-5')} />
       ),
     );
+    !open && setSuccess(false);
+    !open && setSelectedTab(TABS[0].label);
+    !open && setCcv('');
   };
 
   const onAnimationComplete = (variant: AnimationDefinition) => {
@@ -62,9 +65,6 @@ export const DynamicPayButton = ({
     }
     if (variant === 'closed') {
       buttonRef.current?.focus({ preventScroll: true });
-      setSuccess(false);
-      setSelectedTab(TABS[0].label);
-      setCcv('');
     }
   };
 
