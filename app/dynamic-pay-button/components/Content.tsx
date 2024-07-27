@@ -8,7 +8,7 @@ export const Content = ({ children }: ContentProps) => {
 
   return (
     <div
-      className={cn('ul-w-[308px] ul-p-3 sm:ul-w-96', {
+      className={cn('ul-w-[308px] ul-p-3 ul-pt-2 empty:ul-hidden sm:ul-w-96', {
         'ul-absolute': !open,
       })}
     >
@@ -19,15 +19,11 @@ export const Content = ({ children }: ContentProps) => {
             exit="exit"
             initial="closed"
             style={{ originY: 'bottom' }}
-            transition={{
-              ...TRANS_SPRING,
-              opacity: { delay: 0.1 },
-            }}
+            transition={TRANS_SPRING}
             variants={{
               closed: {
                 opacity: 0,
-                rotate: 3,
-                y: '1rem',
+                scaleX: 0.66,
               },
               exit: {
                 opacity: 0,
@@ -36,7 +32,7 @@ export const Content = ({ children }: ContentProps) => {
               open: {
                 opacity: 1,
                 rotate: 0,
-                y: 0,
+                scaleX: 1,
               },
             }}
           >
