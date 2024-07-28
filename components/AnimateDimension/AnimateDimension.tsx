@@ -21,11 +21,11 @@ export const AnimateDimension = ({
 }: AnimateDimensionProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [{ height, width }, setDimensions] = useState<{
-    height: 'auto' | number;
-    width: 'auto' | number;
+    height: 'fit-content' | number;
+    width: 'fit-content' | number;
   }>({
-    height: 'auto',
-    width: 'auto',
+    height: 'fit-content',
+    width: 'fit-content',
   });
 
   useEffect(() => {
@@ -70,7 +70,6 @@ export const AnimateDimension = ({
       animate={animate}
       className={cn(className)}
       initial={initial}
-      style={{ height, width }}
       transition={TRANS_SPRING}
       variants={variantsWithDimensions}
       {...(mountEvents.current && {
