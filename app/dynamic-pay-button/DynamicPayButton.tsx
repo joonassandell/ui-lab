@@ -93,7 +93,7 @@ export const DynamicPayButton = ({
         <AnimateDimension
           animate={open ? 'open' : 'closed'}
           className={cn(
-            'ul-scope ul-relative ul-flex ul-justify-center ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop',
+            'ul-scope ul-relative ul-flex ul-justify-center ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop [will-change:auto]',
             'ul-bg-white ul-text-zinc-500',
             'dark:ul-bg-zinc-900 dark:ul-text-zinc-400',
             {
