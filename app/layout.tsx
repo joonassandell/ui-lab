@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import type { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {
-  description: 'User interface laboratory of Joonas Sandell',
+  description: 'User interface laboratory by Joonas Sandell',
   title: 'UI Lab',
 };
 
