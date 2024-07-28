@@ -1,38 +1,41 @@
-# UI Lab
+<p>
+  <a href="https://joonassandell.com/ui-lab">
+    <img width="96" src="app/icon.svg" alt="Joonas Sandell Logomark :D">
+  </a>
+</p>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# UI Laboratory by Joonas Sandell
 
-## Getting Started
+Components built in this repository are hosted at [https://joonassandell.com/ui-lab](https://joonassandell.com/ui-lab). This is a [Next.js](https://nextjs.org/) app bootstrapped with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-First, run the development server:
+## Getting started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+git clone git@github.com:joonassandell/ui-lab.git
+cd ui-lab
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `bun run build:ignore`: Run build and ignore errors
+- `bun run build:lib:styles`: Build the library styles
+- `bun run build:lib:ts`: Build the library TypeScript
+- `bun run build:lib`: Build the library
+- `bun run build`: Build the application
+- `bun run check`: Run TypeScript type checking and ESLint
+- `bun run dev:lib`: Watch the library TypeScript and styles
+- `bun run dev`: Run a development server and open [localhost:3000](https://localhost:3000) with your browser
+- `bun run lint:fix`: Run ESLint and fix possible errors
+- `bun run lint`: Run ESLint
+- `bun run preview:ignore`: Build the application and preview it locally by ignoring errors
+- `bun run preview`: Build the application and preview it locally
+- `bun run start`: Start the application in production mode. The application should be build first.
+- `bun run typecheck`: Run TS type checking
+- `bun run watch:lib:styles`: Watch the library styles
+- `bun run watch:lib:ts`: Watch the library TypeScript
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Copyright
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Copyright © [Joonas Sandell](https://x.com/joonassandell)
