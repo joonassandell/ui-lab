@@ -31,7 +31,6 @@ export const Content = ({ children }: ContentProps) => {
               },
               open: {
                 opacity: 1,
-                rotate: 0,
                 scaleX: 1,
               },
             }}
