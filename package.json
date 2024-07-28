@@ -28,7 +28,6 @@
     "lint:fix": "next lint --fix",
     "lint": "next lint",
     "start": "next start --port 3001",
-    "prepublishOnly": "bun run build:lib",
     "preview": "bun run build && bun run start",
     "preview:ignore": "bun run build:ignore && bun run start",
     "typecheck": "tsc --pretty --noEmit",
