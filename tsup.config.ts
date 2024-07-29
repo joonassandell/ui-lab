@@ -7,5 +7,6 @@ export default defineConfig(options => {
     entry: ['app/index.ts'],
     format: 'cjs',
     minify: !options.watch,
+    target: 'node20',
   };
 });
