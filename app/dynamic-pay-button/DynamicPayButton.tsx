@@ -89,7 +89,7 @@ export const DynamicPayButton = ({
 
   return (
     <LazyMotion features={domMax} strict>
-      <Tabs onValueChange={handleTabChange} value={selectedTab}>
+      <Tabs asChild onValueChange={handleTabChange} value={selectedTab}>
         <AnimateDimension
           animate={open ? 'open' : 'closed'}
           className={cn(

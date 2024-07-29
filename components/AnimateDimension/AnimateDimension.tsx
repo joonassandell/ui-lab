@@ -2,89 +2,100 @@
 
 import { type AnimateDimensionProps } from './';
 import { cn } from '@/lib/utils';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { m } from 'framer-motion';
 import { TRANS_SPRING } from '@/lib/config';
-import { useEffect, useRef, useState } from 'react';
 
-export const AnimateDimension = ({
-  animate = 'closed',
-  children,
-  className,
-  containerClassName,
-  initial = 'closed',
-  onAnimationComplete,
-  onAnimationStart,
-  onUpdate,
-  triggerEventsOnMount = false,
-  variants,
-  ...props
-}: AnimateDimensionProps) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [{ height, width }, setDimensions] = useState<{
-    height: 'fit-content' | number;
-    width: 'fit-content' | number;
-  }>({
-    height: 'fit-content',
-    width: 'fit-content',
-  });
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const resizeObserver = new ResizeObserver(entries => {
-      const observedHeight = entries[0].contentRect.height;
-      const observedWidth = entries[0].contentRect.width;
-      setDimensions({
-        height: observedHeight,
-        width: observedWidth,
-      });
+export const AnimateDimension = forwardRef<
+  HTMLDivElement,
+  AnimateDimensionProps
+>(
+  (
+    {
+      animate = 'closed',
+      children,
+      className,
+      containerClassName,
+      initial = 'closed',
+      onAnimationComplete,
+      onAnimationStart,
+      onUpdate,
+      triggerEventsOnMount = false,
+      variants,
+      ...props
+    }: AnimateDimensionProps,
+    ref,
+  ) => {
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const [{ height, width }, setDimensions] = useState<{
+      height: 'fit-content' | number;
+      width: 'fit-content' | number;
+    }>({
+      height: 'fit-content',
+      width: 'fit-content',
     });
 
-    resizeObserver.observe(containerRef.current);
+    useEffect(() => {
+      if (!containerRef.current) return;
 
-    return () => resizeObserver.disconnect();
-  }, []);
+      const resizeObserver = new ResizeObserver(entries => {
+        const observedHeight = entries[0].contentRect.height;
+        const observedWidth = entries[0].contentRect.width;
+        setDimensions({
+          height: observedHeight,
+          width: observedWidth,
+        });
+      });
 
-  const mountEvents = useRef(triggerEventsOnMount);
-  useEffect(() => {
-    if (animate === 'open' && !mountEvents.current) {
-      mountEvents.current = true;
-    }
-  }, [animate]);
+      resizeObserver.observe(containerRef.current);
 
-  const variantsWithDimensions = {
-    closed: {
-      height,
-      width,
-      ...variants?.closed,
-    },
-    open: {
-      height,
-      width,
-      ...variants?.open,
-    },
-  };
+      return () => resizeObserver.disconnect();
+    }, []);
 
-  return (
-    <m.div
-      animate={animate}
-      className={cn(className)}
-      initial={initial}
-      transition={TRANS_SPRING}
-      variants={variantsWithDimensions}
-      {...(mountEvents.current && {
-        onAnimationComplete,
-        onAnimationStart,
-        onUpdate,
-      })}
-      {...props}
-    >
-      <div
-        className={cn('ul-h-fit ul-w-fit', containerClassName)}
-        ref={containerRef}
+    const mountEvents = useRef(triggerEventsOnMount);
+    useEffect(() => {
+      if (animate === 'open' && !mountEvents.current) {
+        mountEvents.current = true;
+      }
+    }, [animate]);
+
+    const variantsWithDimensions = {
+      closed: {
+        height,
+        width,
+        ...variants?.closed,
+      },
+      open: {
+        height,
+        width,
+        ...variants?.open,
+      },
+    };
+
+    return (
+      <m.div
+        animate={animate}
+        className={cn(className)}
+        initial={initial}
+        ref={ref}
+        transition={TRANS_SPRING}
+        variants={variantsWithDimensions}
+        {...(mountEvents.current && {
+          onAnimationComplete,
+          onAnimationStart,
+          onUpdate,
+        })}
+        {...props}
       >
-        {children}
-      </div>
-    </m.div>
-  );
-};
+        <div
+          className={cn('ul-h-fit ul-w-fit', containerClassName)}
+          ref={containerRef}
+        >
+          {children}
+        </div>
+      </m.div>
+    );
+  },
+);
+
+AnimateDimension.displayName = 'AnimateDimension';
