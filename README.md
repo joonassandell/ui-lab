@@ -1,6 +1,6 @@
 <p>
   <a href="https://joonassandell.com/ui-lab">
-    <img width="96" src="app/icon.svg" alt="Joonas Sandell Logomark :D">
+    <img width="96" src="https://raw.githubusercontent.com/joonassandell/ui-lab/main/app/icon.svg" alt="Joonas Sandell Logomark :D">
   </a>
 </p>
 
@@ -26,7 +26,7 @@ bun run dev
 - `bun run build`: Build the application
 - `bun run check`: Run TypeScript type checking and ESLint
 - `bun run dev:lib`: Watch the library TypeScript and styles
-- `bun run dev`: Run a development server and open [localhost:3000](https://localhost:3000) with your browser
+- `bun run dev`: Run a development server and open [localhost:3001](https://localhost:3001) with your browser
 - `bun run lint:fix`: Run ESLint and fix possible errors
 - `bun run lint`: Run ESLint
 - `bun run preview:ignore`: Build the application and preview it locally by ignoring errors
