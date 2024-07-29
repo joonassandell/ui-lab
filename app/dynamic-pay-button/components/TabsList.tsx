@@ -41,7 +41,7 @@ export const TabsList = () => {
                       'dark:ul-border-zinc-700/40 dark:ul-bg-zinc-800',
                     )}
                     layoutId="bg"
-                    transition={TRANS_SPRING_FAST}
+                    transition={TRANS_SPRING}
                   />
                 )}
               </Tab>

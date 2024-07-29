@@ -73,7 +73,7 @@ export const Card = ({
         animate="animate"
         className={cn(
           'ul-h-full ul-w-full ul-rounded-xl ul-text-white ul-text-shadow ul-text-shadow-black/60',
-          'dark:ul-shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.5)]',
+          'dark:ul-shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.3)]',
         )}
         custom={flip}
         initial={false}
