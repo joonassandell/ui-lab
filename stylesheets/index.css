@@ -38,13 +38,12 @@
   }
 
   /**
-   * tailwindcss-scoped-preflight plugin removes the following styles for some
-   * reason, so add them back and also scope the ::before/:after styles.
+   * Preflight styles applied from tailwindcss-scoped-preflight doesn't seem to
+   * work for :after/:before, so make them work here.
    *
    * @link https://github.com/Roman86/tailwindcss-scoped-preflight
    * @link https://unpkg.com/tailwindcss@3.4.3/src/css/preflight.css
    */
-  .u-scope *,
   .u-scope *::before,
   .u-scope *::after {
     --tw-content: '';
