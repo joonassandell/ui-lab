@@ -1,4 +1,4 @@
-name: Publish Package to NPM
+name: Publish Package to NPM and Trigger Portfolio Build
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           bun-version: 1.1.7
       - name: Install NPM Dependencies
         run: bun install
-      - name: Run TypeScript type checking and ESLint
+      - name: Run TypeScript Type Checking and ESLint
         run: bun run check
       - name: Build the Package
         run: bun run build:lib
@@ -30,3 +30,6 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Trigger Portfolio Production Build
+        run: curl -X POST ${{ secrets.PORTFOLIO_DEPLOY_HOOK }}
+
