@@ -8,8 +8,8 @@ export const Content = ({ children }: ContentProps) => {
 
   return (
     <div
-      className={cn('ul-w-[312px] ul-p-3 ul-pt-2 empty:ul-hidden sm:ul-w-96', {
-        'ul-absolute': !open,
+      className={cn('u-w-[312px] u-p-3 u-pt-2 empty:u-hidden sm:u-w-96', {
+        'u-absolute': !open,
       })}
     >
       <AnimatePresence mode="popLayout">

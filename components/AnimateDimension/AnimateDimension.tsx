@@ -88,7 +88,7 @@ export const AnimateDimension = forwardRef<
         {...props}
       >
         <div
-          className={cn('ul-h-fit ul-w-fit', containerClassName)}
+          className={cn('u-h-fit u-w-fit', containerClassName)}
           ref={containerRef}
         >
           {children}

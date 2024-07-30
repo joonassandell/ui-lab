@@ -32,7 +32,7 @@ export const DynamicPayButton = ({
   onCardTouchStart,
 }: DynamicBuyButtonProps) => {
   const [ccv, setCcv] = useState<string>('');
-  const [icon, setIcon] = useState(<CreditCard className={cn('ul-size-5')} />);
+  const [icon, setIcon] = useState(<CreditCard className={cn('u-size-5')} />);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [overflow, setOverflow] = useState(false);
@@ -48,9 +48,9 @@ export const DynamicPayButton = ({
     setOverflow(false);
     setIcon(
       open ? (
-        <CreditCard className={cn('ul-size-5')} />
+        <CreditCard className={cn('u-size-5')} />
       ) : (
-        <Close className={cn('ul-size-5')} />
+        <Close className={cn('u-size-5')} />
       ),
     );
     !open && setSuccess(false);
@@ -93,18 +93,18 @@ export const DynamicPayButton = ({
         <AnimateDimension
           animate={open ? 'open' : 'closed'}
           className={cn(
-            'ul-scope ul-relative ul-flex ul-justify-center ul-overflow-hidden ul-text-sm ul-font-medium ul-shadow-pop [will-change:auto]',
-            'ul-bg-white ul-text-zinc-500',
-            'dark:ul-bg-zinc-900 dark:ul-text-zinc-400',
+            'u-scope u-relative u-flex u-justify-center u-overflow-hidden u-text-sm u-font-medium u-shadow-pop [will-change:auto]',
+            'u-bg-white u-text-zinc-500',
+            'dark:u-bg-zinc-900 dark:u-text-zinc-400',
             {
-              'has-[:focus-visible]:ul-outline has-[:focus-visible]:ul-outline-1 has-[:focus-visible]:ul-outline-offset-2':
+              'has-[:focus-visible]:u-outline has-[:focus-visible]:u-outline-1 has-[:focus-visible]:u-outline-offset-2':
                 !open,
-              'has-[:focus-visible]:ul-outline-black/30 dark:has-[:focus-visible]:ul-outline-white/20':
+              'has-[:focus-visible]:u-outline-black/30 dark:has-[:focus-visible]:u-outline-white/20':
                 !open,
-              'ul-overflow-visible': overflow,
+              'u-overflow-visible': overflow,
             },
           )}
-          containerClassName={cn('ul-flex ul-flex-col ul-items-center')}
+          containerClassName={cn('u-flex u-flex-col u-items-center')}
           onAnimationComplete={onAnimationComplete}
           onAnimationStart={onAnimationStart}
           variants={{
@@ -135,7 +135,7 @@ export const DynamicPayButton = ({
           >
             <header
               className={cn(
-                'ul-flex ul-w-full ul-items-center ul-justify-between ul-p-3',
+                'u-flex u-w-full u-items-center u-justify-between u-p-3',
               )}
               inert={loading ? '' : undefined}
             >

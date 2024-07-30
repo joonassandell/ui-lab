@@ -21,9 +21,9 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <html
       className={cn(
-        'ul-antialiased',
-        'ul-bg-zinc-100 dark:ul-bg-zinc-950',
-        'ul-text-zinc-800 dark:ul-text-white',
+        'u-antialiased',
+        'u-bg-zinc-100 dark:u-bg-zinc-950',
+        'u-text-zinc-800 dark:u-text-white',
       )}
       lang="en"
       suppressHydrationWarning
@@ -34,7 +34,7 @@ export default function Layout({ children }: PropsWithChildren) {
           defaultTheme="dark"
           disableTransitionOnChange
           enableSystem={false}
-          value={{ dark: 'ul-dark' }}
+          value={{ dark: 'u-dark' }}
         >
           <Header />
           {children}

@@ -10,7 +10,7 @@ export default {
   plugins: [
     ...config.plugins,
     scopedPreflightStyles({
-      isolationStrategy: isolateInsideOfContainer('.ul-scope'),
+      isolationStrategy: isolateInsideOfContainer('.u-scope'),
       modifyPreflightStyles: {
         body: {
           'line-height': null,

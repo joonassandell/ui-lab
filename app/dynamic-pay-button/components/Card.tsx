@@ -49,8 +49,8 @@ export const Card = ({
         y: index * -16,
         zIndex: CARDS.length - index,
       }}
-      className={cn('ul-absolute ul-h-full ul-w-full', {
-        'ul-cursor-grab': front,
+      className={cn('u-absolute u-h-full u-w-full', {
+        'u-cursor-grab': front,
       })}
       drag={front}
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
@@ -72,8 +72,8 @@ export const Card = ({
       <m.div
         animate="animate"
         className={cn(
-          'ul-h-full ul-w-full ul-rounded-xl ul-text-white ul-text-shadow ul-text-shadow-black/60',
-          'dark:ul-shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.3)]',
+          'u-h-full u-w-full u-rounded-xl u-text-white u-text-shadow u-text-shadow-black/60',
+          'dark:u-shadow-[0_-1px_2px_0_hsla(0,0%,0%,0.3),0_2px_4px_0_hsla(0,0%,0%,0.3)]',
         )}
         custom={flip}
         initial={false}
@@ -101,25 +101,25 @@ const CardVisa = ({ front }: CardInnerProps) => {
     <>
       <div
         className={cn(
-          'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
-          'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
-          'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-10 before:ul-rounded-xl',
-          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'u-relative u-flex u-h-full u-flex-col u-justify-end u-gap-3 u-overflow-hidden u-rounded-xl u-p-5 u-font-cc',
+          'u-bg-gradient-to-br u-from-[hsl(210,100%,50%)] u-to-[hsl(210,100%,30%)]',
+          'dark:u-from-[hsl(210,70%,20%)] dark:u-to-[hsl(210,70%,10%)]',
+          'before:u-pointer-events-none before:u-absolute before:u-inset-0 before:u-z-10 before:u-rounded-xl',
+          'before:u-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:u-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
       >
         <div
           className={cn(
-            'ul-absolute -ul-right-24 -ul-top-5 ul-bottom-0 ul-w-full ul-rounded-tl-[100%]',
-            'ul-bg-gradient-to-tl ul-from-[hsl(210,100%,27%)] ul-to-[hsl(210,100%,53%)]',
-            'dark:ul-from-[hsl(210,70%,7%)] dark:ul-to-[hsl(210,70%,24%)]',
-            'before:ul-absolute before:-ul-right-20 before:ul-h-full before:ul-w-full before:ul-rounded-tl-[100%] before:ul-bg-gradient-to-tl',
-            'after:ul-absolute after:-ul-right-36 after:ul-h-full after:ul-w-full after:ul-rounded-tl-[100%] after:ul-bg-gradient-to-tl',
+            'u-absolute -u-right-24 -u-top-5 u-bottom-0 u-w-full u-rounded-tl-[100%]',
+            'u-bg-gradient-to-tl u-from-[hsl(210,100%,27%)] u-to-[hsl(210,100%,53%)]',
+            'dark:u-from-[hsl(210,70%,7%)] dark:u-to-[hsl(210,70%,24%)]',
+            'before:u-absolute before:-u-right-20 before:u-h-full before:u-w-full before:u-rounded-tl-[100%] before:u-bg-gradient-to-tl',
+            'after:u-absolute after:-u-right-36 after:u-h-full after:u-w-full after:u-rounded-tl-[100%] after:u-bg-gradient-to-tl',
           )}
         />
         <svg
-          className={cn('ul-absolute ul-right-5 ul-top-6 ul-h-auto ul-w-16')}
+          className={cn('u-absolute u-right-5 u-top-6 u-h-auto u-w-16')}
           height="24"
           viewBox="0 0 72 24"
           width="72"
@@ -134,7 +134,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </svg>
         <svg
           className={cn(
-            'ul-absolute ul-right-5 ul-top-0.5 ul-mt-16 ul-h-auto ul-w-6 sm:ul-top-2',
+            'u-absolute u-right-5 u-top-0.5 u-mt-16 u-h-auto u-w-6 sm:u-top-2',
           )}
           height="56"
           viewBox="0 0 46 56"
@@ -152,40 +152,38 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </svg>
         <div
           className={cn(
-            'ul-relative ul-mb-3 ul-grid ul-h-10 ul-w-12 ul-place-content-center ul-rounded',
-            'ul-bg-gradient-to-bl ul-from-[#ffecc7] ul-to-[#d0b978]',
+            'u-relative u-mb-3 u-grid u-h-10 u-w-12 u-place-content-center u-rounded',
+            'u-bg-gradient-to-bl u-from-[#ffecc7] u-to-[#d0b978]',
           )}
         >
           <div
             className={cn(
-              'ul-absolute ul-top-[0.8rem] ul-h-px ul-w-full ul-bg-[#333]',
+              'u-absolute u-top-[0.8rem] u-h-px u-w-full u-bg-[#333]',
             )}
           />
           <div
             className={cn(
-              'ul-absolute ul-top-[1.21rem] ul-h-px ul-w-full ul-bg-[#333]',
+              'u-absolute u-top-[1.21rem] u-h-px u-w-full u-bg-[#333]',
             )}
           />
           <div
             className={cn(
-              'ul-absolute ul-top-[1.6rem] ul-h-px ul-w-full ul-bg-[#333]',
+              'u-absolute u-top-[1.6rem] u-h-px u-w-full u-bg-[#333]',
             )}
           />
           <div
-            className={cn(
-              'ul-absolute ul-left-1/2 ul-h-full ul-w-px ul-bg-[#333]',
-            )}
+            className={cn('u-absolute u-left-1/2 u-h-full u-w-px u-bg-[#333]')}
           />
           <div
             className={cn(
-              'ul-z-10 ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
-              'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
+              'u-z-10 u-h-6 u-w-5 u-rounded u-border u-border-[#333]',
+              'u-bg-gradient-to-bl u-from-[#efdbab] u-to-[#e1cb94]',
             )}
           />
         </div>
         <div
           className={cn(
-            'ul-z-10 ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
+            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base sm:u-text-xl',
           )}
         >
           <div>1234</div>
@@ -195,7 +193,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-10 ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
+            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase sm:u-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -205,30 +203,30 @@ const CardVisa = ({ front }: CardInnerProps) => {
       <DelayedRender delay={800}>
         <div
           className={cn(
-            'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-            'ul-bg-gradient-to-br ul-from-[hsl(210,100%,50%)] ul-to-[hsl(210,100%,30%)]',
-            'dark:ul-from-[hsl(210,70%,20%)] dark:ul-to-[hsl(210,70%,10%)]',
-            'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
-            'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-            'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-            'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
+            'u-absolute u-top-0 u-z-20 u-flex u-h-full u-w-full u-flex-col u-justify-between u-rounded-xl u-p-5 u-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+            'u-bg-gradient-to-br u-from-[hsl(210,100%,50%)] u-to-[hsl(210,100%,30%)]',
+            'dark:u-from-[hsl(210,70%,20%)] dark:u-to-[hsl(210,70%,10%)]',
+            'before:u-pointer-events-none before:u-absolute before:u-inset-0 before:u-rounded-xl',
+            'before:u-shadow-[0_1px_0_0_hsla(0,0%,0%,0.3)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+            'dark:before:u-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+            'after:u-absolute after:u-inset-x-0 after:u-top-5 after:u-h-10 after:u-bg-black',
           )}
         >
           <div
             className={cn(
-              'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
+              'u-relative u-top-2 u-mt-16 u-h-9 u-w-full u-rounded u-bg-white u-px-3 u-py-1 u-text-right u-text-black/80',
             )}
           >
             <label
               className={cn(
-                '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+                '-u-mt-7 u-mb-1 u-block u-text-2xs u-uppercase u-text-white',
               )}
             >
               Ccv
             </label>
             <input
               className={cn(
-                'ul-h-9 ul-bg-transparent ul-pt-0.5 ul-text-right ul-font-cc ul-outline-0',
+                'u-h-9 u-bg-transparent u-pt-0.5 u-text-right u-font-cc u-outline-0',
               )}
               maxLength={3}
               onChange={e => setCcv(e.target.value)}
@@ -238,7 +236,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
               value={front ? ccv : ''}
             />
           </div>
-          <p className={cn('ul-text-xs')}>
+          <p className={cn('u-text-xs')}>
             This card is the property of Sandell Bank. Swipe me to switch the
             payment card.
           </p>
@@ -255,33 +253,31 @@ const CardMaster = ({ front }: CardInnerProps) => {
     <>
       <div
         className={cn(
-          'ul-relative ul-flex ul-h-full ul-flex-col ul-justify-end ul-gap-3 ul-overflow-hidden ul-rounded-xl ul-p-5 ul-font-cc',
-          'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
-          'dark:ul-from-[hsl(230,50%,25%)] dark:ul-to-[hsl(230,25%,20%)]',
-          'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-z-10 before:ul-rounded-xl',
-          'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-          'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+          'u-relative u-flex u-h-full u-flex-col u-justify-end u-gap-3 u-overflow-hidden u-rounded-xl u-p-5 u-font-cc',
+          'u-bg-gradient-to-br u-from-[hsl(230,30%,50%)] u-to-[hsl(230,40%,30%)]',
+          'dark:u-from-[hsl(230,50%,25%)] dark:u-to-[hsl(230,25%,20%)]',
+          'before:u-pointer-events-none before:u-absolute before:u-inset-0 before:u-z-10 before:u-rounded-xl',
+          'before:u-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+          'dark:before:u-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
         )}
       >
         <div
           className={cn(
-            'ul-absolute -ul-right-24 -ul-top-5 ul-bottom-0 ul-w-full ul-rounded-tl-[100%]',
-            'ul-bg-gradient-to-tl ul-from-[hsl(230,30%,25%)] ul-to-[hsl(230,40%,55%)]',
-            'dark:ul-from-[hsl(230,25%,10%)] dark:ul-to-[hsl(230,50%,33%)]',
-            'before:ul-absolute before:-ul-right-20 before:ul-h-full before:ul-w-full before:ul-rounded-tl-[100%] before:ul-bg-gradient-to-tl',
-            'after:ul-absolute after:-ul-right-36 after:ul-h-full after:ul-w-full after:ul-rounded-tl-[100%] after:ul-bg-gradient-to-tl',
+            'u-absolute -u-right-24 -u-top-5 u-bottom-0 u-w-full u-rounded-tl-[100%]',
+            'u-bg-gradient-to-tl u-from-[hsl(230,30%,25%)] u-to-[hsl(230,40%,55%)]',
+            'dark:u-from-[hsl(230,25%,10%)] dark:u-to-[hsl(230,50%,33%)]',
+            'before:u-absolute before:-u-right-20 before:u-h-full before:u-w-full before:u-rounded-tl-[100%] before:u-bg-gradient-to-tl',
+            'after:u-absolute after:-u-right-36 after:u-h-full after:u-w-full after:u-rounded-tl-[100%] after:u-bg-gradient-to-tl',
           )}
         />
-        <div className={cn('ul-absolute ul-left-5 ul-top-5 ul-flex')}>
-          <div className={cn('ul-size-5 ul-rounded-full ul-bg-red-600')} />
+        <div className={cn('u-absolute u-left-5 u-top-5 u-flex')}>
+          <div className={cn('u-size-5 u-rounded-full u-bg-red-600')} />
           <div
-            className={cn(
-              '-ul-ml-2 ul-size-5 ul-rounded-full ul-bg-yellow-400/60',
-            )}
+            className={cn('-u-ml-2 u-size-5 u-rounded-full u-bg-yellow-400/60')}
           />
         </div>
         <svg
-          className={cn('ul-absolute ul-right-5 ul-top-6 ul-h-auto ul-w-7')}
+          className={cn('u-absolute u-right-5 u-top-6 u-h-auto u-w-7')}
           height="32"
           viewBox="0 0 17.5 16.2"
           width="32"
@@ -291,42 +287,42 @@ const CardMaster = ({ front }: CardInnerProps) => {
             fill="currentColor"
           />
         </svg>
-        <div className={cn('ul-mb-1 ul-flex ul-items-center ul-gap-4')}>
+        <div className={cn('u-mb-1 u-flex u-items-center u-gap-4')}>
           <div
             className={cn(
-              'ul-relative ul-grid ul-h-10 ul-w-12 ul-place-content-center ul-rounded',
-              'ul-bg-gradient-to-bl ul-from-[#ffecc7] ul-to-[#d0b978]',
+              'u-relative u-grid u-h-10 u-w-12 u-place-content-center u-rounded',
+              'u-bg-gradient-to-bl u-from-[#ffecc7] u-to-[#d0b978]',
             )}
           >
             <div
               className={cn(
-                'ul-absolute ul-top-[0.8rem] ul-h-px ul-w-full ul-bg-[#333]',
+                'u-absolute u-top-[0.8rem] u-h-px u-w-full u-bg-[#333]',
               )}
             />
             <div
               className={cn(
-                'ul-absolute ul-top-[1.21rem] ul-h-px ul-w-full ul-bg-[#333]',
+                'u-absolute u-top-[1.21rem] u-h-px u-w-full u-bg-[#333]',
               )}
             />
             <div
               className={cn(
-                'ul-absolute ul-top-[1.6rem] ul-h-px ul-w-full ul-bg-[#333]',
+                'u-absolute u-top-[1.6rem] u-h-px u-w-full u-bg-[#333]',
               )}
             />
             <div
               className={cn(
-                'ul-absolute ul-left-1/2 ul-h-full ul-w-px ul-bg-[#333]',
+                'u-absolute u-left-1/2 u-h-full u-w-px u-bg-[#333]',
               )}
             />
             <div
               className={cn(
-                'ul-z-10 ul-h-6 ul-w-5 ul-rounded ul-border ul-border-[#333]',
-                'ul-bg-gradient-to-bl ul-from-[#efdbab] ul-to-[#e1cb94]',
+                'u-z-10 u-h-6 u-w-5 u-rounded u-border u-border-[#333]',
+                'u-bg-gradient-to-bl u-from-[#efdbab] u-to-[#e1cb94]',
               )}
             />
           </div>
           <svg
-            className={cn('ul-h-auto ul-w-6')}
+            className={cn('u-h-auto u-w-6')}
             height="56"
             viewBox="0 0 46 56"
             width="46"
@@ -344,7 +340,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-10 ul-flex ul-justify-between ul-gap-5 ul-text-base sm:ul-text-xl',
+            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base sm:u-text-xl',
           )}
         >
           <div>1234</div>
@@ -354,7 +350,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'ul-z-10 ul-flex ul-justify-between ul-text-xs ul-uppercase sm:ul-text-sm',
+            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase sm:u-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -364,30 +360,30 @@ const CardMaster = ({ front }: CardInnerProps) => {
       <DelayedRender delay={800}>
         <div
           className={cn(
-            'ul-absolute ul-top-0 ul-z-20 ul-flex ul-h-full ul-w-full ul-flex-col ul-justify-between ul-rounded-xl ul-p-5 ul-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-            'ul-bg-gradient-to-br ul-from-[hsl(230,30%,50%)] ul-to-[hsl(230,40%,30%)]',
-            'dark:ul-from-[hsl(0,0%,20%)] dark:ul-to-[hsl(0,0%,10%)]',
-            'before:ul-pointer-events-none before:ul-absolute before:ul-inset-0 before:ul-rounded-xl',
-            'before:ul-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
-            'dark:before:ul-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
-            'after:ul-absolute after:ul-inset-x-0 after:ul-top-5 after:ul-h-10 after:ul-bg-black',
+            'u-absolute u-top-0 u-z-20 u-flex u-h-full u-w-full u-flex-col u-justify-between u-rounded-xl u-p-5 u-pb-3 [backface-visibility:hidden] [transform:rotateY(180deg)]',
+            'u-bg-gradient-to-br u-from-[hsl(230,30%,50%)] u-to-[hsl(230,40%,30%)]',
+            'dark:u-from-[hsl(0,0%,20%)] dark:u-to-[hsl(0,0%,10%)]',
+            'before:u-pointer-events-none before:u-absolute before:u-inset-0 before:u-rounded-xl',
+            'before:u-shadow-[0_1px_0_0_hsla(0,0%,0%,0.15)_inset,0_0_0_1px_hsla(0,0%,0%,0.25)_inset,0_2px_0_0_hsla(0,0%,100%,0.05)_inset,0_0_0_2px_hsla(0,0%,100%,0.15)_inset]',
+            'dark:before:u-shadow-[0_1px_0_0_hsla(0,0%,100%,0.06)_inset,0_0_0_1px_hsla(0,0%,100%,0.05)_inset]',
+            'after:u-absolute after:u-inset-x-0 after:u-top-5 after:u-h-10 after:u-bg-black',
           )}
         >
           <div
             className={cn(
-              'ul-relative ul-top-2 ul-mt-16 ul-h-9 ul-w-full ul-rounded ul-bg-white ul-px-3 ul-py-1 ul-text-right ul-text-black/80',
+              'u-relative u-top-2 u-mt-16 u-h-9 u-w-full u-rounded u-bg-white u-px-3 u-py-1 u-text-right u-text-black/80',
             )}
           >
             <label
               className={cn(
-                '-ul-mt-7 ul-mb-1 ul-block ul-text-2xs ul-uppercase ul-text-white',
+                '-u-mt-7 u-mb-1 u-block u-text-2xs u-uppercase u-text-white',
               )}
             >
               ccv
             </label>
             <input
               className={cn(
-                'ul-h-9 ul-bg-transparent ul-pt-px ul-text-right ul-font-cc ul-outline-0',
+                'u-h-9 u-bg-transparent u-pt-px u-text-right u-font-cc u-outline-0',
               )}
               maxLength={3}
               onChange={e => setCcv(e.target.value)}
@@ -398,10 +394,10 @@ const CardMaster = ({ front }: CardInnerProps) => {
             />
           </div>
 
-          <p className={cn('ul-text-xs')}>
+          <p className={cn('u-text-xs')}>
             Swipe me to switch the active payment card. Fancy details like this?{' '}
             <a
-              className={cn('ul-underline')}
+              className={cn('u-underline')}
               href="https://joonassandell.com/contact"
               tabIndex={-1}
             >

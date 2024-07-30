@@ -13,7 +13,7 @@ const twMerge = extendTailwindMerge<'text-shadow' | 'text-shadow-color'>({
       ),
     },
   },
-  prefix: 'ul-',
+  prefix: 'u-',
 });
 
 export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));

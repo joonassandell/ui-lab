@@ -32,13 +32,13 @@ export default {
       );
     }),
   ],
-  prefix: 'ul-',
+  prefix: 'u-',
   theme: {
     extend: {
       boxShadow: {
-        pop: 'var(--ul-shadow-pop-md)',
-        'pop-md': 'var(--ul-shadow-pop-md)',
-        'pop-sm': 'var(--ul-shadow-pop-sm)',
+        pop: 'var(--u-shadow-pop-md)',
+        'pop-md': 'var(--u-shadow-pop-md)',
+        'pop-sm': 'var(--u-shadow-pop-sm)',
       },
       fontFamily: {
         cc: ['CC font'],

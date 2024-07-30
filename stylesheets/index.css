@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+    --u-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.07),
       0 2px 2px 0 hsl(0 0% 0% / 0.033), 0 4px 4px 0 hsl(0 0% 0% / 0.033),
       0 8px 8px 0 hsl(0 0% 0% / 0.033);
-    --ul-shadow-pop-sm: 0 0 0 1px hsl(0 0% 0% / 0.1) inset,
+    --u-shadow-pop-sm: 0 0 0 1px hsl(0 0% 0% / 0.1) inset,
       0 2px 2px hsl(0 0% 0% / 0.033);
   }
 
-  .ul-dark {
-    --ul-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+  .u-dark {
+    --u-shadow-pop-md: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 0 0 1px hsl(0 0% 0% / 0.1),
       0 2px 2px 0 hsl(0 0% 0% / 0.1), 0 4px 4px 0 hsl(0 0% 0% / 0.1),
       0 6px 6px 0 hsl(0 0% 0% / 0.1);
-    --ul-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
+    --u-shadow-pop-sm: 0 1px 0 0 hsl(0 0% 100% / 0.04) inset,
       0 0 0 1px hsl(0 0% 100% / 0.04) inset, 0 2px 2px hsl(0 0% 0% / 0.4);
   }
 
@@ -44,9 +44,9 @@
    * @link https://github.com/Roman86/tailwindcss-scoped-preflight
    * @link https://unpkg.com/tailwindcss@3.4.3/src/css/preflight.css
    */
-  .ul-scope *,
-  .ul-scope *::before,
-  .ul-scope *::after {
+  .u-scope *,
+  .u-scope *::before,
+  .u-scope *::after {
     --tw-content: '';
     box-sizing: border-box;
     border-width: 0;
@@ -56,38 +56,38 @@
 }
 
 @layer utilities {
-  .ul-scope {
-    @apply ul-select-none;
+  .u-scope {
+    @apply u-select-none;
 
     button {
-      @apply ul-cursor-default;
+      @apply u-cursor-default;
     }
 
     input {
-      @apply ul-appearance-none ul-opacity-100;
+      @apply u-appearance-none u-opacity-100;
     }
 
     :focus:not([class*='outline']) {
-      @apply ul-outline-0;
+      @apply u-outline-0;
     }
 
     :focus-visible:not([class*='outline']) {
-      @apply ul-outline ul-outline-1 ul-outline-offset-2 ul-outline-black/30;
+      @apply u-outline u-outline-1 u-outline-offset-2 u-outline-black/30;
     }
 
     ::selection {
-      @apply ul-bg-black/15;
+      @apply u-bg-black/15;
     }
   }
 
   .dark {
-    .ul-scope {
+    .u-scope {
       :focus-visible:not([class*='outline']) {
-        @apply ul-outline-white/20;
+        @apply u-outline-white/20;
       }
 
       ::selection {
-        @apply ul-bg-black/70;
+        @apply u-bg-black/70;
       }
     }
   }
