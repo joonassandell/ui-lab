@@ -1,12 +1,15 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { type HeaderProps } from './';
 import { Moon, Sun } from '@/components/Icon';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-export const Header = () => {
+export const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
+  const queryParam = useSearchParams().get('header') === 'true';
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
 
@@ -15,7 +18,9 @@ export const Header = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
+  if ((displayWithQueryParamOnly && !queryParam) ?? !mounted) {
+    return null;
+  }
 
   return (
     <header

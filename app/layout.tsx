@@ -1,7 +1,7 @@
 import '@/stylesheets/index.css';
 import { cn } from '@/lib/utils';
-import { Header } from '@/components/Header';
 import { type PropsWithChildren } from 'react';
+import { ThemeIframeChanger } from '@/components/ThemeIframeChanger';
 import { ThemeProvider } from 'next-themes';
 import type { Metadata, Viewport } from 'next';
 
@@ -36,7 +36,7 @@ export default function Layout({ children }: PropsWithChildren) {
           enableSystem={false}
           value={{ dark: 'u-dark' }}
         >
-          <Header />
+          <ThemeIframeChanger />
           {children}
         </ThemeProvider>
       </body>

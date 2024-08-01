@@ -22,3 +22,9 @@ export const TRANS_SPRING_SLOW = {
   stiffness: 100,
   type: 'spring',
 };
+
+/* =======================================
+ * Environment variables
+ * ======================================= */
+
+export const ALLOWED_IFRAME_URL = process.env.NEXT_PUBLIC_ALLOWED_IFRAME_URL;
