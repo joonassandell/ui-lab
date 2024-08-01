@@ -4,7 +4,7 @@ import { cn, sleep } from '@/lib/utils';
 import { m } from 'framer-motion';
 import { type MouseEvent } from 'react';
 import { type PayButtonProps, useDynamicPayButton } from '../';
-import { Spinner } from '@/components/Spinner/Spinner';
+import { Spinner } from '@/components/Spinner';
 import { TRANS_SPRING } from '@/lib/config';
 
 export const PayButton = ({ className }: PayButtonProps) => {
