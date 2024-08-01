@@ -46,6 +46,9 @@ export default {
       fontSize: {
         '2xs': ['0.625rem', '1.25rem'],
       },
+      screens: {
+        xs: '480px',
+      },
       textShadow: {
         DEFAULT: '0 1px 1px var(--tw-text-shadow)',
       },

@@ -134,7 +134,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </svg>
         <svg
           className={cn(
-            'u-absolute u-right-5 u-top-0.5 u-mt-16 u-h-auto u-w-6 sm:u-top-2',
+            'u-absolute u-right-5 u-top-0.5 u-mt-16 u-h-auto u-w-6 xs:u-top-2',
           )}
           height="56"
           viewBox="0 0 46 56"
@@ -183,7 +183,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base sm:u-text-xl',
+            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base xs:u-text-xl',
           )}
         >
           <div>1234</div>
@@ -193,7 +193,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase sm:u-text-sm',
+            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase xs:u-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>
@@ -340,7 +340,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base sm:u-text-xl',
+            'u-z-10 u-flex u-justify-between u-gap-5 u-text-base xs:u-text-xl',
           )}
         >
           <div>1234</div>
@@ -350,7 +350,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
         </div>
         <div
           className={cn(
-            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase sm:u-text-sm',
+            'u-z-10 u-flex u-justify-between u-text-xs u-uppercase xs:u-text-sm',
           )}
         >
           <div>Mr Joonas Sandell</div>

@@ -15,14 +15,12 @@ export const Header = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <header
       className={cn(
-        'u-fixed u-inset-x-0 u-flex u-items-center u-justify-between u-gap-8 u-bg-zinc-100 u-px-6 u-py-4 dark:u-bg-zinc-950',
+        'u-fixed u-inset-x-0 u-flex u-items-center u-justify-between u-gap-8 u-px-6 u-py-4',
       )}
     >
       <Link

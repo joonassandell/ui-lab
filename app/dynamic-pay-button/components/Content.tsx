@@ -8,7 +8,7 @@ export const Content = ({ children }: ContentProps) => {
 
   return (
     <div
-      className={cn('u-w-[312px] u-p-3 u-pt-2 empty:u-hidden sm:u-w-96', {
+      className={cn('u-w-[312px] u-p-3 u-pt-2 empty:u-hidden xs:u-w-96', {
         'u-absolute': !open,
       })}
     >

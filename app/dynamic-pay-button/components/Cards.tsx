@@ -21,7 +21,7 @@ export const Cards = () => {
 
   return (
     <div
-      className={cn('u-relative u-mt-1 u-h-48 sm:u-h-52')}
+      className={cn('u-relative u-mt-1 u-h-48 xs:u-h-52')}
       inert={loading ? '' : undefined}
     >
       {cards.map(({ id, variant }, index) => {
