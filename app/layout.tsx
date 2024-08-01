@@ -22,7 +22,7 @@ export default function Layout({ children }: PropsWithChildren) {
     <html
       className={cn(
         'u-antialiased',
-        'u-bg-zinc-100 dark:u-bg-zinc-950',
+        'u-bg-zinc-50 dark:u-bg-[#0A0A0B]',
         'u-text-zinc-800 dark:u-text-white',
       )}
       lang="en"
