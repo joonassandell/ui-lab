@@ -28,3 +28,4 @@ export const TRANS_SPRING_SLOW = {
  * ======================================= */
 
 export const ALLOWED_IFRAME_URLS = process.env.NEXT_PUBLIC_ALLOWED_IFRAME_URLS;
+export const REDIRECT_URL = process.env.NEXT_PUBLIC_REDIRECT_URL;

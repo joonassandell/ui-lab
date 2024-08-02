@@ -1,13 +1,13 @@
 import '@/stylesheets/index.css';
 import { cn } from '@/lib/utils';
+import { IframeHandler } from '@/components/IframeHandler';
 import { type PropsWithChildren } from 'react';
-import { ThemeIframeChanger } from '@/components/ThemeIframeChanger';
 import { ThemeProvider } from 'next-themes';
 import type { Metadata, Viewport } from 'next';
 
 export const metadata: Metadata = {
   description: 'User interface laboratory by Joonas Sandell',
-  title: 'UI Lab',
+  title: 'UI Laboratory',
 };
 
 export const viewport: Viewport = {
@@ -36,7 +36,7 @@ export default function Layout({ children }: PropsWithChildren) {
           enableSystem={false}
           value={{ dark: 'u-dark' }}
         >
-          <ThemeIframeChanger />
+          <IframeHandler />
           {children}
         </ThemeProvider>
       </body>
