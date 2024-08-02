@@ -3,12 +3,12 @@
 import { cn } from '@/lib/utils';
 import { type HeaderProps } from './';
 import { Moon, Sun } from '@/components/Icon';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-export const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
+const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
   const queryParam = useSearchParams().get('header') === 'true';
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
@@ -53,3 +53,13 @@ export const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
     </header>
   );
 };
+
+const HeaderSuspense = ({ ...props }: HeaderProps) => {
+  return (
+    <Suspense>
+      <Header {...props} />
+    </Suspense>
+  );
+};
+
+export { HeaderSuspense as Header };
