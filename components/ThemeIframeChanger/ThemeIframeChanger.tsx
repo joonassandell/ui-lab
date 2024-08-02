@@ -1,6 +1,6 @@
 'use client';
 
-import { ALLOWED_IFRAME_URL } from '@/lib/config';
+import { ALLOWED_IFRAME_URLS } from '@/lib/config';
 import { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
@@ -9,7 +9,7 @@ export const ThemeIframeChanger = () => {
 
   useEffect(() => {
     const handler = (event: MessageEvent) => {
-      if (event.origin !== ALLOWED_IFRAME_URL) return;
+      if (!ALLOWED_IFRAME_URLS?.split(', ').includes(event.origin)) return;
       setTheme(event.data);
     };
 

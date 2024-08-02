@@ -27,4 +27,4 @@ export const TRANS_SPRING_SLOW = {
  * Environment variables
  * ======================================= */
 
-export const ALLOWED_IFRAME_URL = process.env.NEXT_PUBLIC_ALLOWED_IFRAME_URL;
+export const ALLOWED_IFRAME_URLS = process.env.NEXT_PUBLIC_ALLOWED_IFRAME_URLS;
