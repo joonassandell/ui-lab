@@ -135,7 +135,7 @@ export const DynamicPayButton = ({
           >
             <header
               className={cn(
-                'u-flex u-w-full u-items-center u-justify-between u-p-3',
+                'u-z-0 u-flex u-w-full u-items-center u-justify-between u-p-3',
               )}
               inert={loading ? '' : undefined}
             >
