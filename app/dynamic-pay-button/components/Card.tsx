@@ -226,7 +226,7 @@ const CardVisa = ({ front }: CardInnerProps) => {
             </label>
             <input
               className={cn(
-                'u-h-9 u-bg-transparent u-pt-0.5 u-text-right u-font-cc u-outline-0',
+                'u-h-9 u-bg-transparent u-pt-0.5 u-text-right u-font-cc u-outline-none',
               )}
               maxLength={3}
               onChange={e => setCcv(e.target.value)}
@@ -383,7 +383,7 @@ const CardMaster = ({ front }: CardInnerProps) => {
             </label>
             <input
               className={cn(
-                'u-h-9 u-bg-transparent u-pt-px u-text-right u-font-cc u-outline-0',
+                'u-h-9 u-bg-transparent u-pt-px u-text-right u-font-cc u-outline-none',
               )}
               maxLength={3}
               onChange={e => setCcv(e.target.value)}

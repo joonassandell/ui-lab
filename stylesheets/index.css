@@ -67,7 +67,7 @@
     }
 
     :focus:not([class*='outline']) {
-      @apply u-outline-0;
+      @apply u-outline-none;
     }
 
     :focus-visible:not([class*='outline']) {
@@ -79,7 +79,7 @@
     }
   }
 
-  .dark {
+  .u-dark {
     .u-scope {
       :focus-visible:not([class*='outline']) {
         @apply u-outline-white/20;

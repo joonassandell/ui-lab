@@ -71,7 +71,7 @@ const TabContentCard = () => {
         >
           <input
             className={cn(
-              'u-w-[3.375rem] u-rounded-lg u-rounded-e-none u-border-r u-pl-3 u-pt-[2px] u-font-cc u-uppercase u-outline-0 u-transition-colors',
+              'u-w-[3.375rem] u-rounded-lg u-rounded-e-none u-border-r u-pl-3 u-pt-[2px] u-font-cc u-uppercase u-outline-none u-transition-colors',
               'u-border-r-transparent u-bg-sky-100 u-text-sky-700 u-placeholder-sky-700/60 hover:u-bg-sky-200 focus-visible:u-bg-sky-100',
               'dark:u-border-r-black/40 dark:u-bg-sky-950/70 dark:u-text-sky-400 dark:u-placeholder-sky-300/40 dark:hover:u-bg-sky-950/80 dark:focus-visible:u-bg-sky-950/70',
               {

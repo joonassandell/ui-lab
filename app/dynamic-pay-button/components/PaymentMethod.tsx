@@ -13,7 +13,7 @@ export const PaymentMethod = ({ checked, variant }: PaymentMethodProps) => {
   return (
     <div>
       <input
-        className={cn('u-peer u-hidden')}
+        className={cn('u-peer u-sr-only')}
         defaultChecked={checked}
         id={variant}
         name="payment-method"
