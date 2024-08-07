@@ -1,4 +1,4 @@
-name: Publish Package to NPM and Trigger Portfolio Build
+name: Publish Package to NPM
 
 on:
   push:
@@ -30,5 +30,3 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Trigger Portfolio Production Build
-        run: curl -X POST ${{ secrets.PORTFOLIO_DEPLOY_HOOK }}
