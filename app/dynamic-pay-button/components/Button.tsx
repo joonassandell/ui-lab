@@ -2,6 +2,7 @@ import { AnimatePresence, m } from 'framer-motion';
 import { type ButtonProps, useDynamicPayButton } from '../';
 import { cn } from '@/lib/utils';
 import { forwardRef } from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import { TRANS_SPRING, TRANS_SPRING_SLOW } from '@/lib/config';
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -34,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             key={icon.type.name}
             transition={TRANS_SPRING_SLOW}
           >
-            {icon}
+            <Slot className={cn('u-size-5')}>{icon}</Slot>
           </m.div>
         </AnimatePresence>
       </m.button>

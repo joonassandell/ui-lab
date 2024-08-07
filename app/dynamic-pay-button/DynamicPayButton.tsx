@@ -32,7 +32,7 @@ export const DynamicPayButton = ({
   onCardTouchStart,
 }: DynamicBuyButtonProps) => {
   const [ccv, setCcv] = useState<string>('');
-  const [icon, setIcon] = useState(<CreditCard className={cn('u-size-5')} />);
+  const [icon, setIcon] = useState(<CreditCard />);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [overflow, setOverflow] = useState(false);
@@ -46,13 +46,7 @@ export const DynamicPayButton = ({
   const handleOpen = () => {
     setOpen(!open);
     setOverflow(false);
-    setIcon(
-      open ? (
-        <CreditCard className={cn('u-size-5')} />
-      ) : (
-        <Close className={cn('u-size-5')} />
-      ),
-    );
+    setIcon(open ? <CreditCard /> : <Close />);
     !open && setSuccess(false);
     !open && setSelectedTab(TABS[0].label);
     !open && setCcv('');

@@ -34,6 +34,7 @@
     "watch:lib:styles": "tailwindcss -c ./tailwind.config.lib.ts -i ./stylesheets/index.css -o ./dist/index.css --watch"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
