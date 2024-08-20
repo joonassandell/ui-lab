@@ -90,4 +90,8 @@
       }
     }
   }
+
+  .u-scale {
+    font-size: clamp(16px, 2.25vw, 999px);
+  }
 }

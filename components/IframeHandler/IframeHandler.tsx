@@ -1,11 +1,12 @@
 'use client';
 
 import { ALLOWED_IFRAME_URLS, REDIRECT_URL } from '@/lib/config';
-import { redirect } from 'next/navigation';
-import { useEffect } from 'react';
+import { redirect, useSearchParams } from 'next/navigation';
+import { Suspense, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
-export const IframeHandler = () => {
+const IframeHandler = () => {
+  const queryParamScale = useSearchParams().get('scale') === 'true';
   const { setTheme } = useTheme();
 
   /**
@@ -32,5 +33,26 @@ export const IframeHandler = () => {
     }
   }, []);
 
+  /**
+   * Scale UI if the param is set
+   */
+  useEffect(() => {
+    if (!queryParamScale) return;
+    const root = document.documentElement;
+    root.classList.add('u-scale');
+
+    return () => root.classList.remove('u-scale');
+  }, [queryParamScale]);
+
   return null;
 };
+
+const IframeHandlerSuspense = () => {
+  return (
+    <Suspense>
+      <IframeHandler />
+    </Suspense>
+  );
+};
+
+export { IframeHandlerSuspense as IframeHandler };
