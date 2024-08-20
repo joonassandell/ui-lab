@@ -69,6 +69,7 @@
     "typescript": "^5"
   },
   "peerDependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.21",
