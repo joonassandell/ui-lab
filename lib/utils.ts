@@ -47,3 +47,6 @@ export const move = (array: any[], moveIndex: number, toIndex: number) => {
 };
 
 export const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+export const rem = (rem: number) =>
+  rem * parseFloat(getComputedStyle(document.documentElement).fontSize);

@@ -4,7 +4,7 @@ import {
   CARDS,
   useDynamicPayButton,
 } from '../';
-import { cn } from '@/lib/utils';
+import { cn, rem } from '@/lib/utils';
 import { DelayedRender } from '@/components/DelayedRender';
 import {
   type DragHandlers,
@@ -46,7 +46,7 @@ export const Card = ({
     <m.div
       animate={{
         scale: 1 - index * 0.06,
-        y: index * -16,
+        y: rem(index * -1),
         zIndex: CARDS.length - index,
       }}
       className={cn('u-absolute u-h-full u-w-full', {
