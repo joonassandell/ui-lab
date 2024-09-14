@@ -18,7 +18,7 @@ const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
 
   useEffect(() => setMounted(true), []);
 
-  if ((displayWithQueryParamOnly && !queryParam) ?? !mounted) {
+  if (!mounted || (displayWithQueryParamOnly && !queryParam)) {
     return null;
   }
 
