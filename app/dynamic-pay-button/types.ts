@@ -5,17 +5,11 @@ import {
   type PropsWithChildren,
   type RefObject,
   type SetStateAction,
-  type TouchEventHandler,
 } from 'react';
 import { type DragHandlers, type HTMLMotionProps } from 'framer-motion';
 import { type TabsContentProps } from '@radix-ui/react-tabs';
 
-export interface DynamicBuyButtonProps {
-  onCardTouchEnd?: TouchEventHandler<HTMLDivElement>;
-  onCardTouchStart?: TouchEventHandler<HTMLDivElement>;
-}
-
-export interface DynamicBuyButtonContextProps extends DynamicBuyButtonProps {
+export interface DynamicBuyButtonContextProps {
   ccv: string;
   handleOpen: () => void;
   inputRef: RefObject<HTMLInputElement>;

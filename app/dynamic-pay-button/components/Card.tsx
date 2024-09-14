@@ -21,8 +21,7 @@ export const Card = ({
   variant = 'visa',
   ...props
 }: CardProps) => {
-  const { onCardTouchEnd, onCardTouchStart, overflow, setOverflow } =
-    useDynamicPayButton();
+  const { overflow, setOverflow } = useDynamicPayButton();
   const [flip, setFlip] = useState(false);
   const x = useMotionValue(0);
   const scale = useTransform(x, [-150, 0, 150], [0.8, 1, 0.8]);
@@ -33,10 +32,12 @@ export const Card = ({
 
   const handleDragEndOffset: DragHandlers['onDragEnd'] = (e, info) => {
     if (front) {
-      if (info.offset.x < -100) {
-        onDragEndOffset && onDragEndOffset(e, info);
-      }
-      if (info.offset.x > 100 || info.offset.y > 50) {
+      if (
+        info.offset.x < -100 ||
+        info.offset.x > 100 ||
+        info.offset.y < -50 ||
+        info.offset.y > 50
+      ) {
         onDragEndOffset && onDragEndOffset(e, info);
       }
     }
@@ -57,8 +58,6 @@ export const Card = ({
       initial={false}
       onDragEnd={handleDragEndOffset}
       onDragStart={() => !overflow && setOverflow(true)}
-      onTouchEnd={e => onCardTouchEnd && onCardTouchEnd(e)}
-      onTouchStart={e => onCardTouchStart && onCardTouchStart(e)}
       style={{
         perspective: 1000,
         rotate,

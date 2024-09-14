@@ -9,7 +9,6 @@ import { Content } from './components/Content';
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import {
   type DynamicBuyButtonContextProps,
-  type DynamicBuyButtonProps,
   type TabContentProps,
   TABS,
 } from './';
@@ -27,10 +26,7 @@ import { TabsList } from './components/TabsList';
  *
  * @author Joonas Sandell <me@joonassandell.com>
  */
-export const DynamicPayButton = ({
-  onCardTouchEnd,
-  onCardTouchStart,
-}: DynamicBuyButtonProps) => {
+export const DynamicPayButton = () => {
   const [ccv, setCcv] = useState<string>('');
   const [icon, setIcon] = useState(<CreditCard />);
   const [loading, setLoading] = useState(false);
@@ -112,8 +108,6 @@ export const DynamicPayButton = ({
               handleOpen,
               inputRef,
               loading,
-              onCardTouchEnd,
-              onCardTouchStart,
               open,
               overflow,
               selectedTab,
