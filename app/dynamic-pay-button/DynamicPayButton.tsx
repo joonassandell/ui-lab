@@ -43,9 +43,9 @@ export const DynamicPayButton = () => {
     setOpen(!open);
     setOverflow(false);
     setIcon(open ? <CreditCard /> : <Close />);
-    !open && setSuccess(false);
-    !open && setSelectedTab(TABS[0].label);
-    !open && setCcv('');
+    if (!open) setSuccess(false);
+    if (!open) setSelectedTab(TABS[0].label);
+    if (!open) setCcv('');
   };
 
   const onAnimationComplete = (variant: AnimationDefinition) => {
@@ -59,7 +59,7 @@ export const DynamicPayButton = () => {
   };
 
   const onAnimationStart = (variant: AnimationDefinition) => {
-    variant === 'open' && buttonRef.current?.blur();
+    if (variant === 'open') buttonRef.current?.blur();
   };
 
   const handleTabChange = (value: TabContentProps['value']) => {

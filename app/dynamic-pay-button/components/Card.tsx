@@ -38,7 +38,7 @@ export const Card = ({
         info.offset.y < -50 ||
         info.offset.y > 50
       ) {
-        onDragEndOffset && onDragEndOffset(e, info);
+        if (onDragEndOffset) onDragEndOffset(e, info);
       }
     }
   };
@@ -79,7 +79,7 @@ export const Card = ({
         onTap={e => {
           const target = e.target as HTMLElement;
           if (target.nodeName === 'INPUT') return;
-          front && setFlip(!flip);
+          if (front) setFlip(!flip);
         }}
         style={{ scale, transformStyle: 'preserve-3d' }}
         tabIndex={front ? 0 : -1}
