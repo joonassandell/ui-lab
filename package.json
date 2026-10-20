@@ -1,7 +1,7 @@
 {
   "name": "@joonassandell/ui-lab",
   "description": "User interface laboratory by Joonas Sandell",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "type": "module",
   "author": {
     "name": "Joonas Sandell",
