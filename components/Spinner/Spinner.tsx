@@ -10,7 +10,7 @@ export const Spinner = ({
       <svg
         aria-hidden="true"
         className={cn(
-          'u-size-8 u-animate-spin u-fill-black u-text-black/20 dark:u-fill-white dark:u-text-white/20',
+          'u:size-8 u:animate-spin u:fill-black u:text-black/20 u:dark:fill-white u:dark:text-white/20',
           className,
         )}
         fill="none"
@@ -27,7 +27,7 @@ export const Spinner = ({
         />
       </svg>
       {screenReaderText && (
-        <span className={cn('u-sr-only')}>{screenReaderText}</span>
+        <span className={cn('u:sr-only')}>{screenReaderText}</span>
       )}
     </div>
   );

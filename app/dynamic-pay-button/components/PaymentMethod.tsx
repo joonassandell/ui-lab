@@ -13,7 +13,7 @@ export const PaymentMethod = ({ checked, variant }: PaymentMethodProps) => {
   return (
     <div>
       <input
-        className={cn('u-peer u-sr-only')}
+        className={cn('u:peer u:sr-only')}
         defaultChecked={checked}
         id={variant}
         name="payment-method"
@@ -21,50 +21,50 @@ export const PaymentMethod = ({ checked, variant }: PaymentMethodProps) => {
       />
       <label
         className={cn(
-          'u-flex u-h-12 u-items-center u-justify-between u-rounded-lg u-border u-px-3 u-transition-colors active:u-scale-[0.98] xs:u-px-4',
-          'u-border-zinc-200 u-bg-zinc-200/60 hover:u-border-zinc-200 hover:u-text-sky-700 peer-checked:u-border-blue-200 peer-checked:u-bg-sky-100 peer-checked:u-text-sky-700',
-          'dark:u-border-zinc-800 dark:u-bg-zinc-800/50 dark:hover:u-border-zinc-700/40 dark:hover:u-text-sky-400 dark:peer-checked:u-border-sky-900 dark:peer-checked:u-bg-sky-950/70 dark:peer-checked:u-text-sky-400',
+          'u:flex u:h-12 u:items-center u:justify-between u:rounded-lg u:border u:px-3 u:transition-colors u:active:scale-[0.98] u:xs:px-4',
+          'u:border-zinc-200 u:bg-zinc-200/60 u:peer-checked:border-blue-200 u:peer-checked:bg-sky-100 u:peer-checked:text-sky-700 u:hover:border-zinc-200 u:hover:text-sky-700',
+          'u:dark:border-zinc-800 u:dark:bg-zinc-800/50 u:dark:peer-checked:border-sky-900 u:dark:peer-checked:bg-sky-950/70 u:dark:peer-checked:text-sky-400 u:dark:hover:border-zinc-700/40 u:dark:hover:text-sky-400',
         )}
         htmlFor={variant}
       >
         {variant === 'googlePay' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>
               Google Pay
             </p>
-            <GooglePay className={cn('u-h-5')} />
+            <GooglePay className={cn('u:h-5')} />
           </>
         )}
         {variant === 'applePay' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>Apple Pay</p>
-            <ApplePay className={cn('u-relative u-top-[2px] u-h-5')} />
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>Apple Pay</p>
+            <ApplePay className={cn('u:relative u:top-[2px] u:h-5')} />
           </>
         )}
         {variant === 'paypal' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>PayPal</p>
-            <Paypal className={cn('u-size-4')} />
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>PayPal</p>
+            <Paypal className={cn('u:size-4')} />
           </>
         )}
         {variant === 'cashApp' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>Cash App</p>
-            <CashApp className={cn('u-size-4')} />
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>Cash App</p>
+            <CashApp className={cn('u:size-4')} />
           </>
         )}
         {variant === 'klarna' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>Klarna</p>
-            <Klarna className={cn('u-size-4')} />
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>Klarna</p>
+            <Klarna className={cn('u:size-4')} />
           </>
         )}
         {variant === 'amazonPay' && (
           <>
-            <p className={cn('u-truncate u-text-xs xs:u-text-sm')}>
+            <p className={cn('u:truncate u:text-xs u:xs:text-sm')}>
               Amazon Pay
             </p>
-            <AmazonPay className={cn('u-h-6')} />
+            <AmazonPay className={cn('u:h-6')} />
           </>
         )}
       </label>
