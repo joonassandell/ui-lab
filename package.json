@@ -79,6 +79,6 @@
     "tailwind-merge": "^3"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }
