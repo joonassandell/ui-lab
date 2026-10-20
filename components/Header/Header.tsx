@@ -25,28 +25,28 @@ const Header = ({ displayWithQueryParamOnly }: HeaderProps) => {
   return (
     <header
       className={cn(
-        'u-fixed u-inset-x-0 u-flex u-items-center u-justify-between u-gap-8 u-px-6 u-py-4',
+        'u:fixed u:inset-x-0 u:flex u:items-center u:justify-between u:gap-8 u:px-6 u:py-4',
       )}
     >
       <Link
-        className={cn('u-flex u-items-end u-gap-2 u-whitespace-nowrap')}
+        className={cn('u:flex u:items-end u:gap-2 u:whitespace-nowrap')}
         href="/"
       >
         UI Lab
-        <span className={cn('u-text-sm u-text-zinc-500 dark:u-text-zinc-400')}>
+        <span className={cn('u:text-sm u:text-zinc-500 u:dark:text-zinc-400')}>
           by Joonas Sandell
         </span>
       </Link>
       <button onClick={handleThemeChange}>
         {theme === 'light' ? (
           <>
-            <span className={cn('u-sr-only')}>Dark mode</span>
-            <Moon className={cn('u-size-5')} />
+            <span className={cn('u:sr-only')}>Dark mode</span>
+            <Moon className={cn('u:size-5')} />
           </>
         ) : (
           <>
-            <span className={cn('u-sr-only')}>Light mode</span>
-            <Sun className={cn('u-size-5')} />
+            <span className={cn('u:sr-only')}>Light mode</span>
+            <Sun className={cn('u:size-5')} />
           </>
         )}
       </button>

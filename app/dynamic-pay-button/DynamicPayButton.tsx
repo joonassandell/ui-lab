@@ -83,18 +83,18 @@ export const DynamicPayButton = () => {
         <AnimateDimension
           animate={open ? 'open' : 'closed'}
           className={cn(
-            'u-scope u-relative u-flex u-justify-center u-overflow-hidden u-text-sm u-font-medium u-shadow-pop [will-change:auto]',
-            'u-bg-white u-text-zinc-500',
-            'dark:u-bg-zinc-900 dark:u-text-zinc-400',
+            'u-scope u:relative u:flex u:justify-center u:overflow-hidden u:text-sm u:font-medium u:shadow-pop u:will-change-auto',
+            'u:bg-white u:text-zinc-500',
+            'u:dark:bg-zinc-900 u:dark:text-zinc-400',
             {
-              'has-[:focus-visible]:u-outline has-[:focus-visible]:u-outline-1 has-[:focus-visible]:u-outline-offset-2':
+              'u:has-focus-visible:outline u:has-focus-visible:outline-1 u:has-focus-visible:outline-offset-2':
                 !open,
-              'has-[:focus-visible]:u-outline-black/30 dark:has-[:focus-visible]:u-outline-white/20':
+              'u:has-focus-visible:outline-black/30 u:dark:has-focus-visible:outline-white/20':
                 !open,
-              'u-overflow-visible': overflow,
+              'u:overflow-visible': overflow,
             },
           )}
-          containerClassName={cn('u-flex u-flex-col u-items-center')}
+          containerClassName={cn('u:flex u:flex-col u:items-center')}
           onAnimationComplete={onAnimationComplete}
           onAnimationStart={onAnimationStart}
           variants={{
@@ -123,7 +123,7 @@ export const DynamicPayButton = () => {
           >
             <header
               className={cn(
-                'u-z-0 u-flex u-w-full u-items-center u-justify-between u-p-3',
+                'u:z-0 u:flex u:w-full u:items-center u:justify-between u:p-3',
               )}
               inert={loading ? '' : undefined}
             >

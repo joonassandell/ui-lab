@@ -8,7 +8,7 @@ export default function Page() {
       <Header displayWithQueryParamOnly />
       <main
         className={cn(
-          'u-grid u-min-h-svh u-place-content-center u-overflow-hidden',
+          'u:grid u:min-h-svh u:place-content-center u:overflow-hidden',
         )}
       >
         <DynamicPayButton />

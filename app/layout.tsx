@@ -1,4 +1,4 @@
-import '@/stylesheets/index.css';
+import '@/stylesheets/app.css';
 import { cn } from '@/lib/utils';
 import { IframeHandler } from '@/components/IframeHandler';
 import { type PropsWithChildren } from 'react';
@@ -21,9 +21,9 @@ export default function Layout({ children }: PropsWithChildren) {
   return (
     <html
       className={cn(
-        'u-antialiased',
-        'u-bg-zinc-50 dark:u-bg-[#0A0A0B]',
-        'u-text-zinc-800 dark:u-text-white',
+        'u:antialiased',
+        'u:bg-zinc-50 u:dark:bg-[#0A0A0B]',
+        'u:text-zinc-800 u:dark:text-white',
       )}
       lang="en"
       suppressHydrationWarning

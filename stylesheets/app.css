@@ -1,0 +1,3 @@
+/* Dev app only: global preflight, unlike the library build in index.css. */
+@import 'tailwindcss' prefix(u);
+@import './base.css';

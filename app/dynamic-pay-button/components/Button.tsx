@@ -12,13 +12,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <m.button
         className={cn(
-          'u-flex u-items-center u-justify-center u-gap-3 u-self-start u-whitespace-nowrap u-rounded-lg u-px-3 u-py-1 u-transition-colors',
-          'hover:u-text-zinc-800',
-          'dark:hover:u-text-white',
+          'u:flex u:items-center u:justify-center u:gap-3 u:self-start u:rounded-lg u:px-3 u:py-1 u:whitespace-nowrap u:transition-colors',
+          'u:hover:text-zinc-800',
+          'u:dark:hover:text-white',
           {
-            'u-outline-0 before:u-absolute before:u-inset-0 dark:u-text-zinc-300/90':
+            'u:outline-0 u:before:absolute u:before:inset-0 u:dark:text-zinc-300/90':
               !open,
-            'u-px-1': open,
+            'u:px-1': open,
           },
         )}
         layout
@@ -30,12 +30,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <AnimatePresence initial={false} mode="popLayout">
           <m.div
             animate={{ scale: 1 }}
-            className={cn('u-flex u-items-center u-justify-center')}
+            className={cn('u:flex u:items-center u:justify-center')}
             initial={{ scale: 0 }}
             key={icon.type.name}
             transition={TRANS_SPRING_SLOW}
           >
-            <Slot className={cn('u-size-5')}>{icon}</Slot>
+            <Slot className={cn('u:size-5')}>{icon}</Slot>
           </m.div>
         </AnimatePresence>
       </m.button>

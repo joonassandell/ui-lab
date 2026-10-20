@@ -1,0 +1,3 @@
+# Separate the library and dev app entry stylesheets
+
+The library ships scoped preflight (`stylesheets/index.css`, ADR 0002) so it never resets host pages, but the dev app needs the normal global preflight or its own pages render unstyled (default body margin, bare links and buttons). Shared theme, tokens and `.u-scope` rules live in `stylesheets/base.css`; `index.css` adds scoped preflight for `dist/index.css`, and `app.css` adds global preflight for the Next app. In Tailwind 3 this split was the two config files. The cost is that the dev app never exercises the scoped preflight the library ships, so library styling needs checking against `dist/index.css` (e.g. embedded in an iframe), not only in the dev app.
